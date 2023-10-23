@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[tblGameMoves]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [GameId] UNIQUEIDENTIFIER NOT NULL, 
+    [PlayerId] UNIQUEIDENTIFIER NOT NULL, 
+    [TargetCoordinates] VARCHAR(50) NOT NULL, 
+    [TimeStamp] TIME NOT NULL
+)

@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[tblPlayer]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [UserName] VARCHAR(15) NOT NULL, 
+    [Email] VARCHAR(50) NOT NULL, 
+    [Password] VARCHAR(50) NOT NULL
+)

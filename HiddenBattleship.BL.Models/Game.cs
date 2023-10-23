@@ -11,5 +11,7 @@
         TimeOnly EndTime { get; set; }
         //TimeOnly date = TimeOnly.FromDateTime(DateTime.Now);
 
+        bool IsOver { get; set; }
+
     }
 }

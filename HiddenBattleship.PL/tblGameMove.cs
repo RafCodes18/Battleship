@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace HiddenBattleship.PL;
+﻿namespace HiddenBattleship.PL;
 
 public partial class tblGameMove
 {
@@ -14,4 +11,5 @@ public partial class tblGameMove
     public string TargetCoordinates { get; set; } = null!;
 
     public TimeSpan TimeStamp { get; set; }
+    public int GameMoveId { get; set; }
 }

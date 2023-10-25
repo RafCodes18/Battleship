@@ -9,5 +9,6 @@
         bool IsHit { get; set; }
         TimeOnly TimeStamp { get; set; }
 
+        string GameMoveId { get; set; }
     }
 }

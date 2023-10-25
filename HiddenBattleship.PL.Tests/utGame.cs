@@ -44,5 +44,12 @@ namespace HiddenBattleship.PL.Tests
             result = db.SaveChanges();
             Assert.IsNotNull(result);
         }
+
+        [TestMethod]
+        public void LoadTest()
+        {
+            tblGame row = db.tblGames.FirstOrDefault(g => g.GameId == 1);
+            Assert.AreEqual(1, row.GameId);
+        }
     }
 }

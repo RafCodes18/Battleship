@@ -4,7 +4,73 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <h2 class="text-center">Battleship - Player Board</h2>
+            <table class="board">
+                <thead>
+                    <tr>
+                        <th></th>
+                        @for (char col = 'A'; col <= 'J'; col++)
+                        {
+                            <th>@col</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int row = 1; row <= 10; row++)
+                    {
+                        <tr>
+                            <th>@row</th>
+                            @for (char col = 'A'; col <= 'J'; col++)
+                            {
+                                <td></td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-5">
+            <h2 class="text-center">Battleship - Opponent Board</h2>
+            <table class="board">
+                <thead>
+                    <tr>
+                        <th></th>
+                        @for (char col = 'A'; col <= 'J'; col++)
+                        {
+                            <th>@col</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int row = 1; row <= 10; row++)
+                    {
+                        <tr>
+                            <th>@row</th>
+                            @for (char col = 'A'; col <= 'J'; col++)
+                            {
+                                <td></td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+
+<style>
+    .board {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+        .board th, .board td {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #000;
+        }
+</style>

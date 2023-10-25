@@ -33,5 +33,16 @@ namespace HiddenBattleship.PL.Tests
             result = db.SaveChanges();
             Assert.IsNotNull(result);
         }
+
+        [TestMethod]
+        public void DeleteTest()
+        {
+            int result;
+            tblGame row = db.tblGames.FirstOrDefault(g => g.GameId == 1);
+
+            db.tblGames.Remove(row);
+            result = db.SaveChanges();
+            Assert.IsNotNull(result);
+        }
     }
 }

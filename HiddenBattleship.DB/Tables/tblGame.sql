@@ -7,5 +7,6 @@
     [LoserId] UNIQUEIDENTIFIER NOT NULL, 
     [StartTime] TIME NOT NULL, 
     [EndTime] TIME NOT NULL, 
-    [IsOver] INT NOT NULL
+    [IsOver] INT NOT NULL, 
+    [GameId] INT NOT NULL
 )

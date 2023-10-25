@@ -15,11 +15,23 @@ namespace HiddenBattleship.PL.Tests
             tbGame.WinnerId = Guid.NewGuid();
             tbGame.IsOver = 0;
             tbGame.LoserId = Guid.NewGuid();
+            tbGame.GameId = 900;
 
             db.tblGames.Add(tbGame);
             results = db.SaveChanges();
 
             Assert.IsTrue(results > 0);
+        }
+
+        [TestMethod]
+        public void UpdateTest()
+        {
+            int result;
+            tblGame row = db.tblGames.FirstOrDefault(g => g.GameId == 1);
+            row.Player1 = Guid.NewGuid();
+
+            result = db.SaveChanges();
+            Assert.IsNotNull(result);
         }
     }
 }

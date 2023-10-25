@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace HiddenBattleship.PL;
+﻿namespace HiddenBattleship.PL;
 
 public partial class tblGame
 {
@@ -20,4 +17,5 @@ public partial class tblGame
     public TimeSpan EndTime { get; set; }
 
     public int IsOver { get; set; }
+    public int GameId { get; set; }
 }

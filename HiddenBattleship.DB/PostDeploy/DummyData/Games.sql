@@ -1,9 +1,9 @@
 ﻿BEGIN 
-INSERT INTO tblGame (Id, Player1, Player2, WinnerId, LoserId, StartTime, EndTime, IsOver ) 
+INSERT INTO tblGame (Id, Player1, Player2, WinnerId, LoserId, StartTime, EndTime, IsOver, GameId ) 
 VALUES 
- (NEWID(), NEWID(), NEWID(), NEWID(), NEWID(), CAST('12:00:00' AS TIME), CAST('12:00:00' AS TIME), 1),
-    (NEWID(), NEWID(), NEWID(), NEWID(), NEWID(), CAST('12:00:00' AS TIME), CAST('12:00:00' AS TIME), 1),
-    (NEWID(), NEWID(), NEWID(), NEWID(), NEWID(), CAST('12:00:00' AS TIME), CAST('12:00:00' AS TIME), 1),
-    (NEWID(), NEWID(), NEWID(), NEWID(), NEWID(), CAST('12:00:00' AS TIME), CAST('12:00:00' AS TIME), 1),
-    (NEWID(), NEWID(), NEWID(), NEWID(), NEWID(), CAST('12:00:00' AS TIME), CAST('12:00:00' AS TIME), 1);
+ (NEWID(), NEWID(), NEWID(), NEWID(), NEWID(), CAST('12:00:00' AS TIME), CAST('12:00:00' AS TIME), 1, 1),
+    (NEWID(), NEWID(), NEWID(), NEWID(), NEWID(), CAST('12:00:00' AS TIME), CAST('12:00:00' AS TIME), 1, 2),
+    (NEWID(), NEWID(), NEWID(), NEWID(), NEWID(), CAST('12:00:00' AS TIME), CAST('12:00:00' AS TIME), 1, 3),
+    (NEWID(), NEWID(), NEWID(), NEWID(), NEWID(), CAST('12:00:00' AS TIME), CAST('12:00:00' AS TIME), 1, 4),
+    (NEWID(), NEWID(), NEWID(), NEWID(), NEWID(), CAST('12:00:00' AS TIME), CAST('12:00:00' AS TIME), 1, 5);
 END

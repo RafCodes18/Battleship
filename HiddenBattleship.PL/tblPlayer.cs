@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace HiddenBattleship.PL;
+﻿namespace HiddenBattleship.PL;
 
 public partial class tblPlayer
 {

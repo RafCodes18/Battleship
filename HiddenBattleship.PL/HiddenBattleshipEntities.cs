@@ -13,7 +13,7 @@ public partial class HiddenBattleshipEntities : DbContext
     {
     }
 
-    public virtual DbSet<tblChatHistory> tblChatHistories { get; set; }
+    public virtual DbSet<tblChatHistory> tblChatHistory { get; set; }
 
     public virtual DbSet<tblGame> tblGames { get; set; }
 

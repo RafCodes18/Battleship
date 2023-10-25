@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace HiddenBattleship.PL;
+﻿namespace HiddenBattleship.PL;
 
 public partial class tblChatHistory
 {
@@ -16,4 +13,5 @@ public partial class tblChatHistory
     public string Message { get; set; } = null!;
 
     public TimeSpan Timestamp { get; set; }
+    public int ChatHistoryId { get; set; }
 }

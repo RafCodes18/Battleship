@@ -12,5 +12,6 @@ namespace HiddenBattleship.BL.Models
         public Guid GameId { get; set; }
         public string Message { get; set; }
         public DateTime Timestamp { get; set; }
+        public int ChatHistoryId { get; set; }
     }
 }

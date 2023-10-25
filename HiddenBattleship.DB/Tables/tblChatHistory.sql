@@ -5,6 +5,7 @@
 	[Receiver] uniqueidentifier not null,
 	[GameId] uniqueidentifier not null,
 	[Message] varchar(100) not null,
-	[Timestamp] time not null
+	[Timestamp] time not null, 
+    [ChatHistoryId] INT NOT NULL
 
 )

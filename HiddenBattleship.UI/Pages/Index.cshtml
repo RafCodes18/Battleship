@@ -4,73 +4,85 @@
     ViewData["Title"] = "Play Game";
 }
 
-<div class="container">
-    <div class="row justify-content-center pt-5" >
-        <div class="col-md-5">
-            <h2 class="text-center">Player Board</h2>
-            <table class="board">
-                <thead>
-                    <tr>
-                        <th></th>
-                        @for (char col = 'A'; col <= 'J'; col++)
-                        {
-                            <th>@col</th>
-                        }
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (int row = 1; row <= 10; row++)
-                    {
-                        <tr>
-                            <th>@row</th>
-                            @for (char col = 'A'; col <= 'J'; col++)
-                            {
-                                <td></td>
-                            }
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-        <div class="col-md-5">
-            <h2 class="text-center">Opponent Board</h2>
-            <table class="board">
-                <thead>
-                    <tr>
-                        <th></th>
-                        @for (char col = 'A'; col <= 'J'; col++)
-                        {
-                            <th>@col</th>
-                        }
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (int row = 1; row <= 10; row++)
-                    {
-                        <tr>
-                            <th>@row</th>
-                            @for (char col = 'A'; col <= 'J'; col++)
-                            {
-                                <td></td>
-                            }
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
 <style>
-    .board {
-        width: 100%;
-        border-collapse: collapse;
-        text-align: center;
+    .ships-container{
+        width: 500px;
+        height: 100px;
+        background-color: darkcyan;
+        display: flex;
+        align-items: center;
+        }
+
+    .ship1{
+        width: 20px; 
+        height: 10px;
+        margin: 3px;
+        background-color: yellow;
     }
 
-        .board th, .board td {
-            width: 40px;
-            height: 40px;
-            border: 1px solid #000;
-        }
+    .ship2 {
+        width: 30px;
+        height: 10px;
+        margin: 3px;
+        background-color: red;
+    }
+
+    .ship3 {
+        width: 40px;
+        height: 10px;
+        margin: 3px;
+        background-color: blue;
+    }
+
+    .ship4 {
+        width: 50px;
+        height: 10px;
+        margin: 3px;
+        background-color: orange;
+    }
+
+    .ship5 {
+        width: 60px;
+        height: 10px;
+        margin: 3px;
+        background-color: purple;
+    }
 </style>
+
+<div id="game-info">
+    <p>Turn: <span id="turn-display"></span></p>
+    <p>Info: <span id="info"></span></p>
+</div>
+
+<div id="game-container"></div>
+
+<div class="ships-container">
+    <div class="ship1" draggable="true"></div>
+    <div class="ship2" draggable="true"></div>
+    <div class="ship3" draggable="true"></div>
+    <div class="ship4" draggable="true"></div>
+    <div class="ship5" draggable="true"></div>
+</div>
+
+<button id="btnFlip">Flip</button>
+<button id="btnStart">Start</button>
+
+
+<script>
+    const shipContainer = document.querySelector('.ships-container')
+    const btnFlip = document.querySelector('#btnFlip')
+   
+    btnFlip.addEventListener('click', flip)
+    
+    let angle = 0;
+    function flip() { 
+        const ships = Array.from(shipContainer.children)
+        if (angle === 0) {
+            angle = 90
+        } else {
+            angle = 0
+        }
+        ships.forEach(ship => ship.style.transform = `rotate(${angle}deg)`)
+    }
+    
+</script>

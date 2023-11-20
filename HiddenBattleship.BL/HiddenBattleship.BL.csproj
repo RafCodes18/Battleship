@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HiddenBattleship.PL\HiddenBattleship.PL.csproj" />
+  </ItemGroup>
+
 </Project>

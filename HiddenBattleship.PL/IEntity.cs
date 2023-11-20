@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HiddenBattleship.BL
+namespace HiddenBattleship.PL
 {
-    public abstract class GenericManager<T> where T : class
+    public interface IEntity
     {
-
+        Guid Id { get; set; }
+        string SortField { get;}
     }
 }

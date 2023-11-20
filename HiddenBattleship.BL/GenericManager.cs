@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace HiddenBattleship.BL
 {
-    public class ChatHistoryManager
+    internal class GenericManager
     {
-
     }
 }

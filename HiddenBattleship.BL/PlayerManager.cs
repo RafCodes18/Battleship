@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace HiddenBattleship.BL
 {
-    internal class PlayerManager
+    public class PlayerManager
     {
+
     }
 }

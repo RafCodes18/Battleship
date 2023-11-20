@@ -16,6 +16,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiddenBattleship.BL", "HiddenBattleship.BL\HiddenBattleship.BL.csproj", "{E5BEEBA9-37FE-4E20-A13F-FF2A261AC5F1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiddenBattleship.BL.Test", "HiddenBattleship.BL.Test\HiddenBattleship.BL.Test.csproj", "{02D32206-7FA8-4A8E-A8D1-668DE6042ABB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E5BEEBA9-37FE-4E20-A13F-FF2A261AC5F1} = {E5BEEBA9-37FE-4E20-A13F-FF2A261AC5F1}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

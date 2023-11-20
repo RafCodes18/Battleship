@@ -5,13 +5,27 @@
 }
 
 <style>
+
+    .game-board{
+        width: 200px;
+        height: 200px;
+        display: flex;
+        flex-wrap: wrap; <!--fills the game boards with boxes -->
+    }
     .ships-container{
         width: 500px;
         height: 100px;
         background-color: darkcyan;
         display: flex;
         align-items: center;
+        margin-top: 5px;
         }
+
+    #games-container{
+        width: 500px; 
+        display: flex; 
+        justify-content: space-between;
+    }
 
     .ship1{
         width: 20px; 
@@ -47,6 +61,12 @@
         margin: 3px;
         background-color: purple;
     }
+
+    .block{
+        width: 20px;
+        height: 20px;
+ /*        border: 1px solid black; */
+    }
 </style>
 
 <div id="game-info">
@@ -54,7 +74,7 @@
     <p>Info: <span id="info"></span></p>
 </div>
 
-<div id="game-container"></div>
+<div id="games-container"></div>
 
 <div class="ships-container">
     <div class="ship1" draggable="true"></div>
@@ -71,18 +91,38 @@
 <script>
     const shipContainer = document.querySelector('.ships-container')
     const btnFlip = document.querySelector('#btnFlip')
-   
+    const gamesContainer = document.querySelector('#games-container')
+
     btnFlip.addEventListener('click', flip)
     
     let angle = 0;
     function flip() { 
         const ships = Array.from(shipContainer.children)
-        if (angle === 0) {
-            angle = 90
-        } else {
-            angle = 0
-        }
+        //if angle == 0, change to 90, else keep 0
+        angle = angle === 0 ? 90 : 0
+        //rotate all ships
         ships.forEach(ship => ship.style.transform = `rotate(${angle}deg)`)
     }
+
+
+    //creating boards
+    const width = 10;
+    function createBoard(color, user) { 
+        const gameBoardContainer = document.createElement('div')
+        gameBoardContainer.classList.add('game-board')
+        gameBoardContainer.style.backgroundColor= color
+        gameBoardContainer.id = user
+
+        for (let i = 0; i < width * width; i++) { 
+            const block = document.createElement('div');
+            block.classList.add('block');
+            block.id = i;
+            gameBoardContainer.append(block);
+        }
+
+        gamesContainer.append(gameBoardContainer)
+    }
     
+    createBoard('pink', 'player')
+    createBoard('yellow', 'computer')
 </script>

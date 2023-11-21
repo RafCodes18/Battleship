@@ -6,7 +6,37 @@ using System.Threading.Tasks;
 
 namespace HiddenBattleship.BL.Test
 {
-    internal class utChatHistory
+    [TestClass]
+    public class utChatHistory : utBase
     {
+        [TestMethod]
+        public void LoadTest()
+        {
+
+        }
+
+        [TestMethod]
+        public void LoadById()
+        {
+
+        }
+
+        [TestMethod]
+        public void InsertTest()
+        {
+
+        }
+
+        [TestMethod]
+        public void UpdateTest()
+        {
+
+        }
+
+        [TestMethod]
+        public void DeleteTest()
+        {
+
+        }
     }
 }

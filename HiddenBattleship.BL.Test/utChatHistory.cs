@@ -20,7 +20,7 @@ namespace HiddenBattleship.BL.Test
         }
 
         [TestMethod]
-        public void LoadById()
+        public void LoadByIdTest()
         {
             ChatHistory chatHistory = new ChatHistoryManager(options).Load().FirstOrDefault();
             Assert.AreEqual(new ChatHistoryManager(options).LoadById(chatHistory.Id).Id, chatHistory.Id);

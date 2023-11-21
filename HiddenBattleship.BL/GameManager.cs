@@ -26,7 +26,11 @@ namespace HiddenBattleship.BL
                     Player2 = game.Player2,
                     WinnerId = game.WinnerId,
                     LoserId = game.LoserId,
+                    StartTime = game.StartTime,
+                    EndTime = game.EndTime,
+                    IsOver = game.IsOver
                 };
+                return base.Insert(row, rollback);
             }
             catch (Exception)
             {

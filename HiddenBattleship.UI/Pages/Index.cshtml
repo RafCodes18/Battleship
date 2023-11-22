@@ -186,6 +186,8 @@
                 shipBlock.classList.add('taken')
             })
         } else {
+            addShipPiece(ship)
+
             if(user === 'computer' ) addShipPiece(ship, startId)
             if(user === 'player') notDropped = true
         }
@@ -221,6 +223,9 @@
             draggedShip.remove()
         }
     }
+
+    ships.forEach(ship => addShipPiece(ship))
+
 
 
 </script>

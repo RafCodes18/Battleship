@@ -1,6 +1,6 @@
-﻿namespace HiddenBattleship.PL;
+﻿namespace HiddenBattleship.PL.Entities;
 
-public partial class tblChatHistory
+public partial class tblChatHistory : IEntity
 {
     public Guid Id { get; set; }
 
@@ -14,4 +14,8 @@ public partial class tblChatHistory
 
     public TimeSpan Timestamp { get; set; }
     public int ChatHistoryId { get; set; }
+
+    public virtual tblPlayer Player { get; set; }
+
+    public string SortField { get { return ChatHistoryId.ToString(); } }
 }

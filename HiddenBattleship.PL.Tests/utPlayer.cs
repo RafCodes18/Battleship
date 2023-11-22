@@ -1,4 +1,6 @@
-﻿namespace HiddenBattleship.PL.Tests
+﻿using HiddenBattleship.PL.Entities;
+
+namespace HiddenBattleship.PL.Tests
 {
     [TestClass]
     public class utPlayer : utBase

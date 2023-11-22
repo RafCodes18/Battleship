@@ -1,5 +1,6 @@
 ﻿using HiddenBattleship.BL.Models;
 using HiddenBattleship.PL;
+using HiddenBattleship.PL.Entities;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;

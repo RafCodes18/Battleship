@@ -1,5 +1,6 @@
 ﻿using HiddenBattleship.BL.Models;
 using HiddenBattleship.PL;
+using HiddenBattleship.PL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using NuGet.Protocol.Plugins;

@@ -1,3 +1,5 @@
+using HiddenBattleship.PL.Entities;
+
 namespace HiddenBattleship.PL.Tests
 {
     [TestClass]

@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.SqlServer.Server;
 using NuGet.Packaging.Signing;
 using System.ComponentModel;
+using HiddenBattleship.PL.Entities;
 
 namespace HiddenBattleship.BL
 {

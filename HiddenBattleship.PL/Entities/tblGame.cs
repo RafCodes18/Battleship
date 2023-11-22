@@ -1,6 +1,6 @@
-﻿namespace HiddenBattleship.PL;
+﻿namespace HiddenBattleship.PL.Entities;
 
-public partial class tblGame
+public partial class tblGame : IEntity
 {
     public Guid Id { get; set; }
 
@@ -18,4 +18,10 @@ public partial class tblGame
 
     public int IsOver { get; set; }
     public int GameId { get; set; }
+
+    public virtual tblPlayer Player { get; set; }
+
+    public virtual tblGameMove GameMove { get; set; }
+
+    public string SortField { get { return GameId.ToString(); } }
 }

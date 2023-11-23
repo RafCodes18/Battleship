@@ -23,7 +23,7 @@ namespace HiddenBattleship.PL.Tests
         [TestInitialize]
         public void TestInitialize()
         {
-            db = new HiddenBattleshipEntities(_options);
+            db = new HiddenBattleshipEntities();
             transaction = db.Database.BeginTransaction();
         }
         [TestCleanup]

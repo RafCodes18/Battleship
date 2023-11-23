@@ -10,10 +10,10 @@ namespace HiddenBattleship.PL.Tests
         {
             int results = 0;
             tblChatHistory tbChatHistory = new tblChatHistory();
-            tbChatHistory.Sender = Guid.NewGuid();
+            tbChatHistory.Sender = db.tblPlayers.FirstOrDefault().Id;
             tbChatHistory.Message = "message";
-            tbChatHistory.Receiver = Guid.NewGuid();
-            tbChatHistory.GameId = Guid.NewGuid();
+            tbChatHistory.Receiver = db.tblPlayers.FirstOrDefault().Id;
+            tbChatHistory.GameId = db.tblGames.FirstOrDefault().Id;
             tbChatHistory.Timestamp = new TimeSpan(1, 12, 43);
             tbChatHistory.ChatHistoryId = 100;
 
@@ -28,7 +28,7 @@ namespace HiddenBattleship.PL.Tests
         {
             int result;
             tblChatHistory row = db.tblChatHistory.FirstOrDefault(g => g.ChatHistoryId == 1);
-            row.Receiver = Guid.NewGuid();
+            row.Receiver = db.tblPlayers.FirstOrDefault().Id;
 
             result = db.SaveChanges();
             Assert.IsNotNull(result);

@@ -11,9 +11,9 @@ namespace HiddenBattleship.PL.Tests
             int results = 0;
             tblGameMove tbGameMove = new tblGameMove();
             tbGameMove.TimeStamp = new TimeSpan(1, 12, 43);
-            tbGameMove.TargetCoordinates = "xx";
-            tbGameMove.PlayerId = Guid.NewGuid();
-            tbGameMove.GameId = Guid.NewGuid();
+            tbGameMove.TargetCoordinates = "B2";
+            tbGameMove.PlayerId = db.tblPlayers.FirstOrDefault().Id;
+            tbGameMove.GameId = db.tblGames.FirstOrDefault().Id;
 
             db.tblGameMoves.Add(tbGameMove);
             results = db.SaveChanges();
@@ -26,7 +26,7 @@ namespace HiddenBattleship.PL.Tests
         {
             int result;
             tblGameMove row = db.tblGameMoves.FirstOrDefault(g => g.GameMoveId == 1);
-            row.PlayerId = Guid.NewGuid();
+            row.TargetCoordinates = "A7";
 
             result = db.SaveChanges();
             Assert.IsNotNull(result);

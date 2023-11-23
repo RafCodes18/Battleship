@@ -12,11 +12,11 @@ namespace HiddenBattleship.PL.Tests
             tblGame tbGame = new tblGame();
             tbGame.EndTime = new TimeSpan(1, 12, 23);
             tbGame.StartTime = new TimeSpan(1, 12, 43);
-            tbGame.Player1 = Guid.NewGuid();
-            tbGame.Player2 = Guid.NewGuid();
-            tbGame.WinnerId = Guid.NewGuid();
+            tbGame.Player1 = db.tblPlayers.FirstOrDefault().Id;
+            tbGame.Player2 = db.tblPlayers.FirstOrDefault().Id;
+            tbGame.WinnerId = db.tblPlayers.FirstOrDefault().Id;
             tbGame.IsOver = 0;
-            tbGame.LoserId = Guid.NewGuid();
+            tbGame.LoserId = db.tblPlayers.FirstOrDefault().Id;
             tbGame.GameId = 900;
 
             db.tblGames.Add(tbGame);
@@ -30,7 +30,7 @@ namespace HiddenBattleship.PL.Tests
         {
             int result;
             tblGame row = db.tblGames.FirstOrDefault(g => g.GameId == 1);
-            row.Player1 = Guid.NewGuid();
+            row.Player1 = db.tblPlayers.FirstOrDefault().Id;
 
             result = db.SaveChanges();
             Assert.IsNotNull(result);

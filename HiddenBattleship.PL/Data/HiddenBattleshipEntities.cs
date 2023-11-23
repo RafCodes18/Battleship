@@ -6,7 +6,7 @@ namespace HiddenBattleship.PL;
 
 public partial class HiddenBattleshipEntities : DbContext
 {
-    Guid[] playerId = new Guid[4];
+    Guid[] playerId = new Guid[5];
     Guid[] gameId = new Guid[4];
     Guid[] gamemoveId = new Guid[4];
     Guid[] chathistoryId = new Guid[4];
@@ -204,9 +204,9 @@ public partial class HiddenBattleshipEntities : DbContext
         List<tblGame> Games = new List<tblGame>
         {
            new tblGame {Id = gameId[0], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 0},
-           new tblGame {Id = gameId[1], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 0},
-           new tblGame {Id = gameId[2], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 0},
-           new tblGame {Id = gameId[3], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 0}
+           new tblGame {Id = gameId[1], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 1},
+           new tblGame {Id = gameId[2], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 2},
+           new tblGame {Id = gameId[3], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 3}
         };
         modelBuilder.Entity<tblGame>().HasData(Games);
     }
@@ -263,10 +263,17 @@ public partial class HiddenBattleshipEntities : DbContext
             UserName = "Skeert",
             Password = GetHash("tango")
         });
+        modelBuilder.Entity<tblPlayer>().HasData(new tblPlayer
+        {
+            Id = playerId[4],
+            Email = "uTest@yahoo.com",
+            UserName = "uTest",
+            Password = GetHash("test")
+        });
 
     }
 
-    private static string GetHash(string Password)
+    public static string GetHash(string Password)
     {
         using (var hasher = new System.Security.Cryptography.SHA1Managed())
         {

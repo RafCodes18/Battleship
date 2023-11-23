@@ -12,7 +12,7 @@ public partial class tblPlayer : IEntity
 
 
     public virtual ICollection<tblGame> tblGames { get; } = new List<tblGame>();
-    public virtual ICollection<tblChatHistory> tblChatHistory { get; } = new List<tblChatHistory>();
+    public virtual ICollection<tblChatHistory> tblChatHistories { get; } = new List<tblChatHistory>();
 
     public virtual ICollection<tblGameMove> tblGameMoves { get; } = new List<tblGameMove>();
 

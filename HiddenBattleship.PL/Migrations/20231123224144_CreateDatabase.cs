@@ -62,11 +62,17 @@ namespace HiddenBattleship.PL.Migrations
                     StartTime = table.Column<TimeSpan>(type: "time", nullable: false),
                     EndTime = table.Column<TimeSpan>(type: "time", nullable: false),
                     IsOver = table.Column<int>(type: "int", nullable: false),
-                    GameId = table.Column<int>(type: "int", nullable: false)
+                    GameId = table.Column<int>(type: "int", nullable: false),
+                    tblChatHistoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK__tblGame__3214EC07DA24F9C4", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_tblGame_tblChatHistory_tblChatHistoryId",
+                        column: x => x.tblChatHistoryId,
+                        principalTable: "tblChatHistory",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_tblGame_tblPlayer_LoserId",
                         column: x => x.LoserId,
@@ -105,10 +111,21 @@ namespace HiddenBattleship.PL.Migrations
                 columns: new[] { "Id", "Email", "Password", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("51201723-156f-4787-a43e-3346d08bab18"), "789@yahoo.com", "7DUut/wAuxmp4mKiKKNr9eEUeG0=", "LoveMyCats1155" },
-                    { new Guid("7af2115b-bad0-41e8-b017-de547de80c78"), "456@gmail.com", "YRfkWrV/hmDYZqIcpenSwx28GUU=", "Timmy" },
-                    { new Guid("ad3bb62c-71dd-4c84-aa0e-d77af5123549"), "aaabbb@amazon.com", "3oUt/zAHVa53n7yyDzprXz4Rxs8=", "Skeert" },
-                    { new Guid("c9742f18-a8fb-4f69-8d61-103e3e2f7fd0"), "123@gmail.com", "W6ph5Mm5Pz8GgiULbPgzG37mj9g=", "Sh1PD3STR0Y3R" }
+                    { new Guid("aa6e32e1-9944-4e8d-be60-6369e5ae469f"), "aaabbb@amazon.com", "3oUt/zAHVa53n7yyDzprXz4Rxs8=", "Skeert" },
+                    { new Guid("c01f71d6-3314-4e8e-a256-0ae4c6bcf48b"), "789@yahoo.com", "7DUut/wAuxmp4mKiKKNr9eEUeG0=", "LoveMyCats1155" },
+                    { new Guid("e9d93fa9-8a2d-45b1-b211-b3f7fb4ffbf8"), "123@gmail.com", "W6ph5Mm5Pz8GgiULbPgzG37mj9g=", "Sh1PD3STR0Y3R" },
+                    { new Guid("f256f0a0-d837-4322-8f7d-123aab1808d1"), "456@gmail.com", "YRfkWrV/hmDYZqIcpenSwx28GUU=", "Timmy" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "tblGame",
+                columns: new[] { "Id", "EndTime", "GameId", "IsOver", "LoserId", "Player1", "Player2", "StartTime", "WinnerId", "tblChatHistoryId" },
+                values: new object[,]
+                {
+                    { new Guid("28439070-31c4-4ec3-a607-1212cf0ec963"), new TimeSpan(0, 1, 20, 30, 0), 0, 0, new Guid("f256f0a0-d837-4322-8f7d-123aab1808d1"), new Guid("e9d93fa9-8a2d-45b1-b211-b3f7fb4ffbf8"), new Guid("f256f0a0-d837-4322-8f7d-123aab1808d1"), new TimeSpan(0, 1, 20, 30, 0), new Guid("e9d93fa9-8a2d-45b1-b211-b3f7fb4ffbf8"), null },
+                    { new Guid("400442b7-459b-478d-a4b8-ffc84513fc5e"), new TimeSpan(0, 1, 20, 30, 0), 0, 0, new Guid("f256f0a0-d837-4322-8f7d-123aab1808d1"), new Guid("e9d93fa9-8a2d-45b1-b211-b3f7fb4ffbf8"), new Guid("f256f0a0-d837-4322-8f7d-123aab1808d1"), new TimeSpan(0, 1, 20, 30, 0), new Guid("e9d93fa9-8a2d-45b1-b211-b3f7fb4ffbf8"), null },
+                    { new Guid("d5971a87-2fac-4a85-82bd-bf94e30dad66"), new TimeSpan(0, 1, 20, 30, 0), 0, 0, new Guid("f256f0a0-d837-4322-8f7d-123aab1808d1"), new Guid("e9d93fa9-8a2d-45b1-b211-b3f7fb4ffbf8"), new Guid("f256f0a0-d837-4322-8f7d-123aab1808d1"), new TimeSpan(0, 1, 20, 30, 0), new Guid("e9d93fa9-8a2d-45b1-b211-b3f7fb4ffbf8"), null },
+                    { new Guid("e86c7bd4-26be-4f4f-ab94-c3054c368865"), new TimeSpan(0, 1, 20, 30, 0), 0, 0, new Guid("f256f0a0-d837-4322-8f7d-123aab1808d1"), new Guid("e9d93fa9-8a2d-45b1-b211-b3f7fb4ffbf8"), new Guid("f256f0a0-d837-4322-8f7d-123aab1808d1"), new TimeSpan(0, 1, 20, 30, 0), new Guid("e9d93fa9-8a2d-45b1-b211-b3f7fb4ffbf8"), null }
                 });
 
             migrationBuilder.InsertData(
@@ -116,21 +133,10 @@ namespace HiddenBattleship.PL.Migrations
                 columns: new[] { "Id", "ChatHistoryId", "GameId", "Message", "Receiver", "Sender", "Timestamp" },
                 values: new object[,]
                 {
-                    { new Guid("20c176a5-d912-40f6-8d12-b9546f47a8aa"), 1, new Guid("00000000-0000-0000-0000-000000000000"), "You missed, LOL", new Guid("7af2115b-bad0-41e8-b017-de547de80c78"), new Guid("ad3bb62c-71dd-4c84-aa0e-d77af5123549"), new TimeSpan(0, 5, 1, 20, 0) },
-                    { new Guid("aea77a63-18da-4f11-8f78-05e0decbc141"), 2, new Guid("00000000-0000-0000-0000-000000000000"), "Follow my twitch stream?", new Guid("51201723-156f-4787-a43e-3346d08bab18"), new Guid("7af2115b-bad0-41e8-b017-de547de80c78"), new TimeSpan(0, 11, 51, 14, 0) },
-                    { new Guid("b2c6665b-07a4-4470-bf7d-34ba3b8860c1"), 3, new Guid("00000000-0000-0000-0000-000000000000"), "You're hacking, i'm telling my dad he works at Jagex!!11!", new Guid("ad3bb62c-71dd-4c84-aa0e-d77af5123549"), new Guid("51201723-156f-4787-a43e-3346d08bab18"), new TimeSpan(0, 1, 28, 19, 0) },
-                    { new Guid("f55d0d8f-ce27-410d-a5eb-0673105cc6bb"), 0, new Guid("00000000-0000-0000-0000-000000000000"), "1v1 me", new Guid("7af2115b-bad0-41e8-b017-de547de80c78"), new Guid("c9742f18-a8fb-4f69-8d61-103e3e2f7fd0"), new TimeSpan(0, 4, 10, 55, 0) }
-                });
-
-            migrationBuilder.InsertData(
-                table: "tblGame",
-                columns: new[] { "Id", "EndTime", "GameId", "IsOver", "LoserId", "Player1", "Player2", "StartTime", "WinnerId" },
-                values: new object[,]
-                {
-                    { new Guid("2cc2f566-97df-40e8-a33c-d3826fd7b2e7"), new TimeSpan(0, 1, 20, 30, 0), 0, 0, new Guid("7af2115b-bad0-41e8-b017-de547de80c78"), new Guid("c9742f18-a8fb-4f69-8d61-103e3e2f7fd0"), new Guid("7af2115b-bad0-41e8-b017-de547de80c78"), new TimeSpan(0, 1, 20, 30, 0), new Guid("c9742f18-a8fb-4f69-8d61-103e3e2f7fd0") },
-                    { new Guid("3e70c965-656e-46b1-b84f-36cb77743fd4"), new TimeSpan(0, 1, 20, 30, 0), 0, 0, new Guid("7af2115b-bad0-41e8-b017-de547de80c78"), new Guid("c9742f18-a8fb-4f69-8d61-103e3e2f7fd0"), new Guid("7af2115b-bad0-41e8-b017-de547de80c78"), new TimeSpan(0, 1, 20, 30, 0), new Guid("c9742f18-a8fb-4f69-8d61-103e3e2f7fd0") },
-                    { new Guid("513df2c7-0c39-45ca-9050-c2cbd7d41b7b"), new TimeSpan(0, 1, 20, 30, 0), 0, 0, new Guid("7af2115b-bad0-41e8-b017-de547de80c78"), new Guid("c9742f18-a8fb-4f69-8d61-103e3e2f7fd0"), new Guid("7af2115b-bad0-41e8-b017-de547de80c78"), new TimeSpan(0, 1, 20, 30, 0), new Guid("c9742f18-a8fb-4f69-8d61-103e3e2f7fd0") },
-                    { new Guid("bd1ae00c-0a6c-4eb0-985f-5a01ce38fd5e"), new TimeSpan(0, 1, 20, 30, 0), 0, 0, new Guid("7af2115b-bad0-41e8-b017-de547de80c78"), new Guid("c9742f18-a8fb-4f69-8d61-103e3e2f7fd0"), new Guid("7af2115b-bad0-41e8-b017-de547de80c78"), new TimeSpan(0, 1, 20, 30, 0), new Guid("c9742f18-a8fb-4f69-8d61-103e3e2f7fd0") }
+                    { new Guid("2103257d-052b-4f73-a821-b3284d74c637"), 0, new Guid("28439070-31c4-4ec3-a607-1212cf0ec963"), "1v1 me", new Guid("f256f0a0-d837-4322-8f7d-123aab1808d1"), new Guid("aa6e32e1-9944-4e8d-be60-6369e5ae469f"), new TimeSpan(0, 4, 10, 55, 0) },
+                    { new Guid("46d55afe-0ce5-48e3-81ff-df3ef850ded9"), 2, new Guid("400442b7-459b-478d-a4b8-ffc84513fc5e"), "Follow my twitch stream?", new Guid("c01f71d6-3314-4e8e-a256-0ae4c6bcf48b"), new Guid("f256f0a0-d837-4322-8f7d-123aab1808d1"), new TimeSpan(0, 11, 51, 14, 0) },
+                    { new Guid("c463ade9-b99e-4ae8-83b3-c7274766ec53"), 3, new Guid("e86c7bd4-26be-4f4f-ab94-c3054c368865"), "You're hacking, i'm telling my dad he works at Jagex!!11!", new Guid("aa6e32e1-9944-4e8d-be60-6369e5ae469f"), new Guid("c01f71d6-3314-4e8e-a256-0ae4c6bcf48b"), new TimeSpan(0, 1, 28, 19, 0) },
+                    { new Guid("f2cc3b42-c6c2-4318-8227-93b2e87b0480"), 1, new Guid("28439070-31c4-4ec3-a607-1212cf0ec963"), "You missed, LOL", new Guid("aa6e32e1-9944-4e8d-be60-6369e5ae469f"), new Guid("f256f0a0-d837-4322-8f7d-123aab1808d1"), new TimeSpan(0, 5, 1, 20, 0) }
                 });
 
             migrationBuilder.InsertData(
@@ -138,11 +144,16 @@ namespace HiddenBattleship.PL.Migrations
                 columns: new[] { "Id", "GameId", "GameMoveId", "PlayerId", "TargetCoordinates", "TimeStamp" },
                 values: new object[,]
                 {
-                    { new Guid("26d0b09f-73cf-4d97-9f28-3e6dce1c00ab"), new Guid("bd1ae00c-0a6c-4eb0-985f-5a01ce38fd5e"), 0, new Guid("c9742f18-a8fb-4f69-8d61-103e3e2f7fd0"), "A5", new TimeSpan(0, 1, 20, 30, 0) },
-                    { new Guid("2f0505fb-f138-458f-84c0-7e22e452402d"), new Guid("bd1ae00c-0a6c-4eb0-985f-5a01ce38fd5e"), 1, new Guid("c9742f18-a8fb-4f69-8d61-103e3e2f7fd0"), "A5", new TimeSpan(0, 1, 20, 30, 0) },
-                    { new Guid("49aa022b-dc16-43fc-be8c-cbf65d906563"), new Guid("bd1ae00c-0a6c-4eb0-985f-5a01ce38fd5e"), 3, new Guid("c9742f18-a8fb-4f69-8d61-103e3e2f7fd0"), "A5", new TimeSpan(0, 1, 20, 30, 0) },
-                    { new Guid("cd8c4a0b-009d-43b3-a063-257d593c6c39"), new Guid("bd1ae00c-0a6c-4eb0-985f-5a01ce38fd5e"), 2, new Guid("c9742f18-a8fb-4f69-8d61-103e3e2f7fd0"), "A5", new TimeSpan(0, 1, 20, 30, 0) }
+                    { new Guid("1a82c5f4-adfc-48cf-85b0-6272cd5ae1e2"), new Guid("28439070-31c4-4ec3-a607-1212cf0ec963"), 2, new Guid("e9d93fa9-8a2d-45b1-b211-b3f7fb4ffbf8"), "A5", new TimeSpan(0, 1, 20, 30, 0) },
+                    { new Guid("3f11d9b6-edc7-4fa6-a394-d61cd6372fe1"), new Guid("28439070-31c4-4ec3-a607-1212cf0ec963"), 0, new Guid("e9d93fa9-8a2d-45b1-b211-b3f7fb4ffbf8"), "A5", new TimeSpan(0, 1, 20, 30, 0) },
+                    { new Guid("95965e01-e40e-4a6a-b537-767e4c99f5db"), new Guid("28439070-31c4-4ec3-a607-1212cf0ec963"), 1, new Guid("e9d93fa9-8a2d-45b1-b211-b3f7fb4ffbf8"), "A5", new TimeSpan(0, 1, 20, 30, 0) },
+                    { new Guid("b3423e72-1575-4874-8374-0f26b1ed1ab1"), new Guid("28439070-31c4-4ec3-a607-1212cf0ec963"), 3, new Guid("e9d93fa9-8a2d-45b1-b211-b3f7fb4ffbf8"), "A5", new TimeSpan(0, 1, 20, 30, 0) }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_tblChatHistory_GameId",
+                table: "tblChatHistory",
+                column: "GameId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tblChatHistory_Receiver",
@@ -155,6 +166,11 @@ namespace HiddenBattleship.PL.Migrations
                 column: "LoserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_tblGame_tblChatHistoryId",
+                table: "tblGame",
+                column: "tblChatHistoryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_tblGameMove_GameId",
                 table: "tblGameMove",
                 column: "GameId");
@@ -163,19 +179,31 @@ namespace HiddenBattleship.PL.Migrations
                 name: "IX_tblGameMove_PlayerId",
                 table: "tblGameMove",
                 column: "PlayerId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_tblChatHistory_tblGame_GameId",
+                table: "tblChatHistory",
+                column: "GameId",
+                principalTable: "tblGame",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "tblChatHistory");
+            migrationBuilder.DropForeignKey(
+                name: "FK_tblChatHistory_tblGame_GameId",
+                table: "tblChatHistory");
 
             migrationBuilder.DropTable(
                 name: "tblGameMove");
 
             migrationBuilder.DropTable(
                 name: "tblGame");
+
+            migrationBuilder.DropTable(
+                name: "tblChatHistory");
 
             migrationBuilder.DropTable(
                 name: "tblPlayer");

@@ -63,15 +63,20 @@ public partial class HiddenBattleshipEntities : DbContext
             .IsRequired()
             .ValueGeneratedNever();
 
-            // 1 to 1 relationship with The Player table
+            // 1 to many relationship with The Player table
             entity.HasOne(p => p.Player)
-            .WithMany(g => g.tblChatHistory)
+            .WithMany(g => g.tblChatHistories)
             .HasForeignKey(p => p.Sender);
 
-            // 1 to 1 relationship with The Player table
+            // 1 to many relationship with The Player table
             entity.HasOne(p => p.Player)
-            .WithMany(g => g.tblChatHistory)
+            .WithMany(g => g.tblChatHistories)
             .HasForeignKey(p => p.Receiver);
+
+            // 1 to many relationship with The Game table
+            entity.HasOne(p => p.Game)
+            .WithMany(g => g.tblChatHistories)
+            .HasForeignKey(p => p.GameId);
 
             entity.Property(e => e.Message)
                 .IsRequired()
@@ -87,10 +92,10 @@ public partial class HiddenBattleshipEntities : DbContext
 
         List<tblChatHistory> ChatHistories = new List<tblChatHistory>
         {
-            new tblChatHistory {Id = chathistoryId[0], Sender = playerId[0], Receiver = playerId[1], Message ="1v1 me", Timestamp = new TimeSpan(4,10,55), ChatHistoryId = 0 },
-            new tblChatHistory {Id = chathistoryId[1], Sender = playerId[3], Receiver = playerId[1], Message ="You missed, LOL", Timestamp = new TimeSpan(5,1,20), ChatHistoryId = 1 },
-            new tblChatHistory {Id = chathistoryId[2], Sender = playerId[1], Receiver = playerId[2], Message ="Follow my twitch stream?", Timestamp = new TimeSpan(11,51,14), ChatHistoryId = 2 },
-            new tblChatHistory {Id = chathistoryId[3], Sender = playerId[2], Receiver = playerId[3], Message ="You're hacking, i'm telling my dad he works at Jagex!!11!", Timestamp = new TimeSpan(1,28,19), ChatHistoryId = 3 }
+            new tblChatHistory {Id = chathistoryId[0], Sender = playerId[3], Receiver = playerId[1], GameId = gameId[0], Message ="1v1 me", Timestamp = new TimeSpan(4,10,55), ChatHistoryId = 0 },
+            new tblChatHistory {Id = chathistoryId[1], Sender = playerId[1], Receiver = playerId[3], GameId = gameId[0], Message ="You missed, LOL", Timestamp = new TimeSpan(5,1,20), ChatHistoryId = 1 },
+            new tblChatHistory {Id = chathistoryId[2], Sender = playerId[1], Receiver = playerId[2], GameId = gameId[1], Message ="Follow my twitch stream?", Timestamp = new TimeSpan(11,51,14), ChatHistoryId = 2 },
+            new tblChatHistory {Id = chathistoryId[3], Sender = playerId[2], Receiver = playerId[3], GameId = gameId[2], Message ="You're hacking, i'm telling my dad he works at Jagex!!11!", Timestamp = new TimeSpan(1,28,19), ChatHistoryId = 3 }
         };
         modelBuilder.Entity<tblChatHistory>().HasData(ChatHistories);
     }

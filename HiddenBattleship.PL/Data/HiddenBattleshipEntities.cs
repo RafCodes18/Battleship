@@ -32,6 +32,7 @@ public partial class HiddenBattleshipEntities : DbContext
     public virtual DbSet<tblPlayer> tblPlayers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        // different connection strings
         //=> optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=HiddenBattleship.DB;Integrated Security=True");
      => optionsBuilder.UseSqlServer("Server=DESKTOP-FO71P55\\MSSQLLOCALDB;Database=HiddenBattleship.DB; Integrated Security=True; TrustServerCertificate=True");
 
@@ -115,11 +116,11 @@ public partial class HiddenBattleshipEntities : DbContext
             .OnDelete(DeleteBehavior.ClientSetNull)
             .HasForeignKey(p => p.GameId);
 
-            // 1 to 1 relationship with The Player table
+            // 1 to many relationship with The Player table
             entity.HasOne(p => p.Player)
-            .WithOne(g => g.GameMove)
+            .WithMany(g => g.tblGameMoves)
             .OnDelete(DeleteBehavior.ClientSetNull)
-            .HasForeignKey<tblGameMove>(p => p.PlayerId);
+            .HasForeignKey(p => p.PlayerId);
 
 
             entity.Property(e => e.TargetCoordinates)
@@ -158,29 +159,29 @@ public partial class HiddenBattleshipEntities : DbContext
             .IsRequired()
             .ValueGeneratedNever();
 
-            // 1 to 1 relationship with The Player table
+            // 1 to many relationship with The Player table
             entity.HasOne(p => p.Player)
-            .WithOne(g => g.Game)
+            .WithMany(g => g.tblGames)
             .OnDelete(DeleteBehavior.ClientSetNull)
-            .HasForeignKey<tblGame>(p => p.Player1);
+            .HasForeignKey(p => p.Player1);
 
-            // 1 to 1 relationship with The Player table
+            // 1 to many relationship with The Player table
             entity.HasOne(p => p.Player)
-            .WithOne(g => g.Game)
+            .WithMany(g => g.tblGames)
             .OnDelete(DeleteBehavior.ClientSetNull)
-            .HasForeignKey<tblGame>(p => p.Player2);
+            .HasForeignKey(p => p.Player2);
 
-            // 1 to 1 relationship with The Player table
+            // 1 to many relationship with The Player table
             entity.HasOne(p => p.Player)
-            .WithOne(g => g.Game)
+            .WithMany(g => g.tblGames)
             .OnDelete(DeleteBehavior.ClientSetNull)
-            .HasForeignKey<tblGame>(p => p.WinnerId);
+            .HasForeignKey(p => p.WinnerId);
 
-            // 1 to 1 relationship with The Player table
+            // 1 to many relationship with The Player table
             entity.HasOne(p => p.Player)
-            .WithOne(g => g.Game)
+            .WithMany(g => g.tblGames)
             .OnDelete(DeleteBehavior.ClientSetNull)
-            .HasForeignKey<tblGame>(p => p.LoserId);
+            .HasForeignKey(p => p.LoserId);
 
             entity.Property(g => g.StartTime)
             .IsRequired();

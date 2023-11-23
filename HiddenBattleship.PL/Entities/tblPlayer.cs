@@ -10,11 +10,11 @@ public partial class tblPlayer : IEntity
 
     public string Password { get; set; } = null!;
 
-    public virtual tblGame Game { get; set; }
 
-    public virtual tblGameMove GameMove { get; set; }
-
+    public virtual ICollection<tblGame> tblGames { get; } = new List<tblGame>();
     public virtual ICollection<tblChatHistory> tblChatHistory { get; } = new List<tblChatHistory>();
+
+    public virtual ICollection<tblGameMove> tblGameMoves { get; } = new List<tblGameMove>();
 
 
 

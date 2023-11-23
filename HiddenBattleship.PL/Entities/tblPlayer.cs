@@ -14,7 +14,7 @@ public partial class tblPlayer : IEntity
 
     public virtual tblGameMove GameMove { get; set; }
 
-    public virtual tblChatHistory ChatHistory { get; set; }
+    public virtual ICollection<tblChatHistory> tblChatHistory { get; } = new List<tblChatHistory>();
 
 
 

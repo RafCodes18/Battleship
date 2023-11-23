@@ -21,7 +21,7 @@ public partial class tblGame : IEntity
 
     public virtual tblPlayer Player { get; set; }
 
-    public virtual tblGameMove GameMove { get; set; }
+    public virtual ICollection<tblGameMove> tblGameMoves { get; } = new List<tblGameMove>();
 
     public string SortField { get { return GameId.ToString(); } }
 }

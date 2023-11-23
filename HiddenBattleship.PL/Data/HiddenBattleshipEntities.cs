@@ -6,11 +6,13 @@ namespace HiddenBattleship.PL;
 
 public partial class HiddenBattleshipEntities : DbContext
 {
-
-    Guid[] chathistoryId = new Guid[1];
-    Guid[] gamemoveId = new Guid[2];
-    Guid[] gameId = new Guid[3];
     Guid[] playerId = new Guid[4];
+    Guid[] gameId = new Guid[4];
+    Guid[] gamemoveId = new Guid[4];
+    Guid[] chathistoryId = new Guid[4];
+    
+    
+    
 
     public HiddenBattleshipEntities()
     {
@@ -62,13 +64,13 @@ public partial class HiddenBattleshipEntities : DbContext
 
             // 1 to 1 relationship with The Player table
             entity.HasOne(p => p.Player)
-            .WithOne(g => g.ChatHistory)
-            .HasForeignKey<tblChatHistory>(p => p.Sender);
+            .WithMany(g => g.tblChatHistory)
+            .HasForeignKey(p => p.Sender);
 
             // 1 to 1 relationship with The Player table
             entity.HasOne(p => p.Player)
-            .WithOne(g => g.ChatHistory)
-            .HasForeignKey<tblChatHistory>(p => p.Receiver);
+            .WithMany(g => g.tblChatHistory)
+            .HasForeignKey(p => p.Receiver);
 
             entity.Property(e => e.Message)
                 .IsRequired()
@@ -101,18 +103,22 @@ public partial class HiddenBattleshipEntities : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__tblGameM__3214EC07B921B560");
 
+            entity.ToTable("tblGameMove");
+
             entity.Property(e => e.Id)
             .IsRequired()
             .ValueGeneratedNever();
 
-            // 1 to 1 relationship with The Player table
+            // 1 to many relationship with The Game table
             entity.HasOne(g => g.Game)
-            .WithOne(g => g.GameMove)
-            .HasForeignKey<tblGameMove>(p => p.GameId);
+            .WithMany(g => g.tblGameMoves)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasForeignKey(p => p.GameId);
 
             // 1 to 1 relationship with The Player table
             entity.HasOne(p => p.Player)
             .WithOne(g => g.GameMove)
+            .OnDelete(DeleteBehavior.ClientSetNull)
             .HasForeignKey<tblGameMove>(p => p.PlayerId);
 
 
@@ -155,21 +161,25 @@ public partial class HiddenBattleshipEntities : DbContext
             // 1 to 1 relationship with The Player table
             entity.HasOne(p => p.Player)
             .WithOne(g => g.Game)
+            .OnDelete(DeleteBehavior.ClientSetNull)
             .HasForeignKey<tblGame>(p => p.Player1);
 
             // 1 to 1 relationship with The Player table
             entity.HasOne(p => p.Player)
             .WithOne(g => g.Game)
+            .OnDelete(DeleteBehavior.ClientSetNull)
             .HasForeignKey<tblGame>(p => p.Player2);
 
             // 1 to 1 relationship with The Player table
             entity.HasOne(p => p.Player)
             .WithOne(g => g.Game)
+            .OnDelete(DeleteBehavior.ClientSetNull)
             .HasForeignKey<tblGame>(p => p.WinnerId);
 
             // 1 to 1 relationship with The Player table
             entity.HasOne(p => p.Player)
             .WithOne(g => g.Game)
+            .OnDelete(DeleteBehavior.ClientSetNull)
             .HasForeignKey<tblGame>(p => p.LoserId);
 
             entity.Property(g => g.StartTime)
@@ -187,10 +197,10 @@ public partial class HiddenBattleshipEntities : DbContext
 
         List<tblGame> Games = new List<tblGame>
         {
-           new tblGame {Id = gamemoveId[0], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 0},
-           new tblGame {Id = gamemoveId[1], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 0},
-           new tblGame {Id = gamemoveId[2], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 0},
-           new tblGame {Id = gamemoveId[3], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 0}
+           new tblGame {Id = gameId[0], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 0},
+           new tblGame {Id = gameId[1], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 0},
+           new tblGame {Id = gameId[2], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 0},
+           new tblGame {Id = gameId[3], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 0}
         };
         modelBuilder.Entity<tblGame>().HasData(Games);
     }
@@ -223,7 +233,7 @@ public partial class HiddenBattleshipEntities : DbContext
         {
             Id = playerId[0],
             Email = "123@gmail.com",
-            UserName = "Xx_Battl3Sh1PD3STR0Y3R_xX",
+            UserName = "Sh1PD3STR0Y3R",
             Password = GetHash("password")
         });
         modelBuilder.Entity<tblPlayer>().HasData(new tblPlayer

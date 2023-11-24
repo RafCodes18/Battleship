@@ -2,13 +2,13 @@
 {
     public class GameMoves
     {
-        Guid MoveId { get; set; }
-        Guid GameId { get; set; }
-        Guid PlayerId { get; set; }
-        string TargetCoordinates { get; set; }
-        bool IsHit { get; set; }
-        TimeOnly TimeStamp { get; set; }
+        public Guid MoveId { get; set; }
+        public Guid GameId { get; set; }
+        public Guid PlayerId { get; set; }
+        public string TargetCoordinates { get; set; }
+        public bool IsHit { get; set; }
+        public TimeOnly TimeStamp { get; set; }
 
-        string GameMoveId { get; set; }
+        public string GameMoveId { get; set; }
     }
 }

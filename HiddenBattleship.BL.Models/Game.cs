@@ -2,16 +2,16 @@
 {
     public class Game
     {
-        Guid Id { get; set; }
-        Guid Player1 { get; set; }
-        Guid Player2 { get; set; }
-        Guid WinnerId { get; set; }
-        Guid LoserId { get; set; }
-        TimeOnly StartTime { get; set; }
-        TimeOnly EndTime { get; set; }
+        public Guid Id { get; set; }
+        public Guid Player1 { get; set; }
+        public Guid Player2 { get; set; }
+        public Guid WinnerId { get; set; }
+        public Guid LoserId { get; set; }
+        public TimeOnly StartTime { get; set; }
+        public TimeOnly EndTime { get; set; }
         //TimeOnly date = TimeOnly.FromDateTime(DateTime.Now);
 
-        bool IsOver { get; set; }
+        public bool IsOver { get; set; }
 
     }
 }

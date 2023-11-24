@@ -2,9 +2,9 @@
 {
     public class Player
     {
-        Guid Id { get; set; }
-        string UserName { get; set; }
-        string Email { get; set; }
-        string Password { get; set; }
+        public Guid Id { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }

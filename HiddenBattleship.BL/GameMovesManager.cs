@@ -106,7 +106,8 @@ namespace HiddenBattleship.BL
                     PlayerId = gameMoves.PlayerId,
                     IsHit = gameMoves.IsHit,
                     TimeStamp = gameMoves.TimeStamp,
-                    GameMoveId = gameMoves.GameMoveId
+                    GameMoveId = gameMoves.GameMoveId,
+                    TargetCoordinates = gameMoves.TargetCoordinates,
                 }, rollback);
             }
             catch (Exception)

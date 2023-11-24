@@ -6,10 +6,10 @@ namespace HiddenBattleship.BL.Test
     public class utGameMoves : utBase
     {
         [TestMethod]
-        public void LoadTzest()
+        public void LoadTest()
         {
             List<GameMoves> gameMoves = new GameMovesManager(options).Load();
-            int expected = 3;
+            int expected = 4;
 
             Assert.AreEqual(expected, gameMoves.Count);
         }
@@ -27,8 +27,8 @@ namespace HiddenBattleship.BL.Test
             GameMoves GameMoves = new GameMoves
             {
                 MoveId = Guid.NewGuid(),
-                GameId = Guid.NewGuid(),
-                PlayerId = Guid.NewGuid(),
+                GameId = Guid.Parse("2c4084fc-7a70-4fc9-a411-f79aa6c5e4bf"),
+                PlayerId = Guid.Parse("8be96ee1-3dfd-4621-87aa-696515e526e4"),
                 TargetCoordinates = "Test",
                 IsHit = true,
                 TimeStamp = new TimeSpan()
@@ -43,6 +43,7 @@ namespace HiddenBattleship.BL.Test
         {
             GameMoves gameMoves = new GameMovesManager(options).Load().FirstOrDefault();
             gameMoves.IsHit = false;
+            gameMoves.TargetCoordinates = "Test";
             Assert.IsTrue(new GameMovesManager(options).Update(gameMoves, true) > 0);
         }
 

@@ -1,9 +1,4 @@
 ﻿using HiddenBattleship.BL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HiddenBattleship.BL.Test
 {
@@ -34,7 +29,7 @@ namespace HiddenBattleship.BL.Test
         [TestMethod]
         public void LoginSuccess()
         {
-            Player player = new Player { UserName = "Master", Password = "Test123", Email = "Key" };
+            Player player = new Player { UserName = "Sh1PD3STR0Y3R", Password = GetHash("password"), Email = "123@gmail.com" };
             bool result = new PlayerManager(options).Login(player);
             Assert.IsTrue(result);
         }
@@ -56,6 +51,15 @@ namespace HiddenBattleship.BL.Test
             {
 
                 Assert.Fail();
+            }
+        }
+
+        private static string GetHash(string Password)
+        {
+            using (var hasher = new System.Security.Cryptography.SHA1Managed())
+            {
+                var hashbytes = System.Text.Encoding.UTF8.GetBytes(Password);
+                return Convert.ToBase64String(hasher.ComputeHash(hashbytes));
             }
         }
 

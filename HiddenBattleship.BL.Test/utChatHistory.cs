@@ -9,7 +9,7 @@ namespace HiddenBattleship.BL.Test
         public void LoadTest()
         {
             List<ChatHistory> chatHistories = new ChatHistoryManager(options).Load();
-            int expected = 3;
+            int expected = 4;
 
             Assert.AreEqual(expected, chatHistories.Count);
         }
@@ -27,9 +27,11 @@ namespace HiddenBattleship.BL.Test
             ChatHistory chatHistory = new ChatHistory
             {
                 Sender = System.Guid.NewGuid(),
-                Receiver = System.Guid.NewGuid(),
-                GameId = Guid.NewGuid(),
-                Timestamp = new TimeSpan()
+                Receiver = Guid.Parse("0e7af0f1-d3b4-4d3f-aab7-5399cba2868a"),
+                GameId = Guid.Parse("9e227195-3ea1-4d23-a5fc-df835b7c46a8"),
+                Timestamp = new TimeSpan(),
+                Message = "yooo",
+                ChatHistoryId = 1,
             };
 
             int result = new ChatHistoryManager(options).Insert(chatHistory, true);

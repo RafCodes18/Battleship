@@ -2,13 +2,6 @@
 using HiddenBattleship.PL;
 using HiddenBattleship.PL.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using NuGet.Protocol.Plugins;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HiddenBattleship.BL
 {
@@ -26,12 +19,12 @@ namespace HiddenBattleship.BL
                 try
                 {
                     tblChatHistory row = new tblChatHistory();
-                    row.Id = Guid.NewGuid();
                     row.Sender = chatHistory.Sender;
                     row.Receiver = chatHistory.Receiver;
                     row.GameId = chatHistory.GameId;
                     row.Message = chatHistory.Message;
                     row.Timestamp = chatHistory.Timestamp;
+                    row.ChatHistoryId = chatHistory.ChatHistoryId;
                     return base.Insert(row, rollback);
                 }
                 catch (Exception)
@@ -133,7 +126,7 @@ namespace HiddenBattleship.BL
             }
         }
 
-        public int Delete(Guid id, bool rollback = false) 
+        public int Delete(Guid id, bool rollback = false)
         {
             try
             {

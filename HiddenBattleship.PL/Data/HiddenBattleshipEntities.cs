@@ -137,16 +137,19 @@ public partial class HiddenBattleshipEntities : DbContext
             entity.Property(g => g.TimeStamp)
             .IsRequired();
 
+            entity.Property(g => g.IsHit)
+            .IsRequired();
+
             entity.Property(g => g.GameMoveId)
             .IsRequired();
         });
 
         List<tblGameMove> GameMoves = new List<tblGameMove>
         {
-            new tblGameMove {Id = gamemoveId[0], GameId = gameId[0], PlayerId = playerId[0], TargetCoordinates = "A5", TimeStamp = new TimeSpan(1,20,30), GameMoveId = 0 },
-            new tblGameMove {Id = gamemoveId[1], GameId = gameId[0], PlayerId = playerId[0], TargetCoordinates = "A5", TimeStamp = new TimeSpan(1,20,30), GameMoveId = 1 },
-            new tblGameMove {Id = gamemoveId[2], GameId = gameId[0], PlayerId = playerId[0], TargetCoordinates = "A5", TimeStamp = new TimeSpan(1,20,30), GameMoveId = 2 },
-            new tblGameMove {Id = gamemoveId[3], GameId = gameId[0], PlayerId = playerId[0], TargetCoordinates = "A5", TimeStamp = new TimeSpan(1,20,30), GameMoveId = 3 }
+            new tblGameMove {Id = gamemoveId[0], GameId = gameId[0], PlayerId = playerId[0], TargetCoordinates = "A5", TimeStamp = new TimeSpan(1,20,30), GameMoveId = 0, IsHit = true },
+            new tblGameMove {Id = gamemoveId[1], GameId = gameId[0], PlayerId = playerId[0], TargetCoordinates = "A5", TimeStamp = new TimeSpan(1,20,30), GameMoveId = 1, IsHit = true },
+            new tblGameMove {Id = gamemoveId[2], GameId = gameId[0], PlayerId = playerId[0], TargetCoordinates = "A5", TimeStamp = new TimeSpan(1,20,30), GameMoveId = 2, IsHit = true },
+            new tblGameMove {Id = gamemoveId[3], GameId = gameId[0], PlayerId = playerId[0], TargetCoordinates = "A5", TimeStamp = new TimeSpan(1,20,30), GameMoveId = 3, IsHit = true }
         };
         modelBuilder.Entity<tblGameMove>().HasData(GameMoves);
     }

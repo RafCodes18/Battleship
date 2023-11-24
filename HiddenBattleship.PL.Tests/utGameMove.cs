@@ -36,7 +36,7 @@ namespace HiddenBattleship.PL.Tests
         public void DeleteTest()
         {
             int result;
-            tblGameMove row = db.tblGameMoves.FirstOrDefault(g => g.GameMoveId == 1);
+            tblGameMove row = db.tblGameMoves.FirstOrDefault();
 
             db.tblGameMoves.Remove(row);
             result = db.SaveChanges();

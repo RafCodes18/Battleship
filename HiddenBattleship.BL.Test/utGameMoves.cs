@@ -6,7 +6,7 @@ namespace HiddenBattleship.BL.Test
     public class utGameMoves : utBase
     {
         [TestMethod]
-        public void LoadTest()
+        public void LoadTzest()
         {
             List<GameMoves> gameMoves = new GameMovesManager(options).Load();
             int expected = 3;

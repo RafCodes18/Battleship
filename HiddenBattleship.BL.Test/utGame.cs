@@ -9,7 +9,7 @@ namespace HiddenBattleship.BL.Test
         public void LoadTest()
         {
             List<Game> games = new GameManager(options).Load();
-            int expected = 3;
+            int expected = 4;
             Assert.AreEqual(expected, games.Count);
         }
 

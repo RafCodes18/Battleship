@@ -1,6 +1,5 @@
 ﻿using HiddenBattleship.PL.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.SqlServer.Server;
 
 namespace HiddenBattleship.PL;
 
@@ -10,9 +9,9 @@ public partial class HiddenBattleshipEntities : DbContext
     Guid[] gameId = new Guid[4];
     Guid[] gamemoveId = new Guid[4];
     Guid[] chathistoryId = new Guid[4];
-    
-    
-    
+
+
+
 
     public HiddenBattleshipEntities()
     {
@@ -33,8 +32,12 @@ public partial class HiddenBattleshipEntities : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         // different connection strings
-        //=> optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=HiddenBattleship.DB;Integrated Security=True");
-     => optionsBuilder.UseSqlServer("Server=DESKTOP-FO71P55\\MSSQLLOCALDB;Database=HiddenBattleship.DB; Integrated Security=True; TrustServerCertificate=True");
+
+        => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=HiddenBattleship.DB;Integrated Security=True");
+    //=> optionsBuilder.UseSqlServer("Server=DESKTOP-FO71P55\\MSSQLLOCALDB;Database=HiddenBattleship.DB; Integrated Security=True; TrustServerCertificate=True");
+
+    //remote DB
+    //=> optionsBuilder.UseSqlServer("Server=tcp:server-21287-700175134.database.windows.net,1433;Initial Catalog=bigprojectdb;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication='Active Directory Default'");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -45,7 +48,7 @@ public partial class HiddenBattleshipEntities : DbContext
         CreateGames(modelBuilder);
         CreateGameMoves(modelBuilder);
         CreateChatHistories(modelBuilder);
-         
+
     }
     private void CreateChatHistories(ModelBuilder modelBuilder)
     {

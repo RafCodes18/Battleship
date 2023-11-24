@@ -3,14 +3,6 @@ using HiddenBattleship.PL;
 using HiddenBattleship.PL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using NuGet.Protocol.Core.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Permissions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HiddenBattleship.BL
 {
@@ -34,7 +26,7 @@ namespace HiddenBattleship.BL
 
         private static string GetHash(string password)
         {
-            using(var hasher = new System.Security.Cryptography.SHA1Managed())
+            using (var hasher = new System.Security.Cryptography.SHA1Managed())
             {
                 var hashbytes = System.Text.Encoding.UTF8.GetBytes(password);
                 return Convert.ToBase64String(hasher.ComputeHash(hashbytes));
@@ -47,7 +39,7 @@ namespace HiddenBattleship.BL
             try
             {
                 int results = 0;
-                using (HiddenBattleshipEntities hb  = new HiddenBattleshipEntities(options)) 
+                using (HiddenBattleshipEntities hb = new HiddenBattleshipEntities(options))
                 {
                     bool inuse = hb.tblPlayers.Any(p => p.UserName.Trim().ToUpper() == player.UserName.Trim().ToUpper());
 
@@ -67,7 +59,7 @@ namespace HiddenBattleship.BL
                         newPlayer.Email = player.Email.Trim();
                         newPlayer.Password = GetHash(player.Password.Trim());
 
-                        player.Id = newPlayer.Id; 
+                        player.Id = newPlayer.Id;
 
                         hb.tblPlayers.Add(newPlayer);
 
@@ -89,15 +81,15 @@ namespace HiddenBattleship.BL
         {
             try
             {
-                if(!string.IsNullOrEmpty(player.UserName))
+                if (!string.IsNullOrEmpty(player.UserName))
                 {
-                    if(!string.IsNullOrEmpty(player.Password))
+                    if (!string.IsNullOrEmpty(player.Password))
                     {
                         using (HiddenBattleshipEntities hb = new HiddenBattleshipEntities(options))
                         {
                             tblPlayer userrow = hb.tblPlayers.FirstOrDefault(p => p.UserName == player.UserName);
 
-                            if(userrow != null)
+                            if (userrow != null)
                             {
                                 // check password
                                 if (userrow.Password == GetHash(player.Password))
@@ -202,7 +194,7 @@ namespace HiddenBattleship.BL
                 using (HiddenBattleshipEntities hb = new HiddenBattleshipEntities(options))
                 {
                     // Check if username already exists, do not allow..
-                    tblPlayer existingUser = hb.tblPlayers.Where(p => p.UserName.Trim().ToUpper() == player.UserName().ToUpper()).FirstOrDefault();
+                    tblPlayer existingUser = hb.tblPlayers.Where(p => p.UserName.Trim().ToUpper() == player.UserName.ToUpper()).FirstOrDefault();
 
                     if (existingUser != null && existingUser.Id != player.Id && rollback == false)
                     {
@@ -215,7 +207,7 @@ namespace HiddenBattleship.BL
 
                         tblPlayer upDateRow = hb.tblPlayers.FirstOrDefault(r => r.Id == player.Id);
 
-                        if(upDateRow != null)
+                        if (upDateRow != null)
                         {
                             upDateRow.UserName = player.UserName.Trim();
                             upDateRow.Password = GetHash(player.Password.Trim());
@@ -256,18 +248,18 @@ namespace HiddenBattleship.BL
                     // check if user is associated with an existing game
                     bool inuse = hb.tblGames.Any(g => g.Player1 == id);
 
-                    if(inuse)
+                    if (inuse)
                     {
                         throw new Exception("This user has not finished their previous game therefore cannot be delected");
                     }
                     else
                     {
                         IDbContextTransaction transaction = null;
-                        if(rollback) transaction = hb.Database.BeginTransaction();
+                        if (rollback) transaction = hb.Database.BeginTransaction();
 
                         tblPlayer deleteRow = hb.tblPlayers.FirstOrDefault(r => r.Id == id);
 
-                        if(deleteRow != null)
+                        if (deleteRow != null)
                         {
                             hb.tblPlayers.Remove(deleteRow);
 

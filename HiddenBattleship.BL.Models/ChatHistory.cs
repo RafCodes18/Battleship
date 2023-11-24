@@ -11,7 +11,7 @@ namespace HiddenBattleship.BL.Models
         [ForeignKey("Game")]
         public Guid GameId { get; set; }
         public string Message { get; set; }
-        public DateTime Timestamp { get; set; }
+        public TimeSpan Timestamp { get; set; }
         public int ChatHistoryId { get; set; }
     }
 }

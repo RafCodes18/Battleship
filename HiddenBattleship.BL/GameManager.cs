@@ -1,14 +1,8 @@
 ﻿using HiddenBattleship.BL.Models;
 using HiddenBattleship.PL;
 using HiddenBattleship.PL.Entities;
-using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HiddenBattleship.BL
 {
@@ -25,10 +19,10 @@ namespace HiddenBattleship.BL
             {
                 int results = 0;
 
-                using (HiddenBattleshipEntities hb = new HiddenBattleshipEntities(options)) 
+                using (HiddenBattleshipEntities hb = new HiddenBattleshipEntities(options))
                 {
                     IDbContextTransaction transaction = null;
-                    if (rollback) transaction = hb.BeginTransaction();
+                    if (rollback) transaction = hb.Database.BeginTransaction();
 
                     tblGame newRow = new tblGame();
 
@@ -37,16 +31,10 @@ namespace HiddenBattleship.BL
                     newRow.Player2 = game.Player2;
                     newRow.WinnerId = game.WinnerId;
                     newRow.LoserId = game.LoserId;
-                    newRow.StartTime = game.StarTime;
+                    newRow.StartTime = game.StartTime;
                     newRow.EndTime = game.EndTime;
 
-                    // save game moves
-                    foreach (GameMoves moves in game.GameMoves)
-                    {
-                        moves.Id = Guid.NewGuid();
-                        moves.GameId = newRow.Id;
-                        results += new GameMovesManager(options).Insert(moves, rollback);
-                    }
+
 
                     // backfill the id on the input parameter order
                     game.Id = newRow.Id;
@@ -68,11 +56,11 @@ namespace HiddenBattleship.BL
             }
         }
 
-        public List<tblGame> Load(Guid? playerId = null)
+        public List<Game> Load(Guid? playerId = null)
         {
             try
             {
-                List<tblGame> games = new List<tblGame>();
+                List<Game> games = new List<Game>();
 
                 using (HiddenBattleshipEntities hb = new HiddenBattleshipEntities(options))
                 {
@@ -100,7 +88,7 @@ namespace HiddenBattleship.BL
                         StartTime = g.StartTime,
                         EndTime = g.EndTime,
                         IsOver = g.IsOver
-                    })); 
+                    }));
                 }
 
                 //foreach (Game game in games)
@@ -125,19 +113,19 @@ namespace HiddenBattleship.BL
                 using (HiddenBattleshipEntities hb = new HiddenBattleshipEntities(options))
                 {
                     var row = (from g in hb.tblGames
-                                   join p in hb.tblPlayers on g.Player1 equals p.Id
-                                   where g.Id == id
-                                   select new
-                                   {
-                                       Id = g.Id,
-                                       Player1 = g.Player1,
-                                       Player2 = g.Player2,
-                                       WinnerId = g.WinnerId,
-                                       LoserId = g.LoserId,
-                                       StartTime = g.StartTime,
-                                       EndTime = g.EndTime,
-                                       IsOver = g.IsOver
-                                   }).FirstOrDefault();
+                               join p in hb.tblPlayers on g.Player1 equals p.Id
+                               where g.Id == id
+                               select new
+                               {
+                                   Id = g.Id,
+                                   Player1 = g.Player1,
+                                   Player2 = g.Player2,
+                                   WinnerId = g.WinnerId,
+                                   LoserId = g.LoserId,
+                                   StartTime = g.StartTime,
+                                   EndTime = g.EndTime,
+                                   IsOver = g.IsOver
+                               }).FirstOrDefault();
 
                     if (row != null)
                     {
@@ -152,6 +140,7 @@ namespace HiddenBattleship.BL
                             EndTime = row.EndTime,
                             IsOver = row.IsOver
                         };
+                        return game;
                     }
                     else
                     {
@@ -172,7 +161,7 @@ namespace HiddenBattleship.BL
             {
                 int results = 0;
 
-                using (HiddenBattleshipEntities hb = new HiddenBattleshipEntities(options)) 
+                using (HiddenBattleshipEntities hb = new HiddenBattleshipEntities(options))
                 {
                     IDbContextTransaction transaction = null;
                     if (rollback) transaction = hb.Database.BeginTransaction();
@@ -252,5 +241,5 @@ namespace HiddenBattleship.BL
             }
         }
     }
-    
+
 }

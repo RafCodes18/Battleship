@@ -1,15 +1,7 @@
-﻿using HiddenBattleship.PL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HiddenBattleship.BL.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.SqlServer.Server;
-using NuGet.Packaging.Signing;
-using System.ComponentModel;
+﻿using HiddenBattleship.BL.Models;
+using HiddenBattleship.PL;
 using HiddenBattleship.PL.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace HiddenBattleship.BL
 {
@@ -35,7 +27,7 @@ namespace HiddenBattleship.BL
                     TimeStamp = gameMoves.TimeStamp,
                     GameMoveId = gameMoves.GameMoveId
                 };
-                gameMoves.Id = row.Id;
+                gameMoves.MoveId = row.Id;
                 return base.Insert(row, rollback);
             }
             catch (Exception)
@@ -45,7 +37,7 @@ namespace HiddenBattleship.BL
             }
         }
 
-        public List<tblGameMove> Load() 
+        public List<GameMoves> Load()
         {
             try
             {
@@ -54,7 +46,7 @@ namespace HiddenBattleship.BL
                     .ForEach(m => rows.Add(
                         new GameMoves
                         {
-                            Id = m.Id,
+                            MoveId = m.Id,
                             GameId = m.GameId,
                             PlayerId = m.PlayerId,
                             IsHit = m.IsHit,
@@ -81,7 +73,7 @@ namespace HiddenBattleship.BL
                     {
                         GameMoves gameMoves = new GameMoves
                         {
-                            Id = row.Id,
+                            MoveId = row.Id,
                             GameId = row.GameId,
                             PlayerId = row.PlayerId,
                             IsHit = row.IsHit,
@@ -109,7 +101,7 @@ namespace HiddenBattleship.BL
             {
                 return base.Update(new tblGameMove
                 {
-                    Id = gameMoves.Id,
+                    Id = gameMoves.MoveId,
                     GameId = gameMoves.GameId,
                     PlayerId = gameMoves.PlayerId,
                     IsHit = gameMoves.IsHit,
@@ -124,7 +116,7 @@ namespace HiddenBattleship.BL
             }
         }
 
-        public int Delete(Guid id, bool rollback = false) 
+        public int Delete(Guid id, bool rollback = false)
         {
             try
             {

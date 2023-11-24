@@ -16,7 +16,7 @@ public partial class tblGame : IEntity
 
     public TimeSpan EndTime { get; set; }
 
-    public int IsOver { get; set; }
+    public bool IsOver { get; set; }
     public int GameId { get; set; }
 
     public virtual tblPlayer Player { get; set; }

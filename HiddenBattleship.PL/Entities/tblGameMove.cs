@@ -18,4 +18,6 @@ public partial class tblGameMove : IEntity
     public virtual tblPlayer Player { get; set; }
 
     public string SortField { get { return GameMoveId.ToString(); } }
+
+    public bool IsHit { get; set; }
 }

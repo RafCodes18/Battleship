@@ -33,7 +33,7 @@ namespace HiddenBattleship.BL.Test
                 Player1 = new PlayerManager(options).Load().FirstOrDefault().Id,
                 Player2 = Guid.NewGuid(),
                 WinnerId = Guid.NewGuid(),
-                LoserId = Guid.NewGuid(),
+                LoserId = Guid.Parse("0d47950d-e192-47eb-bd01-0015a6d6e1ee"),
                 StartTime = new TimeSpan(),
                 EndTime = new TimeSpan(),
                 IsOver = true

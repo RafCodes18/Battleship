@@ -17,8 +17,7 @@ public partial class HiddenBattleshipEntities : DbContext
     {
     }
 
-    public HiddenBattleshipEntities(DbContextOptions<HiddenBattleshipEntities> options)
-        : base(options)
+    public HiddenBattleshipEntities(DbContextOptions<HiddenBattleshipEntities> options) : base(options)
     {
     }
 

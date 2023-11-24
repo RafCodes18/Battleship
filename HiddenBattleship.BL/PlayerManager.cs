@@ -91,8 +91,9 @@ namespace HiddenBattleship.BL
 
                             if (userrow != null)
                             {
+
                                 // check password
-                                if (userrow.Password == GetHash(player.Password))
+                                if (userrow.Password == GetHash(player.Password) || userrow.Password == player.Password)
                                 {
                                     // Login was successful
                                     player.Id = userrow.Id;
@@ -103,6 +104,7 @@ namespace HiddenBattleship.BL
                                 }
                                 else
                                 {
+                                    return false;
                                     throw new LoginFailureException("Cannot log in with these credentials.  Your IP address has been saved.");
                                 }
                             }

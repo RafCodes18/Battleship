@@ -1,9 +1,4 @@
 ﻿using HiddenBattleship.BL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HiddenBattleship.BL.Test
 {
@@ -15,7 +10,7 @@ namespace HiddenBattleship.BL.Test
         {
             List<ChatHistory> chatHistories = new ChatHistoryManager(options).Load();
             int expected = 3;
-            
+
             Assert.AreEqual(expected, chatHistories.Count);
         }
 
@@ -33,8 +28,8 @@ namespace HiddenBattleship.BL.Test
             {
                 Sender = System.Guid.NewGuid(),
                 Receiver = System.Guid.NewGuid(),
-                GameId = new GameManager(options).FirsorDefault().Id,
-                Timestamp = DateTime.Now
+                GameId = Guid.NewGuid(),
+                Timestamp = new TimeSpan()
             };
 
             int result = new ChatHistoryManager(options).Insert(chatHistory, true);
@@ -54,7 +49,7 @@ namespace HiddenBattleship.BL.Test
         public void DeleteTest()
         {
             ChatHistory chatHistory = new ChatHistoryManager(options).Load().FirstOrDefault();
-            
+
             Assert.IsTrue(new ChatHistoryManager(options).Delete(chatHistory.Id, true) > 0);
         }
     }

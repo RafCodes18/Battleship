@@ -15,7 +15,7 @@ namespace HiddenBattleship.PL.Tests
             tbGame.Player1 = db.tblPlayers.FirstOrDefault().Id;
             tbGame.Player2 = db.tblPlayers.FirstOrDefault().Id;
             tbGame.WinnerId = db.tblPlayers.FirstOrDefault().Id;
-            tbGame.IsOver = 0;
+            tbGame.IsOver = false;
             tbGame.LoserId = db.tblPlayers.FirstOrDefault().Id;
             tbGame.GameId = 900;
 

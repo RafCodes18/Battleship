@@ -206,10 +206,10 @@ public partial class HiddenBattleshipEntities : DbContext
 
         List<tblGame> Games = new List<tblGame>
         {
-           new tblGame {Id = gameId[0], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 0},
-           new tblGame {Id = gameId[1], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 1},
-           new tblGame {Id = gameId[2], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 2},
-           new tblGame {Id = gameId[3], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = 0, GameId = 3}
+           new tblGame {Id = gameId[0], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = true, GameId = 0},
+           new tblGame {Id = gameId[1], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = false, GameId = 1},
+           new tblGame {Id = gameId[2], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = false, GameId = 2},
+           new tblGame {Id = gameId[3], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = false, GameId = 3}
         };
         modelBuilder.Entity<tblGame>().HasData(Games);
     }

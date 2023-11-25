@@ -11,7 +11,7 @@
     }
 
     body{
-        background-color: #bed3f3;
+        background-color: #e5e5e5;
     }
 
     .game-board {
@@ -119,7 +119,14 @@
     button:hover {
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adjust the values for the hover state */
     }
-
+    .titles{
+        display: flex;
+        justify-content:space-around;
+    }
+    .your-board{
+        margin-right: 230px;
+        margin-left: -100px;
+    }
 </style>
 
 
@@ -129,7 +136,14 @@
     <p>Info: <span id="info"></span></p>
 </div>
 
-<div id="games-container"></div>
+<div class="titles">
+        <div class="your-board">Your Board</div>
+        <div class="opp-board">Opponent</div>
+</div>
+
+<div id="games-container">
+    
+</div>
 
 <div class="ships-container">
     <div id="0" class="ship1" draggable="true"></div>

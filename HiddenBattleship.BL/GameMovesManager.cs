@@ -130,5 +130,22 @@ namespace HiddenBattleship.BL
             }
         }
 
+        public string GetRandomComputerMove(List<string> takenCoordinates)
+        {
+            Random random = new Random();
+            int row = random.Next(1, 11);
+            int col = random.Next(1, 11);
+
+            string newCoordinate = $"{(char)('A' + row - 1)}{col}";
+            while (takenCoordinates.Contains(newCoordinate))
+            {
+                row = random.Next(1, 11);
+                col = random.Next(1, 11);
+                newCoordinate = $"{(char)('A' + row - 1)}{col}";
+            }
+
+            return newCoordinate;
+        }
+
     }
 }

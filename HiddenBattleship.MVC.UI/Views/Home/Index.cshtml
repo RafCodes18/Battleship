@@ -173,13 +173,14 @@
     <div class="buttons">
         <button id="btnFlip">Flip Pieces</button>
     </div>
-    <button id="btnStart" class="strtBtn">Start Game</button>
+    <button id="btnStart" class="strtBtn" onclick="startGame()">Start Game</button>
 
 </div>
 
 <script>
     const shipContainer = document.querySelector('.ships-container')
     const btnFlip = document.querySelector('#btnFlip')
+    const btnStart = document.querySelector('#btnStart')
     const gamesContainer = document.querySelector('#games-container')
 
     btnFlip.addEventListener('click', flip)
@@ -247,7 +248,6 @@
             } else {
                 shipBlocks.push(allBoardBlocks[Number(validStart) + i * width])
             }
-            console.log(shipBlocks)
         }
 
         let valid;
@@ -273,8 +273,6 @@
         let isHorizontal = user === 'player' ? angle === 0 : randomBoolean
 
         let randomStartIndex = Math.floor(Math.random() * width * width)
-        console.log(randomStartIndex)
-
         let startIndex = startId ? startId : randomStartIndex
 
         const { shipBlocks, valid, notTaken } = getValidity(allBoardBlocks, isHorizontal, startIndex, ship);
@@ -342,4 +340,14 @@
         }
     }
 
+    function startGame(){
+            // Add logic to start the game here
+
+            // Hide the "Flip Pieces" button
+            btnFlip.style.display = 'none';
+            console.log("start game clicked");
+            
+        btnStart.innerText = "End Game"; 
+        btnStart.style = "background-color: red;"
+    }
 </script>

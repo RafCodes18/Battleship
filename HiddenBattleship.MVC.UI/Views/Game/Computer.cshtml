@@ -192,6 +192,11 @@
     const btnFlip = document.querySelector('#btnFlip')
     const btnStart = document.querySelector('#btnStart')
     const gamesContainer = document.querySelector('#games-container')
+    const infoDisplay = document.querySelector('#info');
+    const turnDisplay = document.querySelector('#turn-display');
+
+    let gameOver = false;
+    let playerTurn;
 
     btnFlip.addEventListener('click', flip)
 
@@ -354,19 +359,45 @@
 
     function startGame() {
         // Add logic to start the game here
+     
 
         // Hide the "Flip Pieces" button
         if (btnStart.innerText == "End Game") {
+            
+            //End the game
+
             btnStart.innerText = "Start Game";
             btnFlip.style.display = "block";
             btnStart.style = "background-color:#55d6be; ";
         } else {
 
-            btnFlip.style.display = 'none';
-            console.log("start game clicked");
+                //only start game if pieces have been placed
+                if (shipContainer.children.length != 0) {
+                    infoDisplay.textContent = "Place your pieces to begin. "
+                } else {
+                    //now that pieces have been placed, start the game
+                infoDisplay.textContent = "Begin! "
 
-            btnStart.innerText = "End Game";
-            btnStart.style = "background-color: red;"
+                    const allBoardBlocks = document.querySelectorAll('#computer div');
+                    allBoardBlocks.forEach(block => block.addEventListener('click', handleClick));
+                    
+
+                    //change buttons to reflect state of game
+                    btnFlip.style.display = 'none';
+                    console.log("start game clicked");
+                    btnStart.innerText = "End Game";
+                    btnStart.style = "background-color: red;"
+                }                       
         }
     }
+
+    function handleClick(e) {
+        if (!gameOver) {
+            if (e.target.classList.contains('taken')) {
+                e.target.classList.add('boom');
+                infoDisplay.textContent = "You hit the computers ship!";
+            }
+        }
+    }
+
 </script>

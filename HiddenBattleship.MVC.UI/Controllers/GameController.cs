@@ -15,7 +15,7 @@ namespace HiddenBattleship.MVC.UI.Controllers
 
             //get data of gameId
             //Return view with player data, and game data
-            return View(gameId, player);
+            return View(gameId);
         }
 
         //GET: Game/Computer

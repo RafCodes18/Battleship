@@ -107,11 +107,13 @@
         color: white;
         border-radius: 5px;
         background-color: #55d6be;
-        font-size: x-large;
+        font-size: large;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: box-shadow 0.3s ease;
-        margin-right: 20px;
+        margin-right: 60px;
+        margin-left: 20px;
         border: 1px solid grey;
+        margin-bottom: 60px;
     }
 
         button:hover {
@@ -127,6 +129,21 @@
     .your-board {
         margin-right: 230px;
         margin-left: -100px;
+    }
+  
+    .strtBtn{
+        margin-left: 20px;
+        font-size: x-large;
+        padding: 15px;
+    }
+
+    #btnFlip{
+        background-color: #bf1fbf;
+        margin-top: 10px;
+    }
+
+    #btnFlip:hover {
+        background-color: #a550a5;
     }
 </style>
 
@@ -155,8 +172,8 @@
 
     <div class="buttons">
         <button id="btnFlip">Flip Pieces</button>
-        <button id="btnStart">Start Game</button>
     </div>
+    <button id="btnStart" class="strtBtn">Start Game</button>
 
 </div>
 

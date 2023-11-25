@@ -79,7 +79,7 @@
         width: 20px;
         height: 20px;
         /*        border: 1px solid black; */
-        border-radius: 3px;
+        border-radius: 2px;
     }
 
     .hover {
@@ -207,12 +207,14 @@
 
     //creating boards
     const width = 10;
+    
     function createBoard(color, user) {
         const gameBoardContainer = document.createElement('div')
         gameBoardContainer.classList.add('game-board')
         gameBoardContainer.style.backgroundColor = color
         gameBoardContainer.id = user
 
+        //   loop to create 100 blocks in the game board
         for (let i = 0; i < width * width; i++) {
             const block = document.createElement('div');
             block.classList.add('block');
@@ -345,7 +347,7 @@
         if (valid && notTaken) {
             shipBlocks.forEach(ship => {
                 ship.classList.add('hover')
-                setTimeout(() => ship.classList.remove('hover', 500))
+                setTimeout(() => ship.classList.remove('hover'), 500)
             })
         }
     }

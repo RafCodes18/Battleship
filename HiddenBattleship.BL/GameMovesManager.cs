@@ -130,6 +130,8 @@ namespace HiddenBattleship.BL
             }
         }
 
+        //Method to generate a computer move, takes in list of coordinates, returns random coordinates not already taken
+
         public string GetRandomComputerMove(List<string> takenCoordinates)
         {
             Random random = new Random();
@@ -137,6 +139,8 @@ namespace HiddenBattleship.BL
             int col = random.Next(1, 11);
 
             string newCoordinate = $"{(char)('A' + row - 1)}{col}";
+
+            //if random generated numbers are taken already, select new ones
             while (takenCoordinates.Contains(newCoordinate))
             {
                 row = random.Next(1, 11);

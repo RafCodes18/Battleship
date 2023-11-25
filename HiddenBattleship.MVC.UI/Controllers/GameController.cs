@@ -1,13 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HiddenBattleship.BL.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HiddenBattleship.MVC.UI.Controllers
 {
     public class GameController : Controller
     {
+        //TODO: Live action - Raf still WIP
         //GET: Game/Live/gameid
-        public ActionResult Live(string gameId)
+        public ActionResult Live(string gameId, Player player)
         {
-            return View();
+            //get user from session
+
+            //create new game ID, store the gameID and user ID, 
+
+            //get data of gameId
+            //Return view with player data, and game data
+            return View(gameId, player);
+        }
+
+        //GET: Game/Computer
+        public ActionResult Computer(string gameId)
+        {
+            return View(gameId);
         }
 
         // GET: GameController 
@@ -85,4 +99,5 @@ namespace HiddenBattleship.MVC.UI.Controllers
             }
         }
     }
+
 }

@@ -40,36 +40,42 @@
         width: 20px;
         height: 10px;
         background-color: black;
+        border-radius: 3px;
     }
 
     .ship2 {
         width: 30px;
         height: 10px;
         background-color: red;
+        border-radius: 3px;
     }
 
     .ship3 {
         width: 40px;
         height: 10px;
         background-color: blue;
+        border-radius: 3px;
     }
 
     .ship4 {
         width: 50px;
         height: 10px;
         background-color: orange;
+        border-radius: 3px;
     }
 
     .ship5 {
         width: 60px;
         height: 10px;
         background-color: purple;
+        border-radius: 3px;
     }
 
     .block {
         width: 20px;
         height: 20px;
         /*        border: 1px solid black; */
+        border-radius: 3px;
     }
 
     .hover {
@@ -344,10 +350,17 @@
             // Add logic to start the game here
 
             // Hide the "Flip Pieces" button
+        if (btnStart.innerText == "End Game") {
+            btnStart.innerText = "Start Game";
+            btnFlip.style.display = "block";
+            btnStart.style = "background-color:#55d6be; ";
+        } else {
+
             btnFlip.style.display = 'none';
             console.log("start game clicked");
-            
-        btnStart.innerText = "End Game"; 
-        btnStart.style = "background-color: red;"
+
+            btnStart.innerText = "End Game";
+            btnStart.style = "background-color: red;"
+        }
     }
 </script>

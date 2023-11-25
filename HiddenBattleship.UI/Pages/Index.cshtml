@@ -10,6 +10,10 @@
         padding: 0;
     }
 
+    body{
+        background-color: #bed3f3;
+    }
+
     .game-board {
         width: 200px;
         height: 200px;
@@ -20,11 +24,12 @@
 
     .ships-container {
         width: 500px;
-        height: 100px;
-        background-color: darkcyan;
+        height: 80px;
+        background-color: #7ba0a0;
         display: flex;
         align-items: center;
         margin-top: 5px;
+        justify-content: space-around;
     }
 
     #games-container {
@@ -80,9 +85,46 @@
     .empty {
         background-color: grey;
     }
+
+    .hero{
+        display: flex;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .buttons{
+        margin-top: 20px;
+    }
+
+    .game-info {
+        text-align: left; /* Align text to the left */
+       
+        margin-left: -300px; /* Add some margin to the left for spacing */
+    }
+
+    button{
+        padding: 5px;
+        color: white;
+        border-radius: 5px;
+        background-color: #55d6be;
+        font-size: x-large;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+        margin-right: 20px;
+        border: 1px solid grey;
+    }
+
+    button:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adjust the values for the hover state */
+    }
+
 </style>
 
-<div id="game-info">
+
+<div class="hero">
+<div id="game-info" class="game-info">
     <p>Turn: <span id="turn-display"></span></p>
     <p>Info: <span id="info"></span></p>
 </div>
@@ -97,9 +139,12 @@
     <div id="4" class="ship5" draggable="true"></div>
 </div>
 
-<button id="btnFlip">Flips</button>
-<button id="btnStart">Start</button>
+<div class="buttons">
+<button id="btnFlip">Flip Pieces</button>
+<button id="btnStart">Start Game</button>
+</div>
 
+</div>
 
 <script>
     const shipContainer = document.querySelector('.ships-container')
@@ -136,8 +181,8 @@
         gamesContainer.append(gameBoardContainer)
     }
 
-    createBoard('pink', 'player')
-    createBoard('yellow', 'computer')
+    createBoard('#6B5B95', 'player')
+    createBoard('#34568B', 'computer')
 
     class Ship {
         constructor(name, length) {

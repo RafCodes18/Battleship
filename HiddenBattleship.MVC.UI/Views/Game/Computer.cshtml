@@ -86,10 +86,6 @@
         background-color: grey;
     }
 
-    .boom {
-        background-color: red;
-    }
-
     .empty {
         background-color: grey;
     }
@@ -159,10 +155,14 @@
     #computer .ship1,
     #computer .ship2,
     #computer .ship3,
-    #computer .ship3,
     #computer .ship4,
     #computer .ship5{
         background-color: #34568B;
+    }
+
+
+    .boom {
+        background-color: red !important;
     }
 </style>
 
@@ -392,6 +392,7 @@
                 } else {
                     //now that pieces have been placed, start the game
                     infoDisplay.textContent = "Begin! "
+                    turnDisplay.textContent = "Your Turn"
                     playerTurn = true;
 
                     const allBoardBlocks = document.querySelectorAll('#computer div');

@@ -50,7 +50,7 @@
     .ship2 {
         width: 30px;
         height: 10px;
-        background-color: red;
+        background-color: hotpink;
         border-radius: 3px;
     }
 
@@ -155,6 +155,15 @@
         #btnFlip:hover {
             background-color: #a550a5;
         }
+
+    #computer .ship1,
+    #computer .ship2,
+    #computer .ship3,
+    #computer .ship3,
+    #computer .ship4,
+    #computer .ship5{
+        background-color: #34568B;
+    }
 </style>
 
 
@@ -166,7 +175,7 @@
 
     <div class="titles">
         <div class="your-board">Your Board</div>
-        <div class="opp-board">Opponent</div>
+        <div class="opp-board">Computer Board</div>
     </div>
 
     <div id="games-container">
@@ -370,6 +379,7 @@
         if (btnStart.innerText == "End Game") {
             
             //End the game
+            location.reload();
 
             btnStart.innerText = "Start Game";
             btnFlip.style.display = "block";
@@ -381,7 +391,8 @@
                     infoDisplay.textContent = "Place your pieces to begin. "
                 } else {
                     //now that pieces have been placed, start the game
-                infoDisplay.textContent = "Begin! "
+                    infoDisplay.textContent = "Begin! "
+                    playerTurn = true;
 
                     const allBoardBlocks = document.querySelectorAll('#computer div');
                     allBoardBlocks.forEach(block => block.addEventListener('click', handleClick));
@@ -413,8 +424,8 @@
                 checkScore('player', playerHits, playerSunkShips)
             }
 
-            if (e.target.classList.contains('taken')) {
-                infoDisplay.textContent = "Miss!";
+            if (!e.target.classList.contains('taken')) {
+                infoDisplay.textContent = "You missed!";
                 e.target.classList.add('empty');
             }
 
@@ -445,7 +456,7 @@
                     allBoardBlocks[randomGo].classList.add('boom')
                     infoDisplay.textContent = 'Computer hit your ship!';
 
-                    let classes = Array.from(e.target.classList);
+                    let classes = Array.from(allBoardBlocks[randomGo].classList);
                     classes = classes.filter(className => className !== 'block');
                     classes = classes.filter(className => className !== 'boom');
                     classes = classes.filter(className => className !== 'taken');
@@ -476,7 +487,15 @@
             if (
                 userHits.filter(storedShipName => storedShipName === shipName).length === shipLength
             ) {
-                infoDisplay.textContent = `You sunk the ${user}'s ${shipName}`;
+                if (user === 'player') {
+                    infoDisplay.textContent = `You sunk the computers ${shipName}`;
+                    playerHits = userHits.filter(storedShipName => storedShipName !== shipName)
+                }
+                if (user === 'computer') {
+                    infoDisplay.textContent = `The computer sunk your ${shipName}`;
+                    computerHits = userHits.filter(storedShipName => storedShipName !== shipName)
+                }
+                userSunkShips.push(shipName);
             }
         }
 
@@ -488,6 +507,15 @@
  
         console.log('player hits', playerHits)
         console.log('player sunk ships', playerSunkShips)
+
+        if (playerSunkShips.length === 5) {
+            infoDisplay.textContent = 'You sunk all computer ships. You WIN!';
+            gameOver = true;
+        }
+        if (computerSunkShips.length === 5) {
+            infoDisplay.textContent = 'The computer sunk all your ships. You LOSE!';
+            gameOver = true;
+        }
     }
     
 </script> 

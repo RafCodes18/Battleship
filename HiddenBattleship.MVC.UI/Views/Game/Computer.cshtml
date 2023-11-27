@@ -22,16 +22,19 @@
         display: flex;
         flex-wrap: wrap; <!--
         fills the game boards with boxes -->
+        outline: 1px solid black;
+        background-color: #505050;
     }
 
     .ships-container {
         width: 500px;
         height: 80px;
-        background-color: #7ba0a0;
+        background-color: #b7c3c3;
         display: flex;
         align-items: center;
         margin-top: 5px;
         justify-content: space-around;
+        border-radius: 20px;
     }
 
     #games-container {
@@ -78,8 +81,9 @@
     .block {
         width: 20px;
         height: 20px;
-        /*        border: 1px solid black; */
+               border: 1px solid grey;              ;
         border-radius: 2px;
+
     }
 
     .hover {
@@ -87,7 +91,7 @@
     }
 
     .empty {
-        background-color: grey;
+        background-color: white;
     }
 
     .hero {
@@ -157,12 +161,17 @@
     #computer .ship3,
     #computer .ship4,
     #computer .ship5{
-        background-color: #34568B;
+        /* background-color: #34568B; */
+        background-color: #505050;
     }
 
 
     .boom {
         background-color: red !important;
+    }
+
+    .info{
+        margin-top: 15px;
     }
 </style>
 
@@ -181,6 +190,7 @@
     <div id="games-container">
     </div>
 
+    <div class="info">Drag the ships below to your board.</div>
     <div class="ships-container">
         <div id="0" class="ship1" draggable="true"></div>
         <div id="1" class="ship2" draggable="true"></div>
@@ -231,7 +241,7 @@
     function createBoard(color, user) {
         const gameBoardContainer = document.createElement('div')
         gameBoardContainer.classList.add('game-board')
-        gameBoardContainer.style.backgroundColor = color
+        //gameBoardContainer.style.backgroundColor = color
         gameBoardContainer.id = user
 
         //   loop to create 100 blocks in the game board
@@ -372,8 +382,7 @@
     }
 
     function startGame() {
-        // Add logic to start the game here
-     
+        // Add logic to start the game here        
 
         // Hide the "Flip Pieces" button
         if (btnStart.innerText == "End Game") {
@@ -385,12 +394,13 @@
             btnFlip.style.display = "block";
             btnStart.style = "background-color:#55d6be; ";
         } else {
-
                 //only start game if pieces have been placed
                 if (shipContainer.children.length != 0) {
                     infoDisplay.textContent = "Place your pieces to begin. "
                 } else {
                     //now that pieces have been placed, start the game
+                    let info = document.querySelector(".info");
+                    info.textContent = "";
                     infoDisplay.textContent = "Begin! "
                     turnDisplay.textContent = "Your Turn"
                     playerTurn = true;
@@ -434,7 +444,7 @@
 
             const allBoardBlocks = document.querySelectorAll('#computer div');
             allBoardBlocks.forEach(block => block.replaceWith(block.cloneNode(true)));
-            setTimeout(computerGo, 3000);
+            setTimeout(computerGo, 2000);
         }
     }
 
@@ -470,7 +480,7 @@
                     infoDisplay.textContent = "Computer missed!";
                     allBoardBlocks[randomGo].classList.add('empty');
                 }
-            }, 3000);
+            }, 2000);
 
             setTimeout(() => {
                 playerTurn = true;
@@ -479,24 +489,44 @@
 
                 const allBoardBlocks = document.querySelectorAll('#computer div')
                      allBoardBlocks.forEach(block => block.addEventListener('click', handleClick));
-            }, 6000)
+            }, 5000)
         }
     }
 
     function checkScore(user, userHits, userSunkShips) { 
-        function checkShip(shipName, shipLength) {
+        function checkShip(shipName1, shipLength) {
             if (
-                userHits.filter(storedShipName => storedShipName === shipName).length === shipLength
+                userHits.filter(storedShipName => storedShipName === shipName1).length === shipLength
             ) {
+                var shipName; 
                 if (user === 'player') {
+                    switch (shipName1) {
+                        case 'ship1':
+                            shipName = `smallest ship!`;
+                            break;
+                        case 'ship2':
+                            shipName = "second smallest ship!";
+                            break;
+                        case 'ship3':
+                            shipName = "third largest ship!";
+                            break;
+                        case 'ship4':
+                            shipName = "second largest ship!";
+                            break;
+                        case 'ship5':
+                            shipName = "largest ship!";
+                            break;
+                        default:
+                            break;                            
+                    }
                     infoDisplay.textContent = `You sunk the computers ${shipName}`;
-                    playerHits = userHits.filter(storedShipName => storedShipName !== shipName)
+                    playerHits = userHits.filter(storedShipName => storedShipName !== shipName1)
                 }
                 if (user === 'computer') {
                     infoDisplay.textContent = `The computer sunk your ${shipName}`;
-                    computerHits = userHits.filter(storedShipName => storedShipName !== shipName)
+                    computerHits = userHits.filter(storedShipName => storedShipName !== shipName1)
                 }
-                userSunkShips.push(shipName);
+                userSunkShips.push(shipName1);
             }
         }
 

@@ -162,7 +162,7 @@
     #computer .ship4,
     #computer .ship5{
         /* background-color: #34568B; */
-        background-color: #505050;
+        background-color: white;
     }
 
 
@@ -541,6 +541,8 @@
 
         if (playerSunkShips.length === 5) {
             infoDisplay.textContent = 'You sunk all computer ships. You WIN!';
+            infoDisplay.style = "font-weight: y00;";
+            infoDisplay.style = "color:#AAFF00 !important";
             gameOver = true;
         }
         if (computerSunkShips.length === 5) {

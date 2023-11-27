@@ -482,7 +482,7 @@
                     infoDisplay.textContent = "Computer missed!";
                     allBoardBlocks[randomGo].classList.add('empty');
                 }
-            }, 1000);
+            }, 2000);
 
             setTimeout(() => {
                 playerTurn = true;
@@ -491,7 +491,7 @@
 
                 const allBoardBlocks = document.querySelectorAll('#computer div')
                      allBoardBlocks.forEach(block => block.addEventListener('click', handleClick));
-            }, 2000)
+            }, 3000)
         }
     }
 

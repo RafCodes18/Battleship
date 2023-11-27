@@ -161,8 +161,10 @@
     #computer .ship3,
     #computer .ship4,
     #computer .ship5{
-        /* background-color: #34568B; */
         background-color: white;
+        /* background-color: #505050; */
+
+        
     }
 
 
@@ -444,7 +446,7 @@
 
             const allBoardBlocks = document.querySelectorAll('#computer div');
             allBoardBlocks.forEach(block => block.replaceWith(block.cloneNode(true)));
-            setTimeout(computerGo, 2000);
+            setTimeout(computerGo, 3000);
         }
     }
 
@@ -480,7 +482,7 @@
                     infoDisplay.textContent = "Computer missed!";
                     allBoardBlocks[randomGo].classList.add('empty');
                 }
-            }, 2000);
+            }, 1000);
 
             setTimeout(() => {
                 playerTurn = true;
@@ -489,7 +491,7 @@
 
                 const allBoardBlocks = document.querySelectorAll('#computer div')
                      allBoardBlocks.forEach(block => block.addEventListener('click', handleClick));
-            }, 5000)
+            }, 2000)
         }
     }
 
@@ -542,7 +544,7 @@
         if (playerSunkShips.length === 5) {
             infoDisplay.textContent = 'You sunk all computer ships. You WIN!';
             infoDisplay.style = "font-weight: y00;";
-            infoDisplay.style = "color:#AAFF00 !important";
+            infoDisplay.style = "color:#4EB300 !important";
             gameOver = true;
         }
         if (computerSunkShips.length === 5) {

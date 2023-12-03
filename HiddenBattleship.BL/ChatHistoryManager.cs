@@ -1,7 +1,9 @@
 ﻿using HiddenBattleship.BL.Models;
 using HiddenBattleship.PL;
 using HiddenBattleship.PL.Entities;
+using HiddenBattleship.Reporting;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Plugins;
 
 namespace HiddenBattleship.BL
 {
@@ -32,6 +34,42 @@ namespace HiddenBattleship.BL
 
                     throw;
                 }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public static void Export(List<ChatHistory> chatHistories, int gameId) 
+        {
+            try
+            {
+                string[,] data = new string[chatHistories.Count + 1, 4];
+                int counter = 0;
+
+                data[counter, 0] = "Sender";
+                data[counter, 1] = "Reciever";
+                data[counter, 2] = "Timestamp";
+                data[counter, 3] = "Message";
+                
+                
+
+                counter++;
+                foreach (ChatHistory ch in chatHistories)
+                {
+                    //if (ch.ChatHistoryId == gameId)
+                    //{
+                        data[counter, 0] = ch.Sender.ToString();
+                        data[counter, 1] = ch.Receiver.ToString();
+                        data[counter, 2] = ch.Timestamp.ToString();
+                        data[counter, 3] = ch.Message;
+                    //}
+                    counter++;
+                }
+
+                Excel.Export("ChatHistory.xlsx", data);
             }
             catch (Exception)
             {

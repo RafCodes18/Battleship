@@ -1,4 +1,5 @@
 ﻿using HiddenBattleship.BL.Models;
+using iText.Forms.Xfdf;
 
 namespace HiddenBattleship.BL.Test
 {
@@ -53,6 +54,17 @@ namespace HiddenBattleship.BL.Test
             ChatHistory chatHistory = new ChatHistoryManager(options).Load().FirstOrDefault();
 
             Assert.IsTrue(new ChatHistoryManager(options).Delete(chatHistory.Id, true) > 0);
+        }
+
+        [TestMethod]
+        public void ExportTest()
+        {
+            List<ChatHistory> chatHistories = new ChatHistoryManager(options).Load();
+            int expected = 4;
+            ChatHistoryManager.Export(chatHistories,1);
+
+
+            Assert.AreEqual(expected, chatHistories.Count);
         }
     }
 }

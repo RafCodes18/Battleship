@@ -14,7 +14,7 @@ namespace HiddenBattleship.BL.GameLogic
         {
             try
             {
-                //build up the board and set all cells to unoccupied
+                //build the board and set all the cells to unoccupied
                 BoardCellStatus[,] boardCellStatuses = new BoardCellStatus[rows, columns];
                 for (int row = 0; row < rows; row++)
                 {

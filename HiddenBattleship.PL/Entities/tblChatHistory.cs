@@ -19,6 +19,7 @@ public partial class tblChatHistory : IEntity
 
     public virtual tblGame Game { get; set; }
 
+
     public virtual ICollection<tblGame> tblGames { get; } = new List<tblGame>();
 
     public string SortField { get { return ChatHistoryId.ToString(); } }

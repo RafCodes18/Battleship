@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\HiddenBattleship.BL.Models\HiddenBattleship.BL.Models.csproj" />
     <ProjectReference Include="..\HiddenBattleship.PL\HiddenBattleship.PL.csproj" />
+    <ProjectReference Include="..\HiddenBattleship.Reporting\HiddenBattleship.Reporting.csproj" />
   </ItemGroup>
 
 </Project>

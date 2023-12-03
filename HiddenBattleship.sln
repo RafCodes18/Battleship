@@ -22,7 +22,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HiddenBattleship.BL.Test", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HiddenBattleship.MVC.UI", "HiddenBattleship.MVC.UI\HiddenBattleship.MVC.UI.csproj", "{444A4B73-AE54-4F0F-87DF-FEA73AC9EF97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiddenBattleship.API", "HiddenBattleship.API\HiddenBattleship.API.csproj", "{673AC441-1E85-47C7-AD13-C4A0292AEA5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HiddenBattleship.API", "HiddenBattleship.API\HiddenBattleship.API.csproj", "{673AC441-1E85-47C7-AD13-C4A0292AEA5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiddenBattleship.Reporting", "HiddenBattleship.Reporting\HiddenBattleship.Reporting.csproj", "{BC3D878B-7CA4-4F31-88AA-BF6323374864}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +70,10 @@ Global
 		{673AC441-1E85-47C7-AD13-C4A0292AEA5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{673AC441-1E85-47C7-AD13-C4A0292AEA5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{673AC441-1E85-47C7-AD13-C4A0292AEA5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC3D878B-7CA4-4F31-88AA-BF6323374864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC3D878B-7CA4-4F31-88AA-BF6323374864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC3D878B-7CA4-4F31-88AA-BF6323374864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC3D878B-7CA4-4F31-88AA-BF6323374864}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

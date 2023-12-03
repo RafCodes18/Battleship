@@ -46,26 +46,27 @@ namespace HiddenBattleship.BL
         {
             try
             {
-                string[,] data = new string[chatHistories.Count + 1, 4];
+                string[,] data = new string[chatHistories.Count + 1, 5];
                 int counter = 0;
 
-                data[counter, 0] = "Sender";
-                data[counter, 1] = "Reciever";
-                data[counter, 2] = "Timestamp";
-                data[counter, 3] = "Message";
+
+                data[counter, 0] = "ChatHistoryId";
+                data[counter, 1] = "Sender";
+                data[counter, 2] = "Reciever";
+                data[counter, 3] = "Timestamp";
+                data[counter, 4] = "Message";
                 
                 
 
                 counter++;
                 foreach (ChatHistory ch in chatHistories)
                 {
-                    //if (ch.ChatHistoryId == gameId)
-                    //{
-                        data[counter, 0] = ch.Sender.ToString();
-                        data[counter, 1] = ch.Receiver.ToString();
-                        data[counter, 2] = ch.Timestamp.ToString();
-                        data[counter, 3] = ch.Message;
-                    //}
+                    data[counter, 0] = ch.ChatHistoryId.ToString();
+                    data[counter, 1] = ch.Sender.ToString();
+                    data[counter, 2] = ch.Receiver.ToString();
+                    data[counter, 3] = ch.Timestamp.ToString();
+                    data[counter, 4] = ch.Message;
+                    
                     counter++;
                 }
 

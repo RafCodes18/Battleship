@@ -8,7 +8,6 @@
         public string TargetCoordinates { get; set; }
         public bool IsHit { get; set; }
         public TimeSpan TimeStamp { get; set; }
-
         public int GameMoveId { get; set; }
     }
 }

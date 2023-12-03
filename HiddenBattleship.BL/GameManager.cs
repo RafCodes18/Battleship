@@ -13,6 +13,19 @@ namespace HiddenBattleship.BL
 
         private const string Message = "Row does not exist.";
 
+        public void NewNPCGame(Player player)
+        {
+
+        }
+        public void NewPlayerGame(Player player1, Player player2)
+        {
+            
+        }
+        public void PlayerMove(string playerMove)
+        {
+
+        }
+
         public int Insert(Game game, bool rollback = false)
         {
             try

@@ -32,8 +32,8 @@ public partial class HiddenBattleshipEntities : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         // different connection strings
 
-        => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=HiddenBattleship.DB;Integrated Security=True");
-    //=> optionsBuilder.UseSqlServer("Server=DESKTOP-FO71P55\\MSSQLLOCALDB;Database=HiddenBattleship.DB; Integrated Security=True; TrustServerCertificate=True");
+        // => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=HiddenBattleship.DB;Integrated Security=True");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-FO71P55\\MSSQLLOCALDB;Database=HiddenBattleship.DB; Integrated Security=True; TrustServerCertificate=True");
 
     //remote DB
     //=> optionsBuilder.UseSqlServer("Server=tcp:server-21287-700175134.database.windows.net,1433;Initial Catalog=bigprojectdb;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication='Active Directory Default'");

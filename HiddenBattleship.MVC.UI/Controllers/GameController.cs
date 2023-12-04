@@ -9,6 +9,8 @@ namespace HiddenBattleship.MVC.UI.Controllers
         //GET: Game/Live/gameid
         public ActionResult Live(string gameId, Player player)
         {
+
+
             //get user from session
 
             //create new game ID, store the gameID and user ID, 

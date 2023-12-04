@@ -9,6 +9,7 @@ public partial class HiddenBattleshipEntities : DbContext
     Guid[] gameId = new Guid[4];
     Guid[] gamemoveId = new Guid[4];
     Guid[] chathistoryId = new Guid[12];
+    Guid[] shipId = new Guid[5];
 
 
 
@@ -29,6 +30,8 @@ public partial class HiddenBattleshipEntities : DbContext
 
     public virtual DbSet<tblPlayer> tblPlayers { get; set; }
 
+    public virtual DbSet<tblShip> tblShips { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         // different connection strings
 
@@ -44,11 +47,70 @@ public partial class HiddenBattleshipEntities : DbContext
         base.OnModelCreating(modelBuilder);
 
         CreatePlayers(modelBuilder);
+        CreateShips(modelBuilder);
         CreateGames(modelBuilder);
         CreateGameMoves(modelBuilder);
         CreateChatHistories(modelBuilder);
+        
 
     }
+
+    private void CreateShips(ModelBuilder modelBuilder)
+    {
+        for (int i = 0; i < playerId.Length; i++)
+            shipId[i] = Guid.NewGuid();
+
+
+        modelBuilder.Entity<tblShip>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK_tblShip");
+
+            entity.ToTable("tblShip");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.Size)
+                .IsUnicode(false);
+            entity.Property(e => e.ShipType)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<tblShip>().HasData(new tblShip
+        {
+            Id = shipId[0],
+            Size = 4,
+            ShipType = ShipType.Carrier
+
+        });
+        modelBuilder.Entity<tblShip>().HasData(new tblShip
+        {
+            Id = shipId[1],
+            Size = 5,
+            ShipType = ShipType.Destroyer
+
+        });
+        modelBuilder.Entity<tblShip>().HasData(new tblShip
+        {
+            Id = shipId[2],
+            Size = 3,
+            ShipType = ShipType.Battleship
+
+        });
+        modelBuilder.Entity<tblShip>().HasData(new tblShip
+        {
+            Id = shipId[3],
+            Size = 2,
+            ShipType = ShipType.Cruiser
+
+        });
+        modelBuilder.Entity<tblShip>().HasData(new tblShip
+        {
+            Id = shipId[4],
+            Size = 2,
+            ShipType = ShipType.Submarine
+
+        });
+    }
+
     private void CreateChatHistories(ModelBuilder modelBuilder)
     {
         for (int i = 0; i < chathistoryId.Length; i++)

@@ -59,42 +59,122 @@ namespace HiddenBattleship.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("cb4972d2-4bf4-43e9-9cec-55049dcd7288"),
-                            ChatHistoryId = 0,
-                            GameId = new Guid("9e227195-3ea1-4d23-a5fc-df835b7c46a8"),
+                            Id = new Guid("b458db6c-93cb-4612-a6a7-129b4382a265"),
+                            ChatHistoryId = 1,
+                            GameId = new Guid("c9731145-2bab-44a6-b3c9-c04c2de638d7"),
                             Message = "1v1 me",
-                            Receiver = new Guid("2ada9df8-3d6d-4116-8d71-f4ce4f6cd2d3"),
-                            Sender = new Guid("0e7af0f1-d3b4-4d3f-aab7-5399cba2868a"),
+                            Receiver = new Guid("2c8a9bf5-b85e-4806-bff7-ebb67c96a1c4"),
+                            Sender = new Guid("d7fc902a-8e8b-411f-ab57-79b60cb0e676"),
                             Timestamp = new TimeSpan(0, 4, 10, 55, 0)
                         },
                         new
                         {
-                            Id = new Guid("ce22de26-5736-4eca-89e0-3c4aeb6c7f0e"),
+                            Id = new Guid("ffaf3f06-a655-436d-b013-e582fa5a15df"),
                             ChatHistoryId = 1,
-                            GameId = new Guid("9e227195-3ea1-4d23-a5fc-df835b7c46a8"),
+                            GameId = new Guid("c9731145-2bab-44a6-b3c9-c04c2de638d7"),
                             Message = "You missed, LOL",
-                            Receiver = new Guid("0e7af0f1-d3b4-4d3f-aab7-5399cba2868a"),
-                            Sender = new Guid("2ada9df8-3d6d-4116-8d71-f4ce4f6cd2d3"),
+                            Receiver = new Guid("d7fc902a-8e8b-411f-ab57-79b60cb0e676"),
+                            Sender = new Guid("2c8a9bf5-b85e-4806-bff7-ebb67c96a1c4"),
                             Timestamp = new TimeSpan(0, 5, 1, 20, 0)
                         },
                         new
                         {
-                            Id = new Guid("810d03b7-fa50-485c-9304-8a657c72b547"),
-                            ChatHistoryId = 2,
-                            GameId = new Guid("a7235228-a0fd-45a8-ad74-15d904016984"),
+                            Id = new Guid("d950b146-80e7-4eea-8ace-d908fdc4538b"),
+                            ChatHistoryId = 1,
+                            GameId = new Guid("c9731145-2bab-44a6-b3c9-c04c2de638d7"),
                             Message = "Follow my twitch stream?",
-                            Receiver = new Guid("8be96ee1-3dfd-4621-87aa-696515e526e4"),
-                            Sender = new Guid("2ada9df8-3d6d-4116-8d71-f4ce4f6cd2d3"),
+                            Receiver = new Guid("2c8a9bf5-b85e-4806-bff7-ebb67c96a1c4"),
+                            Sender = new Guid("d7fc902a-8e8b-411f-ab57-79b60cb0e676"),
                             Timestamp = new TimeSpan(0, 11, 51, 14, 0)
                         },
                         new
                         {
-                            Id = new Guid("7874c4ec-c337-4362-9d01-ef3bb31d96d0"),
-                            ChatHistoryId = 3,
-                            GameId = new Guid("2c4084fc-7a70-4fc9-a411-f79aa6c5e4bf"),
+                            Id = new Guid("fb765900-433c-41d1-87dd-357f1963782d"),
+                            ChatHistoryId = 1,
+                            GameId = new Guid("c9731145-2bab-44a6-b3c9-c04c2de638d7"),
                             Message = "You're hacking, i'm telling my dad he works at Jagex!!11!",
-                            Receiver = new Guid("0e7af0f1-d3b4-4d3f-aab7-5399cba2868a"),
-                            Sender = new Guid("8be96ee1-3dfd-4621-87aa-696515e526e4"),
+                            Receiver = new Guid("d7fc902a-8e8b-411f-ab57-79b60cb0e676"),
+                            Sender = new Guid("2c8a9bf5-b85e-4806-bff7-ebb67c96a1c4"),
+                            Timestamp = new TimeSpan(0, 1, 28, 19, 0)
+                        },
+                        new
+                        {
+                            Id = new Guid("51cdedf4-7b5c-4a8f-9da5-1940e5e43fc4"),
+                            ChatHistoryId = 2,
+                            GameId = new Guid("2c61ed53-9f16-4ef0-8133-4e01870346b0"),
+                            Message = "1v1 me",
+                            Receiver = new Guid("2c8a9bf5-b85e-4806-bff7-ebb67c96a1c4"),
+                            Sender = new Guid("bd41a2ea-d599-49bb-853d-5776a6aae471"),
+                            Timestamp = new TimeSpan(0, 4, 10, 55, 0)
+                        },
+                        new
+                        {
+                            Id = new Guid("25a10537-12ec-4bb0-8e09-d73a6a3c6b3d"),
+                            ChatHistoryId = 2,
+                            GameId = new Guid("2c61ed53-9f16-4ef0-8133-4e01870346b0"),
+                            Message = "You missed, LOL",
+                            Receiver = new Guid("bd41a2ea-d599-49bb-853d-5776a6aae471"),
+                            Sender = new Guid("2c8a9bf5-b85e-4806-bff7-ebb67c96a1c4"),
+                            Timestamp = new TimeSpan(0, 5, 1, 20, 0)
+                        },
+                        new
+                        {
+                            Id = new Guid("7ec38e9b-5c80-4e2d-b602-24a3c4c5ec12"),
+                            ChatHistoryId = 2,
+                            GameId = new Guid("2c61ed53-9f16-4ef0-8133-4e01870346b0"),
+                            Message = "Follow my twitch stream?",
+                            Receiver = new Guid("2c8a9bf5-b85e-4806-bff7-ebb67c96a1c4"),
+                            Sender = new Guid("bd41a2ea-d599-49bb-853d-5776a6aae471"),
+                            Timestamp = new TimeSpan(0, 11, 51, 14, 0)
+                        },
+                        new
+                        {
+                            Id = new Guid("9811ebd6-1387-409b-a0df-ab986444f4b5"),
+                            ChatHistoryId = 2,
+                            GameId = new Guid("2c61ed53-9f16-4ef0-8133-4e01870346b0"),
+                            Message = "You're hacking, i'm telling my dad he works at Jagex!!11!",
+                            Receiver = new Guid("bd41a2ea-d599-49bb-853d-5776a6aae471"),
+                            Sender = new Guid("2c8a9bf5-b85e-4806-bff7-ebb67c96a1c4"),
+                            Timestamp = new TimeSpan(0, 1, 28, 19, 0)
+                        },
+                        new
+                        {
+                            Id = new Guid("b51105a2-993a-4c23-adda-f10a4ac8a534"),
+                            ChatHistoryId = 3,
+                            GameId = new Guid("de1e8857-8e5e-44f6-b5e5-a5f9333dec4b"),
+                            Message = "1v1 me",
+                            Receiver = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f"),
+                            Sender = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f"),
+                            Timestamp = new TimeSpan(0, 4, 10, 55, 0)
+                        },
+                        new
+                        {
+                            Id = new Guid("202acd67-b2e4-41d0-9163-83c603d51779"),
+                            ChatHistoryId = 3,
+                            GameId = new Guid("de1e8857-8e5e-44f6-b5e5-a5f9333dec4b"),
+                            Message = "You missed, LOL",
+                            Receiver = new Guid("2c8a9bf5-b85e-4806-bff7-ebb67c96a1c4"),
+                            Sender = new Guid("2c8a9bf5-b85e-4806-bff7-ebb67c96a1c4"),
+                            Timestamp = new TimeSpan(0, 5, 1, 20, 0)
+                        },
+                        new
+                        {
+                            Id = new Guid("7f074d26-dd20-4b29-a179-941d3f4b93cc"),
+                            ChatHistoryId = 3,
+                            GameId = new Guid("de1e8857-8e5e-44f6-b5e5-a5f9333dec4b"),
+                            Message = "Follow my twitch stream?",
+                            Receiver = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f"),
+                            Sender = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f"),
+                            Timestamp = new TimeSpan(0, 11, 51, 14, 0)
+                        },
+                        new
+                        {
+                            Id = new Guid("c27ef319-964b-41ab-a2f9-6ca8e2dd8672"),
+                            ChatHistoryId = 3,
+                            GameId = new Guid("de1e8857-8e5e-44f6-b5e5-a5f9333dec4b"),
+                            Message = "You're hacking, i'm telling my dad he works at Jagex!!11!",
+                            Receiver = new Guid("2c8a9bf5-b85e-4806-bff7-ebb67c96a1c4"),
+                            Sender = new Guid("2c8a9bf5-b85e-4806-bff7-ebb67c96a1c4"),
                             Timestamp = new TimeSpan(0, 1, 28, 19, 0)
                         });
                 });
@@ -104,7 +184,8 @@ namespace HiddenBattleship.PL.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<TimeSpan>("EndTime")
+                    b.Property<TimeSpan?>("EndTime")
+                        .IsRequired()
                         .HasColumnType("time");
 
                     b.Property<int>("GameId")
@@ -113,7 +194,7 @@ namespace HiddenBattleship.PL.Migrations
                     b.Property<bool>("IsOver")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("LoserId")
+                    b.Property<Guid?>("LoserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("Player1")
@@ -125,7 +206,7 @@ namespace HiddenBattleship.PL.Migrations
                     b.Property<TimeSpan>("StartTime")
                         .HasColumnType("time");
 
-                    b.Property<Guid>("WinnerId")
+                    b.Property<Guid?>("WinnerId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("tblChatHistoryId")
@@ -143,51 +224,51 @@ namespace HiddenBattleship.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9e227195-3ea1-4d23-a5fc-df835b7c46a8"),
+                            Id = new Guid("c9731145-2bab-44a6-b3c9-c04c2de638d7"),
                             EndTime = new TimeSpan(0, 1, 20, 30, 0),
                             GameId = 0,
                             IsOver = true,
-                            LoserId = new Guid("2ada9df8-3d6d-4116-8d71-f4ce4f6cd2d3"),
-                            Player1 = new Guid("5ef72535-3891-4689-b1d6-281649d31e59"),
-                            Player2 = new Guid("2ada9df8-3d6d-4116-8d71-f4ce4f6cd2d3"),
+                            LoserId = new Guid("d7fc902a-8e8b-411f-ab57-79b60cb0e676"),
+                            Player1 = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f"),
+                            Player2 = new Guid("d7fc902a-8e8b-411f-ab57-79b60cb0e676"),
                             StartTime = new TimeSpan(0, 1, 20, 30, 0),
-                            WinnerId = new Guid("5ef72535-3891-4689-b1d6-281649d31e59")
+                            WinnerId = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f")
                         },
                         new
                         {
-                            Id = new Guid("a7235228-a0fd-45a8-ad74-15d904016984"),
+                            Id = new Guid("2c61ed53-9f16-4ef0-8133-4e01870346b0"),
                             EndTime = new TimeSpan(0, 1, 20, 30, 0),
                             GameId = 1,
                             IsOver = false,
-                            LoserId = new Guid("2ada9df8-3d6d-4116-8d71-f4ce4f6cd2d3"),
-                            Player1 = new Guid("5ef72535-3891-4689-b1d6-281649d31e59"),
-                            Player2 = new Guid("2ada9df8-3d6d-4116-8d71-f4ce4f6cd2d3"),
+                            LoserId = new Guid("d7fc902a-8e8b-411f-ab57-79b60cb0e676"),
+                            Player1 = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f"),
+                            Player2 = new Guid("d7fc902a-8e8b-411f-ab57-79b60cb0e676"),
                             StartTime = new TimeSpan(0, 1, 20, 30, 0),
-                            WinnerId = new Guid("5ef72535-3891-4689-b1d6-281649d31e59")
+                            WinnerId = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f")
                         },
                         new
                         {
-                            Id = new Guid("2c4084fc-7a70-4fc9-a411-f79aa6c5e4bf"),
+                            Id = new Guid("de1e8857-8e5e-44f6-b5e5-a5f9333dec4b"),
                             EndTime = new TimeSpan(0, 1, 20, 30, 0),
                             GameId = 2,
                             IsOver = false,
-                            LoserId = new Guid("2ada9df8-3d6d-4116-8d71-f4ce4f6cd2d3"),
-                            Player1 = new Guid("5ef72535-3891-4689-b1d6-281649d31e59"),
-                            Player2 = new Guid("2ada9df8-3d6d-4116-8d71-f4ce4f6cd2d3"),
+                            LoserId = new Guid("d7fc902a-8e8b-411f-ab57-79b60cb0e676"),
+                            Player1 = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f"),
+                            Player2 = new Guid("d7fc902a-8e8b-411f-ab57-79b60cb0e676"),
                             StartTime = new TimeSpan(0, 1, 20, 30, 0),
-                            WinnerId = new Guid("5ef72535-3891-4689-b1d6-281649d31e59")
+                            WinnerId = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f")
                         },
                         new
                         {
-                            Id = new Guid("cec32b6c-024a-4186-917b-892f2c443d64"),
+                            Id = new Guid("e945baf2-fbfb-4d49-87cd-9627a2525ee0"),
                             EndTime = new TimeSpan(0, 1, 20, 30, 0),
                             GameId = 3,
                             IsOver = false,
-                            LoserId = new Guid("2ada9df8-3d6d-4116-8d71-f4ce4f6cd2d3"),
-                            Player1 = new Guid("5ef72535-3891-4689-b1d6-281649d31e59"),
-                            Player2 = new Guid("2ada9df8-3d6d-4116-8d71-f4ce4f6cd2d3"),
+                            LoserId = new Guid("d7fc902a-8e8b-411f-ab57-79b60cb0e676"),
+                            Player1 = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f"),
+                            Player2 = new Guid("d7fc902a-8e8b-411f-ab57-79b60cb0e676"),
                             StartTime = new TimeSpan(0, 1, 20, 30, 0),
-                            WinnerId = new Guid("5ef72535-3891-4689-b1d6-281649d31e59")
+                            WinnerId = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f")
                         });
                 });
 
@@ -229,41 +310,41 @@ namespace HiddenBattleship.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("fc70191c-2899-45b4-b2d0-2e983008aafc"),
-                            GameId = new Guid("9e227195-3ea1-4d23-a5fc-df835b7c46a8"),
+                            Id = new Guid("0c5c348d-188d-4858-b615-e79dbb19fb37"),
+                            GameId = new Guid("c9731145-2bab-44a6-b3c9-c04c2de638d7"),
                             GameMoveId = 0,
                             IsHit = true,
-                            PlayerId = new Guid("5ef72535-3891-4689-b1d6-281649d31e59"),
+                            PlayerId = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f"),
                             TargetCoordinates = "A5",
                             TimeStamp = new TimeSpan(0, 1, 20, 30, 0)
                         },
                         new
                         {
-                            Id = new Guid("e4a5fe2a-b9a2-42d5-b9dd-e542fd007c15"),
-                            GameId = new Guid("9e227195-3ea1-4d23-a5fc-df835b7c46a8"),
+                            Id = new Guid("5ba4fb22-c8a4-4a50-995f-d333af8f76d4"),
+                            GameId = new Guid("c9731145-2bab-44a6-b3c9-c04c2de638d7"),
                             GameMoveId = 1,
                             IsHit = true,
-                            PlayerId = new Guid("5ef72535-3891-4689-b1d6-281649d31e59"),
+                            PlayerId = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f"),
                             TargetCoordinates = "A5",
                             TimeStamp = new TimeSpan(0, 1, 20, 30, 0)
                         },
                         new
                         {
-                            Id = new Guid("3927c5fe-7dab-4426-b0de-37b8297ce886"),
-                            GameId = new Guid("9e227195-3ea1-4d23-a5fc-df835b7c46a8"),
+                            Id = new Guid("78fc66e1-6769-490b-9b2b-0d245f1b52b2"),
+                            GameId = new Guid("c9731145-2bab-44a6-b3c9-c04c2de638d7"),
                             GameMoveId = 2,
                             IsHit = true,
-                            PlayerId = new Guid("5ef72535-3891-4689-b1d6-281649d31e59"),
+                            PlayerId = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f"),
                             TargetCoordinates = "A5",
                             TimeStamp = new TimeSpan(0, 1, 20, 30, 0)
                         },
                         new
                         {
-                            Id = new Guid("7b2b6c47-fef8-40bf-b4e1-1f3b3ec6b82b"),
-                            GameId = new Guid("9e227195-3ea1-4d23-a5fc-df835b7c46a8"),
+                            Id = new Guid("02d140fd-1f51-4276-b9d0-c68264a74669"),
+                            GameId = new Guid("c9731145-2bab-44a6-b3c9-c04c2de638d7"),
                             GameMoveId = 3,
                             IsHit = true,
-                            PlayerId = new Guid("5ef72535-3891-4689-b1d6-281649d31e59"),
+                            PlayerId = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f"),
                             TargetCoordinates = "A5",
                             TimeStamp = new TimeSpan(0, 1, 20, 30, 0)
                         });
@@ -300,35 +381,35 @@ namespace HiddenBattleship.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5ef72535-3891-4689-b1d6-281649d31e59"),
+                            Id = new Guid("835b7b7a-872e-4475-9f5c-2965995af13f"),
                             Email = "123@gmail.com",
                             Password = "W6ph5Mm5Pz8GgiULbPgzG37mj9g=",
                             UserName = "Sh1PD3STR0Y3R"
                         },
                         new
                         {
-                            Id = new Guid("2ada9df8-3d6d-4116-8d71-f4ce4f6cd2d3"),
+                            Id = new Guid("d7fc902a-8e8b-411f-ab57-79b60cb0e676"),
                             Email = "456@gmail.com",
                             Password = "YRfkWrV/hmDYZqIcpenSwx28GUU=",
                             UserName = "Timmy"
                         },
                         new
                         {
-                            Id = new Guid("8be96ee1-3dfd-4621-87aa-696515e526e4"),
+                            Id = new Guid("2c8a9bf5-b85e-4806-bff7-ebb67c96a1c4"),
                             Email = "789@yahoo.com",
                             Password = "7DUut/wAuxmp4mKiKKNr9eEUeG0=",
                             UserName = "LoveMyCats1155"
                         },
                         new
                         {
-                            Id = new Guid("0e7af0f1-d3b4-4d3f-aab7-5399cba2868a"),
+                            Id = new Guid("bd41a2ea-d599-49bb-853d-5776a6aae471"),
                             Email = "aaabbb@amazon.com",
                             Password = "3oUt/zAHVa53n7yyDzprXz4Rxs8=",
                             UserName = "Skeert"
                         },
                         new
                         {
-                            Id = new Guid("0d47950d-e192-47eb-bd01-0015a6d6e1ee"),
+                            Id = new Guid("ce915408-18c5-47a4-a1ca-d0aad6865cfe"),
                             Email = "uTest@yahoo.com",
                             Password = "qUqP5cyxm6YcTAhz05Hph5gvu9M=",
                             UserName = "uTest"
@@ -358,8 +439,7 @@ namespace HiddenBattleship.PL.Migrations
                 {
                     b.HasOne("HiddenBattleship.PL.Entities.tblPlayer", "Player")
                         .WithMany("tblGames")
-                        .HasForeignKey("LoserId")
-                        .IsRequired();
+                        .HasForeignKey("LoserId");
 
                     b.HasOne("HiddenBattleship.PL.Entities.tblChatHistory", null)
                         .WithMany("tblGames")

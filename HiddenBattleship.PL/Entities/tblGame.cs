@@ -8,13 +8,13 @@ public partial class tblGame : IEntity
 
     public Guid Player2 { get; set; }
 
-    public Guid WinnerId { get; set; }
+    public Guid? WinnerId { get; set; }
 
-    public Guid LoserId { get; set; }
+    public Guid? LoserId { get; set; }
 
     public TimeSpan StartTime { get; set; }
 
-    public TimeSpan EndTime { get; set; }
+    public TimeSpan? EndTime { get; set; }
 
     public bool IsOver { get; set; }
     public int GameId { get; set; }

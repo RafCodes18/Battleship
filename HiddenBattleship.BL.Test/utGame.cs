@@ -31,11 +31,11 @@ namespace HiddenBattleship.BL.Test
             Game game = new Game
             {
                 Player1 = new PlayerManager(options).Load().FirstOrDefault().Id,
-                Player2 = Guid.NewGuid(),
-                WinnerId = Guid.NewGuid(),
-                LoserId = Guid.Parse("0d47950d-e192-47eb-bd01-0015a6d6e1ee"),
+                Player2 = new PlayerManager(options).Load().FirstOrDefault().Id,
+                //WinnerId = new PlayerManager(options).Load().FirstOrDefault().Id,
+                //LoserId = new PlayerManager(options).Load().FirstOrDefault().Id,
                 StartTime = new TimeSpan(),
-                EndTime = new TimeSpan(),
+                //EndTime = new TimeSpan(),
                 IsOver = true
             };
 

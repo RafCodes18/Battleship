@@ -33,14 +33,10 @@ public partial class HiddenBattleshipEntities : DbContext
     public virtual DbSet<tblShip> tblShips { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        // different connection strings
-
+    {
+        // optionsBuilder.UseLazyLoadingProxies();
         // => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=HiddenBattleship.DB;Integrated Security=True");
-         => optionsBuilder.UseSqlServer("Server=DESKTOP-FO71P55\\MSSQLLOCALDB;Database=HiddenBattleship.DB; Integrated Security=True; TrustServerCertificate=True");
-
-    //remote DB
-    //=> optionsBuilder.UseSqlServer("Server=tcp:server-21287-700175134.database.windows.net,1433;Initial Catalog=bigprojectdb;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication='Active Directory Default'");
-
+    }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 

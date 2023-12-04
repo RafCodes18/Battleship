@@ -11,9 +11,10 @@
         public TimeSpan? EndTime { get; set; }
         //TimeOnly date = TimeOnly.FromDateTime(DateTime.Now);
         public bool IsOver { get; set; }
+        
+        //public Board Board { get; set; }
 
-
-        //public List<Ship> Player1Ships { get; set; }
+       //public List<Ship> Player1Ships { get; set; }
         //public List<Ship> Player2Ships { get; set; }
 
     }

@@ -21,6 +21,10 @@ namespace PB.DVDCentral.API2.Controllers
             this.options = options;
         }
 
+        /// <summary>
+        /// Return a list of players.
+        /// </summary>
+        /// <returns>List of Player</returns>
         // GET: api/<PlayerController>
         [HttpGet]
         public IEnumerable<Player> Get()

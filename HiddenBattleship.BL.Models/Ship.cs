@@ -13,6 +13,6 @@ namespace HiddenBattleship.BL.Models
         public string ShipName { get; set; }
         public int Size { get; set; }
         public ShipType ShipType { get; set; }
-
+        /
     }
 }

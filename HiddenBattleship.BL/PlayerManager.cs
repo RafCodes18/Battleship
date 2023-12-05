@@ -85,7 +85,7 @@ namespace HiddenBattleship.BL
                 {
                     if (!string.IsNullOrEmpty(player.Password))
                     {
-                        using (HiddenBattleshipEntities hb = new HiddenBattleshipEntities(options))
+                        using (HiddenBattleshipEntities hb = new HiddenBattleshipEntities())
                         {
                             tblPlayer userrow = hb.tblPlayers.FirstOrDefault(p => p.UserName == player.UserName);
 

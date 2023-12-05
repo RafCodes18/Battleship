@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using HiddenBattleship.BL;
+using Microsoft.Extensions.Hosting;
 
 namespace HiddenBattleship.MVC.UI.Controllers
 {
-    [Authorize]
+  
     public class ProfileController : Controller
     {
+
         public void SetUser(Player player)
         {
             if (player != null)
@@ -28,9 +30,9 @@ namespace HiddenBattleship.MVC.UI.Controllers
         // GET: ProfileController
         public ActionResult Index()
         {
-            if(HttpContext.Session.GetObject<Player>("player") != null)
+            if(HttpContext.Session.GetObject<Player>("player") == null)
             {
-                return View();
+                return RedirectToAction("CreateAccount", "Profile");
             }
             return View();
         }
@@ -49,7 +51,7 @@ namespace HiddenBattleship.MVC.UI.Controllers
             try
             {
                 bool result = PlayerManager.Login(player);
-                if (HttpContext != null) SetUser(player);
+                if (HttpContext != null && result == true) SetUser(player);
 
                 if (TempData?["returnUrl"] != null)
                     return Redirect(TempData["returnUrl"]?.ToString());
@@ -61,6 +63,12 @@ namespace HiddenBattleship.MVC.UI.Controllers
                 ViewBag.Error = ex.Message;
                 return View(player);
             }
+        }
+
+        //GET
+        public ActionResult CreateAccount()
+        {
+            return View();
         }
 
         // GET: ProfileController/Details/5

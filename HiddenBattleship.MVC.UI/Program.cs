@@ -11,7 +11,7 @@ builder.Services.AddSignalR();
 builder.Services.AddAuthentication(
     CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(option => {
-        option.LoginPath = "/Profile/Login";
+        option.LoginPath = "/Profile/CreateAccount";
         option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
 
     });
@@ -51,7 +51,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession();
 app.UseAuthorization();
 
 app.MapControllerRoute(

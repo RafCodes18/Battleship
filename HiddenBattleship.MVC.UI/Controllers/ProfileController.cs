@@ -1,12 +1,72 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using HiddenBattleship.BL.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using HiddenBattleship.BL;
+using Microsoft.Extensions.Hosting;
 
 namespace HiddenBattleship.MVC.UI.Controllers
 {
+  
     public class ProfileController : Controller
     {
+
+        public void SetUser(Player player)
+        {
+            if (player != null)
+            {
+                HttpContext.Session.SetObject("player", player);              
+            }
+            else
+            {
+                HttpContext.Session.SetObject("username", string.Empty);
+
+            }
+        }
+
         // GET: ProfileController
         public ActionResult Index()
+        {
+            if(HttpContext.Session.GetObject<Player>("player") == null)
+            {
+                return RedirectToAction("CreateAccount", "Profile");
+            }
+            return View();
+        }
+
+        //GET
+        public IActionResult Login(string returnUrl)
+        {
+            TempData["returnUrl"] = returnUrl;
+            return View();
+        }
+
+        //POST
+        [HttpPost]
+        public IActionResult Login(Player player)
+        {
+            try
+            {
+                bool result = PlayerManager.Login(player);
+                if (HttpContext != null && result == true) SetUser(player);
+
+                if (TempData?["returnUrl"] != null)
+                    return Redirect(TempData["returnUrl"]?.ToString());
+                else
+                    return RedirectToAction(nameof(Index), "Home");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return View(player);
+            }
+        }
+
+        //GET
+        public ActionResult CreateAccount()
         {
             return View();
         }

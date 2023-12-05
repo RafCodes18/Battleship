@@ -24,7 +24,7 @@ namespace HiddenBattleShip.WPFUI
     public partial class GameList : Window
     {
         List<Game> games = new List<Game>();
-        string APIAddress = "https://localhost:7270/swagger/v1/swagger.json";
+        string APIAddress = "https://localhost:7270/api/";
         ApiClient apiClient;
         private readonly ILogger<GameList> logger;
 

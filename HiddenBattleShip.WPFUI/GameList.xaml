@@ -14,6 +14,6 @@
             </LinearGradientBrush>
         </Grid.Background>
         <DataGrid x:Name="dgGames" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,197,117"/>
-        <Button x:Name="btnGetGames" Content="Get Games" HorizontalAlignment="Left" Margin="10,329,0,0" VerticalAlignment="Top" Width="96" Click="btnGetGames_Click"/>
+        <Button x:Name="btnGetGames" Content="Get Games" HorizontalAlignment="Left" Margin="10,331,0,0" Width="96" Click="btnGetGames_Click" Height="20" VerticalAlignment="Top"/>
     </Grid>
 </Window>

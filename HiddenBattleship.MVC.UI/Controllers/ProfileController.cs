@@ -67,6 +67,11 @@ namespace HiddenBattleship.MVC.UI.Controllers
             }
         }
 
+        public ActionResult Logout()
+        {
+
+        }
+
         //GET
         public ActionResult CreateAccount()
         {

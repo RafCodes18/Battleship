@@ -69,7 +69,9 @@ namespace HiddenBattleship.MVC.UI.Controllers
 
         public ActionResult Logout()
         {
-
+            HttpContext.Session.SetObject("player", null);
+            HttpContext.Session.SetObject("username", null);
+            return RedirectToAction(nameof(Index), "Home");
         }
 
         //GET

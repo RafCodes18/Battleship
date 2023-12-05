@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace HiddenBattleShipWPFUI
+namespace HiddenBattleShip.WPFUI
 {
     /// <summary>
     /// Interaction logic for App.xaml

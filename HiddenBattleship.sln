@@ -28,7 +28,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HiddenBattleship.Reporting"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiddenBattleship.Utility", "HiddenBattleship.Utility\HiddenBattleship.Utility.csproj", "{C4008B8D-8A90-4E97-9928-D417C492374D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiddenBattleShipWPFUI", "HiddenBattleShipWPFUI\HiddenBattleShipWPFUI.csproj", "{5A9C9AB1-2E8B-4379-A81B-A642329DB4EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiddenBattleShip.WPFUI", "HiddenBattleShipWPFUI\HiddenBattleShip.WPFUI.csproj", "{5A9C9AB1-2E8B-4379-A81B-A642329DB4EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

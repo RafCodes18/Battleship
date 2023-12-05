@@ -13,6 +13,12 @@ namespace HiddenBattleship.MVC.UI.Controllers
 
             //get user from session
 
+            Player _player = HttpContext.Session.GetObject<Player>("player");
+            if(_player == null)
+            {
+                return RedirectToAction("CreateAccount", "Profile");
+            }
+
             //create new game ID, store the gameID and user ID, 
 
             //get data of gameId

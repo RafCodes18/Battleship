@@ -1,6 +1,8 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http;
+@{
     ViewBag.Title = "Hidden Battleship";
 }
+@inject IHttpContextAccessor HttpContextAccessor
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +20,10 @@
                 font-family: 'Sans Serif Collection';       
                 font-size: x-large;
             }
+
+            .blue{
+                color: royalblue;
+            }
                
         </style>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -34,6 +40,16 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Profile" asp-route-id="" asp-action="Index">Profile</a>
+                        </li>
+                    </ul>
+
+                    <!--WELCOME USER-->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            @{
+                                var fullname = HttpContextAccessor.HttpContext?.Session.GetString("username");                                
+                            }
+                            <a href="../Profile/Index" class="nav-link text-dark">Welcome, <span class="blue">@fullname</span></a>
                         </li>
                     </ul>
                 </div>

@@ -34,8 +34,8 @@ public partial class HiddenBattleshipEntities : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        // optionsBuilder.UseLazyLoadingProxies();
-        // => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=HiddenBattleship.DB;Integrated Security=True");
+         //optionsBuilder.UseLazyLoadingProxies();
+      optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=HiddenBattleship.DB;Integrated Security=True");
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

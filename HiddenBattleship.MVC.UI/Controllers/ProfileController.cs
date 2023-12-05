@@ -18,7 +18,8 @@ namespace HiddenBattleship.MVC.UI.Controllers
         {
             if (player != null)
             {
-                HttpContext.Session.SetObject("player", player);              
+                HttpContext.Session.SetObject("player", player);
+                HttpContext.Session.SetString("username", player.UserName);
             }
             else
             {
@@ -56,7 +57,8 @@ namespace HiddenBattleship.MVC.UI.Controllers
                 if (TempData?["returnUrl"] != null)
                     return Redirect(TempData["returnUrl"]?.ToString());
                 else
-                    return RedirectToAction(nameof(Index), "Home");
+          
+                    return RedirectToAction("Live" , "Game");
             }
             catch (Exception ex)
             {

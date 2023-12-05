@@ -77,7 +77,7 @@ namespace HiddenBattleship.BL
             }
         }
 
-        public bool Login(Player player)
+        public static bool Login(Player player)
         {
             try
             {

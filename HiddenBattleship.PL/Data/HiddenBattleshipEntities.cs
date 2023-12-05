@@ -6,7 +6,7 @@ namespace HiddenBattleship.PL;
 public partial class HiddenBattleshipEntities : DbContext
 {
     Guid[] playerId = new Guid[5];
-    Guid[] gameId = new Guid[4];
+    Guid[] gameId = new Guid[8];
     Guid[] gamemoveId = new Guid[4];
     Guid[] chathistoryId = new Guid[12];
     Guid[] shipId = new Guid[5];
@@ -128,7 +128,7 @@ public partial class HiddenBattleshipEntities : DbContext
             .WithMany(g => g.tblChatHistories)
             .HasForeignKey(p => p.Sender);
 
-            // 1 to many relationship with The Player table
+            //1 to many relationship with The Player table
             entity.HasOne(p => p.Player)
             .WithMany(g => g.tblChatHistories)
             .HasForeignKey(p => p.Receiver);
@@ -274,10 +274,14 @@ public partial class HiddenBattleshipEntities : DbContext
 
         List<tblGame> Games = new List<tblGame>
         {
-           new tblGame {Id = gameId[0], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = true, GameId = 0},
-           new tblGame {Id = gameId[1], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = false, GameId = 1},
-           new tblGame {Id = gameId[2], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = false, GameId = 2},
-           new tblGame {Id = gameId[3], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,20,30), IsOver = false, GameId = 3}
+           new tblGame {Id = gameId[0], Player1 = playerId[0], Player2 = playerId[1], WinnerId = playerId[0], LoserId = playerId[1], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(1,11,30), IsOver = true, GameId = 0},
+           new tblGame {Id = gameId[1], Player1 = playerId[0], Player2 = playerId[2], WinnerId = playerId[2], LoserId = playerId[2], StartTime = new TimeSpan(2,21,31), EndTime = new TimeSpan(2,20,30), IsOver = false, GameId = 1},
+           new tblGame {Id = gameId[2], Player1 = playerId[0], Player2 = playerId[3], WinnerId = playerId[0], LoserId = playerId[3], StartTime = new TimeSpan(1,22,32), EndTime = new TimeSpan(3,20,30), IsOver = false, GameId = 2},
+           new tblGame {Id = gameId[3], Player1 = playerId[1], Player2 = playerId[2], WinnerId = playerId[1], LoserId = playerId[2], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(4,20,30), IsOver = false, GameId = 3},
+           new tblGame {Id = gameId[4], Player1 = playerId[1], Player2 = playerId[3], WinnerId = playerId[1], LoserId = playerId[3], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(5,20,30), IsOver = true, GameId = 4},
+           new tblGame {Id = gameId[5], Player1 = playerId[1], Player2 = playerId[3], WinnerId = playerId[1], LoserId = playerId[3], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(6,20,30), IsOver = false, GameId = 5},
+           new tblGame {Id = gameId[6], Player1 = playerId[2], Player2 = playerId[3], WinnerId = playerId[2], LoserId = playerId[3], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(7,20,30), IsOver = false, GameId = 6},
+           new tblGame {Id = gameId[7], Player1 = playerId[2], Player2 = playerId[3], WinnerId = playerId[2], LoserId = playerId[3], StartTime = new TimeSpan(1,20,30), EndTime = new TimeSpan(8,20,30), IsOver = false, GameId = 7}
         };
         modelBuilder.Entity<tblGame>().HasData(Games);
     }

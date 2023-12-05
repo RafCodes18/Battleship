@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace HiddenBattleship.PL.Migrations
 {
     /// <inheritdoc />
-    public partial class AddMigrationCreateDatabase : Migration
+    public partial class CreateDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -125,11 +125,11 @@ namespace HiddenBattleship.PL.Migrations
                 columns: new[] { "Id", "Email", "Password", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("062a0160-ed33-478a-9bad-abc5e3b9ab13"), "uTest@yahoo.com", "qUqP5cyxm6YcTAhz05Hph5gvu9M=", "uTest" },
-                    { new Guid("202d9bf5-a700-4085-8443-9a53990ef8b2"), "456@gmail.com", "YRfkWrV/hmDYZqIcpenSwx28GUU=", "Timmy" },
-                    { new Guid("2ec4ade3-309b-423b-a6f6-a60f420b8f7a"), "789@yahoo.com", "7DUut/wAuxmp4mKiKKNr9eEUeG0=", "LoveMyCats1155" },
-                    { new Guid("7649c192-1e63-4b9f-90ef-23f66679a11c"), "aaabbb@amazon.com", "3oUt/zAHVa53n7yyDzprXz4Rxs8=", "Skeert" },
-                    { new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), "123@gmail.com", "W6ph5Mm5Pz8GgiULbPgzG37mj9g=", "Sh1PD3STR0Y3R" }
+                    { new Guid("1ec34753-526c-4ccb-bd97-331d4912e519"), "123@gmail.com", "W6ph5Mm5Pz8GgiULbPgzG37mj9g=", "Sh1PD3STR0Y3R" },
+                    { new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), "789@yahoo.com", "7DUut/wAuxmp4mKiKKNr9eEUeG0=", "LoveMyCats1155" },
+                    { new Guid("d03a3240-744b-4851-aca3-dd931e88ee23"), "uTest@yahoo.com", "qUqP5cyxm6YcTAhz05Hph5gvu9M=", "uTest" },
+                    { new Guid("d443d28c-97cd-41a4-b297-9afff57d58c4"), "aaabbb@amazon.com", "3oUt/zAHVa53n7yyDzprXz4Rxs8=", "Skeert" },
+                    { new Guid("e6f5d410-7877-4798-b90a-d1934ea55817"), "456@gmail.com", "YRfkWrV/hmDYZqIcpenSwx28GUU=", "Timmy" }
                 });
 
             migrationBuilder.InsertData(
@@ -137,11 +137,11 @@ namespace HiddenBattleship.PL.Migrations
                 columns: new[] { "Id", "ShipType", "Size" },
                 values: new object[,]
                 {
-                    { new Guid("1a1c2421-cf85-4cab-b79b-ee468e34a14b"), 1, 3 },
-                    { new Guid("2b413181-cd25-46c4-8ddd-c41a84faafdb"), 3, 2 },
-                    { new Guid("6a575606-ee44-4e58-a0af-df2ada76995a"), 4, 5 },
-                    { new Guid("bde3bbe9-0e70-474f-a800-226bf4ae6e2c"), 0, 4 },
-                    { new Guid("d5c75971-d3c6-46a7-933f-765d39c97f47"), 2, 2 }
+                    { new Guid("358f1a8a-d620-4c95-a4c8-9582762a1dd9"), 1, 3 },
+                    { new Guid("7bd24bab-35b4-4b19-ab44-ea2138dcfe3a"), 2, 2 },
+                    { new Guid("82ac0e17-4a91-4040-8e8f-15a3065a36f7"), 0, 4 },
+                    { new Guid("9b82dd7f-07af-4ff2-a882-40512c05dd9c"), 4, 5 },
+                    { new Guid("c355a5d3-8067-4ea9-879b-5c066902c842"), 3, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -149,10 +149,14 @@ namespace HiddenBattleship.PL.Migrations
                 columns: new[] { "Id", "EndTime", "GameId", "IsOver", "LoserId", "Player1", "Player2", "StartTime", "WinnerId", "tblChatHistoryId" },
                 values: new object[,]
                 {
-                    { new Guid("33d64902-2d8d-492e-9136-b083abb978f6"), new TimeSpan(0, 1, 20, 30, 0), 1, false, new Guid("202d9bf5-a700-4085-8443-9a53990ef8b2"), new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), new Guid("202d9bf5-a700-4085-8443-9a53990ef8b2"), new TimeSpan(0, 1, 20, 30, 0), new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), null },
-                    { new Guid("a3b8ac6e-abe6-4b36-acc9-1d33fdb6e55f"), new TimeSpan(0, 1, 20, 30, 0), 2, false, new Guid("202d9bf5-a700-4085-8443-9a53990ef8b2"), new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), new Guid("202d9bf5-a700-4085-8443-9a53990ef8b2"), new TimeSpan(0, 1, 20, 30, 0), new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), null },
-                    { new Guid("aa1a9afe-4989-4c76-83ac-94e15985ec95"), new TimeSpan(0, 1, 20, 30, 0), 3, false, new Guid("202d9bf5-a700-4085-8443-9a53990ef8b2"), new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), new Guid("202d9bf5-a700-4085-8443-9a53990ef8b2"), new TimeSpan(0, 1, 20, 30, 0), new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), null },
-                    { new Guid("d0683cf5-b054-4f48-8e65-c8c03d7252f9"), new TimeSpan(0, 1, 20, 30, 0), 0, true, new Guid("202d9bf5-a700-4085-8443-9a53990ef8b2"), new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), new Guid("202d9bf5-a700-4085-8443-9a53990ef8b2"), new TimeSpan(0, 1, 20, 30, 0), new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), null }
+                    { new Guid("01d195d0-4a11-460c-93c5-747b3c9ae47c"), new TimeSpan(0, 6, 20, 30, 0), 5, false, new Guid("d443d28c-97cd-41a4-b297-9afff57d58c4"), new Guid("e6f5d410-7877-4798-b90a-d1934ea55817"), new Guid("d443d28c-97cd-41a4-b297-9afff57d58c4"), new TimeSpan(0, 1, 20, 30, 0), new Guid("e6f5d410-7877-4798-b90a-d1934ea55817"), null },
+                    { new Guid("0dcf22df-5679-4656-805d-f9619103802f"), new TimeSpan(0, 1, 11, 30, 0), 0, true, new Guid("e6f5d410-7877-4798-b90a-d1934ea55817"), new Guid("1ec34753-526c-4ccb-bd97-331d4912e519"), new Guid("e6f5d410-7877-4798-b90a-d1934ea55817"), new TimeSpan(0, 1, 20, 30, 0), new Guid("1ec34753-526c-4ccb-bd97-331d4912e519"), null },
+                    { new Guid("242a0d3a-c8a5-4696-840a-c92f73068e4c"), new TimeSpan(0, 7, 20, 30, 0), 6, false, new Guid("d443d28c-97cd-41a4-b297-9afff57d58c4"), new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new Guid("d443d28c-97cd-41a4-b297-9afff57d58c4"), new TimeSpan(0, 1, 20, 30, 0), new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), null },
+                    { new Guid("2c88036e-1494-49e1-b929-e49a456ca384"), new TimeSpan(0, 3, 20, 30, 0), 2, false, new Guid("d443d28c-97cd-41a4-b297-9afff57d58c4"), new Guid("1ec34753-526c-4ccb-bd97-331d4912e519"), new Guid("d443d28c-97cd-41a4-b297-9afff57d58c4"), new TimeSpan(0, 1, 22, 32, 0), new Guid("1ec34753-526c-4ccb-bd97-331d4912e519"), null },
+                    { new Guid("2e448797-7627-4a85-9aaf-a8436edd320e"), new TimeSpan(0, 4, 20, 30, 0), 3, false, new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new Guid("e6f5d410-7877-4798-b90a-d1934ea55817"), new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new TimeSpan(0, 1, 20, 30, 0), new Guid("e6f5d410-7877-4798-b90a-d1934ea55817"), null },
+                    { new Guid("9b2d4276-570a-44b0-bf19-f6c52bebb115"), new TimeSpan(0, 2, 20, 30, 0), 1, false, new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new Guid("1ec34753-526c-4ccb-bd97-331d4912e519"), new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new TimeSpan(0, 2, 21, 31, 0), new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), null },
+                    { new Guid("a5202682-3cdb-4f63-8cc2-9d661b9a720f"), new TimeSpan(0, 8, 20, 30, 0), 7, false, new Guid("d443d28c-97cd-41a4-b297-9afff57d58c4"), new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new Guid("d443d28c-97cd-41a4-b297-9afff57d58c4"), new TimeSpan(0, 1, 20, 30, 0), new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), null },
+                    { new Guid("c44a09b3-010c-4cf0-8e24-7fe746c4ebd8"), new TimeSpan(0, 5, 20, 30, 0), 4, true, new Guid("d443d28c-97cd-41a4-b297-9afff57d58c4"), new Guid("e6f5d410-7877-4798-b90a-d1934ea55817"), new Guid("d443d28c-97cd-41a4-b297-9afff57d58c4"), new TimeSpan(0, 1, 20, 30, 0), new Guid("e6f5d410-7877-4798-b90a-d1934ea55817"), null }
                 });
 
             migrationBuilder.InsertData(
@@ -160,18 +164,18 @@ namespace HiddenBattleship.PL.Migrations
                 columns: new[] { "Id", "ChatHistoryId", "GameId", "Message", "Receiver", "Sender", "Timestamp" },
                 values: new object[,]
                 {
-                    { new Guid("14c6e599-dc81-4d93-a9b0-2ac22908eee6"), 1, new Guid("d0683cf5-b054-4f48-8e65-c8c03d7252f9"), "You missed, LOL", new Guid("202d9bf5-a700-4085-8443-9a53990ef8b2"), new Guid("2ec4ade3-309b-423b-a6f6-a60f420b8f7a"), new TimeSpan(0, 5, 1, 20, 0) },
-                    { new Guid("1ae99457-c26c-487f-a5df-d73bd6772951"), 3, new Guid("a3b8ac6e-abe6-4b36-acc9-1d33fdb6e55f"), "You're hacking, i'm telling my dad he works at Jagex!!11!", new Guid("2ec4ade3-309b-423b-a6f6-a60f420b8f7a"), new Guid("2ec4ade3-309b-423b-a6f6-a60f420b8f7a"), new TimeSpan(0, 1, 28, 19, 0) },
-                    { new Guid("2a84235b-e5d8-4d1c-88de-fac8982b26ff"), 2, new Guid("33d64902-2d8d-492e-9136-b083abb978f6"), "Follow my twitch stream?", new Guid("2ec4ade3-309b-423b-a6f6-a60f420b8f7a"), new Guid("7649c192-1e63-4b9f-90ef-23f66679a11c"), new TimeSpan(0, 11, 51, 14, 0) },
-                    { new Guid("59435841-2e36-4144-8dfc-1b2422872126"), 1, new Guid("d0683cf5-b054-4f48-8e65-c8c03d7252f9"), "You're hacking, i'm telling my dad he works at Jagex!!11!", new Guid("202d9bf5-a700-4085-8443-9a53990ef8b2"), new Guid("2ec4ade3-309b-423b-a6f6-a60f420b8f7a"), new TimeSpan(0, 1, 28, 19, 0) },
-                    { new Guid("67fd82f5-6f06-4dd6-bf13-59ade25d31d3"), 2, new Guid("33d64902-2d8d-492e-9136-b083abb978f6"), "You missed, LOL", new Guid("7649c192-1e63-4b9f-90ef-23f66679a11c"), new Guid("2ec4ade3-309b-423b-a6f6-a60f420b8f7a"), new TimeSpan(0, 5, 1, 20, 0) },
-                    { new Guid("90e20966-b0d0-4d61-8517-32ba7510df0e"), 3, new Guid("a3b8ac6e-abe6-4b36-acc9-1d33fdb6e55f"), "Follow my twitch stream?", new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), new TimeSpan(0, 11, 51, 14, 0) },
-                    { new Guid("9a94b4c9-fa7f-469f-b919-4603ee7f7b41"), 3, new Guid("a3b8ac6e-abe6-4b36-acc9-1d33fdb6e55f"), "1v1 me", new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), new TimeSpan(0, 4, 10, 55, 0) },
-                    { new Guid("b9be3b0b-8045-4c64-a2ec-5c337d3170e4"), 2, new Guid("33d64902-2d8d-492e-9136-b083abb978f6"), "You're hacking, i'm telling my dad he works at Jagex!!11!", new Guid("7649c192-1e63-4b9f-90ef-23f66679a11c"), new Guid("2ec4ade3-309b-423b-a6f6-a60f420b8f7a"), new TimeSpan(0, 1, 28, 19, 0) },
-                    { new Guid("c113166c-8b56-475e-9e3c-8892cb218a38"), 1, new Guid("d0683cf5-b054-4f48-8e65-c8c03d7252f9"), "Follow my twitch stream?", new Guid("2ec4ade3-309b-423b-a6f6-a60f420b8f7a"), new Guid("202d9bf5-a700-4085-8443-9a53990ef8b2"), new TimeSpan(0, 11, 51, 14, 0) },
-                    { new Guid("c59f3f49-d46a-4b3b-a6ed-6dda95b2760c"), 3, new Guid("a3b8ac6e-abe6-4b36-acc9-1d33fdb6e55f"), "You missed, LOL", new Guid("2ec4ade3-309b-423b-a6f6-a60f420b8f7a"), new Guid("2ec4ade3-309b-423b-a6f6-a60f420b8f7a"), new TimeSpan(0, 5, 1, 20, 0) },
-                    { new Guid("cbaf1ffe-d1f7-4312-a4ab-83049be5dad9"), 1, new Guid("d0683cf5-b054-4f48-8e65-c8c03d7252f9"), "1v1 me", new Guid("2ec4ade3-309b-423b-a6f6-a60f420b8f7a"), new Guid("202d9bf5-a700-4085-8443-9a53990ef8b2"), new TimeSpan(0, 4, 10, 55, 0) },
-                    { new Guid("e3da31a6-b34c-4c61-ba30-cf9b6fcb6952"), 2, new Guid("33d64902-2d8d-492e-9136-b083abb978f6"), "1v1 me", new Guid("2ec4ade3-309b-423b-a6f6-a60f420b8f7a"), new Guid("7649c192-1e63-4b9f-90ef-23f66679a11c"), new TimeSpan(0, 4, 10, 55, 0) }
+                    { new Guid("02cc8c67-b2de-4020-a111-90b48337bde8"), 1, new Guid("0dcf22df-5679-4656-805d-f9619103802f"), "You're hacking, i'm telling my dad he works at Jagex!!11!", new Guid("e6f5d410-7877-4798-b90a-d1934ea55817"), new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new TimeSpan(0, 1, 28, 19, 0) },
+                    { new Guid("10083e34-f4eb-4eb8-9f09-abfe2ee00eb3"), 1, new Guid("0dcf22df-5679-4656-805d-f9619103802f"), "1v1 me", new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new Guid("e6f5d410-7877-4798-b90a-d1934ea55817"), new TimeSpan(0, 4, 10, 55, 0) },
+                    { new Guid("447856bd-e6b7-4cd2-b0f5-40ad2aefc643"), 3, new Guid("2c88036e-1494-49e1-b929-e49a456ca384"), "Follow my twitch stream?", new Guid("1ec34753-526c-4ccb-bd97-331d4912e519"), new Guid("1ec34753-526c-4ccb-bd97-331d4912e519"), new TimeSpan(0, 11, 51, 14, 0) },
+                    { new Guid("6d9a37db-97e3-40ed-9526-b6a0dc576b91"), 2, new Guid("9b2d4276-570a-44b0-bf19-f6c52bebb115"), "You're hacking, i'm telling my dad he works at Jagex!!11!", new Guid("d443d28c-97cd-41a4-b297-9afff57d58c4"), new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new TimeSpan(0, 1, 28, 19, 0) },
+                    { new Guid("86f3db31-377a-4422-b0c7-fbab856e17af"), 2, new Guid("9b2d4276-570a-44b0-bf19-f6c52bebb115"), "1v1 me", new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new Guid("d443d28c-97cd-41a4-b297-9afff57d58c4"), new TimeSpan(0, 4, 10, 55, 0) },
+                    { new Guid("93358209-c8c7-427d-a3b7-bbde753c4c38"), 2, new Guid("9b2d4276-570a-44b0-bf19-f6c52bebb115"), "Follow my twitch stream?", new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new Guid("d443d28c-97cd-41a4-b297-9afff57d58c4"), new TimeSpan(0, 11, 51, 14, 0) },
+                    { new Guid("a2ebdec4-7275-4028-bcb1-b3a036971d6a"), 1, new Guid("0dcf22df-5679-4656-805d-f9619103802f"), "Follow my twitch stream?", new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new Guid("e6f5d410-7877-4798-b90a-d1934ea55817"), new TimeSpan(0, 11, 51, 14, 0) },
+                    { new Guid("af44a1ed-b641-409d-bb88-1a1951c00056"), 3, new Guid("2c88036e-1494-49e1-b929-e49a456ca384"), "1v1 me", new Guid("1ec34753-526c-4ccb-bd97-331d4912e519"), new Guid("1ec34753-526c-4ccb-bd97-331d4912e519"), new TimeSpan(0, 4, 10, 55, 0) },
+                    { new Guid("e09e062b-9b48-41bb-9cdd-18543814eecb"), 1, new Guid("0dcf22df-5679-4656-805d-f9619103802f"), "You missed, LOL", new Guid("e6f5d410-7877-4798-b90a-d1934ea55817"), new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new TimeSpan(0, 5, 1, 20, 0) },
+                    { new Guid("e31c401e-78a5-4e10-8a2a-ba869057a1ea"), 3, new Guid("2c88036e-1494-49e1-b929-e49a456ca384"), "You missed, LOL", new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new TimeSpan(0, 5, 1, 20, 0) },
+                    { new Guid("e9bc2e29-83da-4634-ba57-fd8a06e8132e"), 2, new Guid("9b2d4276-570a-44b0-bf19-f6c52bebb115"), "You missed, LOL", new Guid("d443d28c-97cd-41a4-b297-9afff57d58c4"), new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new TimeSpan(0, 5, 1, 20, 0) },
+                    { new Guid("f8dc4185-5655-41c8-aad4-5d14f69585b2"), 3, new Guid("2c88036e-1494-49e1-b929-e49a456ca384"), "You're hacking, i'm telling my dad he works at Jagex!!11!", new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new Guid("8d520d13-a349-471f-9998-0743604ef4bc"), new TimeSpan(0, 1, 28, 19, 0) }
                 });
 
             migrationBuilder.InsertData(
@@ -179,10 +183,10 @@ namespace HiddenBattleship.PL.Migrations
                 columns: new[] { "Id", "GameId", "GameMoveId", "IsHit", "PlayerId", "TargetCoordinates", "TimeStamp" },
                 values: new object[,]
                 {
-                    { new Guid("047818f6-9e29-4101-be05-b58fa107fbd9"), new Guid("d0683cf5-b054-4f48-8e65-c8c03d7252f9"), 2, true, new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), "A5", new TimeSpan(0, 1, 20, 30, 0) },
-                    { new Guid("3d703040-44fc-4e60-a831-d25438fd395c"), new Guid("d0683cf5-b054-4f48-8e65-c8c03d7252f9"), 3, true, new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), "A5", new TimeSpan(0, 1, 20, 30, 0) },
-                    { new Guid("9a295282-a519-43ab-9440-88dddfd64d64"), new Guid("d0683cf5-b054-4f48-8e65-c8c03d7252f9"), 0, true, new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), "A5", new TimeSpan(0, 1, 20, 30, 0) },
-                    { new Guid("a25fda1b-97b1-46a3-8dc8-ca1a07214360"), new Guid("d0683cf5-b054-4f48-8e65-c8c03d7252f9"), 1, true, new Guid("a6df7b6b-8e07-4cbb-aa82-500c2cb3d897"), "A5", new TimeSpan(0, 1, 20, 30, 0) }
+                    { new Guid("59c277e0-6647-4f26-b089-fea83580a717"), new Guid("0dcf22df-5679-4656-805d-f9619103802f"), 3, true, new Guid("1ec34753-526c-4ccb-bd97-331d4912e519"), "A5", new TimeSpan(0, 1, 20, 30, 0) },
+                    { new Guid("5a408bcf-c82f-47a2-8cf3-30f8403e3dab"), new Guid("0dcf22df-5679-4656-805d-f9619103802f"), 0, true, new Guid("1ec34753-526c-4ccb-bd97-331d4912e519"), "A5", new TimeSpan(0, 1, 20, 30, 0) },
+                    { new Guid("7a52dd76-9968-4f90-9ec6-d74a396fc978"), new Guid("0dcf22df-5679-4656-805d-f9619103802f"), 2, true, new Guid("1ec34753-526c-4ccb-bd97-331d4912e519"), "A5", new TimeSpan(0, 1, 20, 30, 0) },
+                    { new Guid("c5512b58-7423-48c0-9a92-708115e7eb37"), new Guid("0dcf22df-5679-4656-805d-f9619103802f"), 1, true, new Guid("1ec34753-526c-4ccb-bd97-331d4912e519"), "A5", new TimeSpan(0, 1, 20, 30, 0) }
                 });
 
             migrationBuilder.CreateIndex(

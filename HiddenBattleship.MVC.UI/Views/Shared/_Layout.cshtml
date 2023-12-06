@@ -47,8 +47,9 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             @{
-                                var fullname = HttpContextAccessor.HttpContext?.Session.GetString("username");                                
+                                var fullname = HttpContextAccessor.HttpContext?.Session.GetString("username");                          
                             }
+
                             <a href="../Profile/Index" class="nav-link text-dark">Welcome... <span class="blue">@fullname</span></a>
                         </li>
                     </ul>

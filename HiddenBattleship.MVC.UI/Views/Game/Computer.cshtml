@@ -111,7 +111,7 @@
 
 
     button {
-        padding: 5px;
+        padding: 2px;
         color: white;
         border-radius: 5px;
         background-color: #55d6be;
@@ -122,7 +122,7 @@
         margin-left: 20px;
         border: 1px solid grey;
         margin-bottom: 60px;
-        margin-top:
+       
     }
 
         button:hover {
@@ -143,8 +143,8 @@
     .strtBtn {
         margin-left: 20px;
         font-size: x-large;
-        padding: 15px;
-        margin-top: 0;
+        padding: 5px;
+        margin-top: 2px;
     }
 
     #btnFlip {
@@ -181,11 +181,32 @@
     .opp-board{
         margin-left: 300px;
     }
+
+    .game-info {
+        text-align: left;
+        display: flex;
+        margin-left: auto;
+        align-content: center;
+        font-size: large;
+        white-space: nowrap;
+        color: royalblue;
+        position: absolute;
+        top: 20px;
+    }
+
+    .turn {
+        margin-right: 80px;
+    }
+
 </style>
 
 
 <div class="hero">
-    
+      <div id="game-info" class="game-info">
+                        <p class="turn">Turn: <span id="turn-display"></span></p>
+                        <p>Info: <span id="info"></span></p>
+                    </div>
+
 
     <div class="titles">
         <div class="your-board">Your Board</div>

@@ -39,6 +39,7 @@ nav {
 
     .btn-main:hover{
         background-color: #b67a67;
+        color: white;   
     }
     .btn-main:focus {
         background-color: #b67a67;
@@ -46,4 +47,12 @@ nav {
 
 .drk {
     background-color: #cec6c6;
+}
+
+.cust-link {
+    color: #2D4356;
+}
+
+.cust-link:hover{
+    color: black;
 }

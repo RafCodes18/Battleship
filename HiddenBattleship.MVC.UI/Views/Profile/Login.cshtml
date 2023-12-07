@@ -21,10 +21,11 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             background-color: #fff;
             border-radius: 5px;
-        }
+            margin-top: 15vh;
+    }
         
     </style>
-<div class="account-form">
+<div class="account-form drk">
     <h2 class="text-center mb-4">Login To Account</h2>
 <form method="Post">
             <!-- Login with Username Input -->
@@ -38,8 +39,13 @@
                 <label for="loginPassword">Password</label>
             <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" name="Password">
             </div>
-
-            <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary btn-block" asp-action="Login" asp-controller="Profile">Log In</button>
-        </form>
+        <div class="form-group">
+            <hr>
+            <p class="text-center">No account? <a href="../Profile/CreateAccount">Sign Up</a></p>
         </div>
+            <div class="col text-center">
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-block mt-2 btn-main " asp-action="Login" asp-controller="Profile">Log In</button>
+            </div>
+        </form>
+        </div>  

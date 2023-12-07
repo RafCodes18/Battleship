@@ -13,6 +13,7 @@ namespace HiddenBattleship.MVC.UI.Controllers
         {
             _hubContext = hubContext;
         }
+
         //TODO: Live action - Raf still WIP
         //GET: Game/Live/gameid
         public ActionResult Live(string gameId, Player player)

@@ -28,7 +28,7 @@
 
     .ships-container {
         width: 500px;
-        height: 80px;
+        height: 120px;
         background-color: #b7c3c3;
         display: flex;
         align-items: center;
@@ -142,14 +142,14 @@
 
     .strtBtn {
         margin-left: 20px;
-        font-size: x-large;
+        font-size: xx-large;
         padding: 5px;
         margin-top: 2px;
     }
 
     #btnFlip {
         background-color: #bf1fbf;
-        margin-top: 0px;
+        margin-top: 25px;
         margin-bottom: 0;
     }
 
@@ -198,6 +198,10 @@
         margin-right: 80px;
     }
 
+    .bottoms-bot{
+        display: flex;
+    }
+
 </style>
 
 
@@ -217,6 +221,8 @@
     </div>
 
     <div class="info">Drag the ships below to your board.</div>
+  
+    <div class="bottoms-bot">
     <div class="ships-container">
         <div id="0" class="ship1" draggable="true"></div>
         <div id="1" class="ship2" draggable="true"></div>
@@ -227,6 +233,7 @@
 
     <div class="buttons">
         <button id="btnFlip">Flip Pieces</button>
+    </div>
     </div>
     <button id="btnStart" class="strtBtn" onclick="startGame()">Start Game</button>
 

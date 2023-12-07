@@ -31,23 +31,23 @@
 
     <div class="account-form drk">
         <h2 class="text-center mb-4">Create Account</h2>
-        <form>
+        <form asp-controller="Profile" asp-action="CreateAccount" method="Post">
             <!-- Username Input -->
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                <input type="text" class="form-control" id="username" placeholder="Enter your username" name="UserName">
             </div>
-
+            a
             <!-- Password Input -->
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                <input type="password" class="form-control" id="password" name="Password" placeholder="Enter your password">
             </div>
 
             <!-- Email Input -->
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                <input type="email" class="form-control" id="email" name="Email" placeholder="Enter your email">
             </div>
         <div class="col text-center">
             <button type="submit" class="btn btn-primary btn-block  mt-3 btn-main">Create Account </button>

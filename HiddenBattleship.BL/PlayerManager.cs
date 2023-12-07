@@ -34,12 +34,12 @@ namespace HiddenBattleship.BL
         }
 
 
-        public int Insert(Player player, bool rollback = false)
+        public static int Insert(Player player, bool rollback = false)
         {
             try
             {
                 int results = 0;
-                using (HiddenBattleshipEntities hb = new HiddenBattleshipEntities(options))
+                using (HiddenBattleshipEntities hb = new HiddenBattleshipEntities())
                 {
                     bool inuse = hb.tblPlayers.Any(p => p.UserName.Trim().ToUpper() == player.UserName.Trim().ToUpper());
 

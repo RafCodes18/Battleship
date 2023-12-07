@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HiddenBattleship.UI", "HiddenBattleship.UI\HiddenBattleship.UI.csproj", "{21FB2E0A-BC57-41C6-871B-B959F07E7D94}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HiddenBattleship.BL.Models", "HiddenBattleship.BL.Models\HiddenBattleship.BL.Models.csproj", "{630F9F05-F341-4597-9B3B-761F0A495C45}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "HiddenBattleship.DB", "HiddenBattleship.DB\HiddenBattleship.DB.sqlproj", "{F0772104-5A30-41B8-AAD1-D633C5747B3A}"
@@ -36,10 +34,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{21FB2E0A-BC57-41C6-871B-B959F07E7D94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21FB2E0A-BC57-41C6-871B-B959F07E7D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21FB2E0A-BC57-41C6-871B-B959F07E7D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21FB2E0A-BC57-41C6-871B-B959F07E7D94}.Release|Any CPU.Build.0 = Release|Any CPU
 		{630F9F05-F341-4597-9B3B-761F0A495C45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{630F9F05-F341-4597-9B3B-761F0A495C45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{630F9F05-F341-4597-9B3B-761F0A495C45}.Release|Any CPU.ActiveCfg = Release|Any CPU

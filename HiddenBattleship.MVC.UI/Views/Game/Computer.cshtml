@@ -17,8 +17,8 @@
     }
 
     .game-board {
-        width: 200px;
-        height: 200px;
+        width: 400px;
+        height: 400px;
         display: flex;
         flex-wrap: wrap; <!--
         fills the game boards with boxes -->
@@ -35,52 +35,54 @@
         margin-top: 5px;
         justify-content: space-around;
         border-radius: 20px;
+        margin-left: 0px;
+        margin-bottom: 2px;
     }
 
     #games-container {
-        width: 500px;
+        width: 1000px;
         display: flex;
         justify-content: space-between;
     }
 
     .ship1 {
-        width: 20px;
-        height: 10px;
+        width: 40px;
+        height: 20px;
         background-color: black;
         border-radius: 3px;
     }
 
     .ship2 {
-        width: 30px;
-        height: 10px;
+        width: 60px;
+        height: 20px;
         background-color: hotpink;
         border-radius: 3px;
     }
 
     .ship3 {
-        width: 40px;
-        height: 10px;
+        width: 80px;
+        height: 20px;
         background-color: blue;
         border-radius: 3px;
     }
 
     .ship4 {
-        width: 50px;
-        height: 10px;
+        width: 100px;
+        height: 20px;
         background-color: orange;
         border-radius: 3px;
     }
 
     .ship5 {
-        width: 60px;
-        height: 10px;
+        width: 120px;
+        height: 20px;
         background-color: purple;
         border-radius: 3px;
     }
 
     .block {
-        width: 20px;
-        height: 20px;
+        width: 40px;
+        height: 40px;
                border: 1px solid grey;              ;
         border-radius: 2px;
 
@@ -103,14 +105,10 @@
     }
 
     .buttons {
-        margin-top: 20px;
+        margin-top: 2px;
+        margin-bottom: 2px;
     }
 
-    .game-info {
-        text-align: left; /* Align text to the left */
-
-        margin-left: -300px; /* Add some margin to the left for spacing */
-    }
 
     button {
         padding: 5px;
@@ -124,6 +122,7 @@
         margin-left: 20px;
         border: 1px solid grey;
         margin-bottom: 60px;
+        margin-top:
     }
 
         button:hover {
@@ -138,18 +137,20 @@
 
     .your-board {
         margin-right: 230px;
-        margin-left: -100px;
+        margin-left: -250px;
     }
 
     .strtBtn {
         margin-left: 20px;
         font-size: x-large;
         padding: 15px;
+        margin-top: 0;
     }
 
     #btnFlip {
         background-color: #bf1fbf;
-        margin-top: 10px;
+        margin-top: 0px;
+        margin-bottom: 0;
     }
 
         #btnFlip:hover {
@@ -176,14 +177,15 @@
     .info{
         margin-top: 15px;
     }
+
+    .opp-board{
+        margin-left: 300px;
+    }
 </style>
 
 
 <div class="hero">
-    <div id="game-info" class="game-info">
-        <p>Turn: <span id="turn-display"></span></p>
-        <p>Info: <span id="info"></span></p>
-    </div>
+    
 
     <div class="titles">
         <div class="your-board">Your Board</div>

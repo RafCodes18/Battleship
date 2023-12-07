@@ -8,7 +8,7 @@ namespace HiddenBattleship.MVC.UI.Controllers
     public class GameController : Controller
     {
         private readonly IHubContext<GameHub> _hubContext;
- 
+
         public GameController(IHubContext<GameHub> hubContext)
         {
             _hubContext = hubContext;
@@ -22,7 +22,7 @@ namespace HiddenBattleship.MVC.UI.Controllers
             //get user from session
 
             Player _player = HttpContext.Session.GetObject<Player>("player");
-            if(_player == null)
+            if (_player == null)
             {
                 return RedirectToAction("CreateAccount", "Profile");
             }
@@ -33,7 +33,7 @@ namespace HiddenBattleship.MVC.UI.Controllers
             var signalRConnection = new SignalRConnection(hub);
 
             //connect to the server
-            signalRConnection.Start();
+            // signalRConnection.Start();
 
             //run game logic 
 

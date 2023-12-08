@@ -16,6 +16,10 @@ builder.Services.AddAuthentication(
 
     });
 
+
+//add ability to access Http Context
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromSeconds(1800);

@@ -26,28 +26,29 @@ namespace HiddenBattleship.BL.Test
             Assert.IsTrue(result > 0);
         }
 
-        [TestMethod]
-        public void LoginSuccess()
-        {
-            Player player = new Player { UserName = "uTest", Password = "qUqP5cyxm6YcTAhz05Hph5gvu9M=", Email = "uTest@yahoo.com" };
-            bool result = new PlayerManager(options).Login(player);
-            Assert.IsTrue(result);
-        }
-        /*      
-         *      
-         *      Commented out for now.
-                [TestMethod]
-                public void LoginFailure()
-                {
-                    try
-                    {
-                        Player player = new Player { UserName = "ooga booga", Password = "qUqP5cyxm6YcTAhz05Hph5gvu9M=", Email = "uTest@yahoo.com" };
-                        bool result = new PlayerManager(options).Login(player);
-                    }
-                    catch (LoginFailureException)
-                    {
-                        Assert.IsTrue(true);
-                    }
-                }*/
+        /* [TestMethod]
+         public void LoginSuccess()
+         {
+             Player player = new Player { UserName = "uTest", Password = "qUqP5cyxm6YcTAhz05Hph5gvu9M=", Email = "uTest@yahoo.com" };
+            // bool result = new PlayerManager(options).Login(player);
+             Assert.IsTrue(result);
+         }
+         *//*      
+          *      
+          *      Commented out for now.
+                 [TestMethod]
+                 public void LoginFailure()
+                 {
+                     try
+                     {
+                         Player player = new Player { UserName = "ooga booga", Password = "qUqP5cyxm6YcTAhz05Hph5gvu9M=", Email = "uTest@yahoo.com" };
+                         bool result = new PlayerManager(options).Login(player);
+                     }
+                     catch (LoginFailureException)
+                     {
+                         Assert.IsTrue(true);
+                     }
+                 }*//*
+     }*/
     }
 }

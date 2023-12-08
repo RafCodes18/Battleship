@@ -2,7 +2,7 @@
 @using HiddenBattleship.BL.Models;
 @model Game
 @{
-    ViewBag.Title = "Playing someone...";
+    ViewBag.Title = "Playing Computer";
 }
 
 <style>
@@ -17,81 +17,83 @@
     }
 
     .game-board {
-        width: 200px;
-        height: 200px;
+        width: 400px;
+        height: 400px;
         display: flex;
         flex-wrap: wrap; <!--
         fills the game boards with boxes -->
+        outline: 1px solid black;
+        background-color: #505050;
     }
 
     .ships-container {
         width: 500px;
-        height: 80px;
-        background-color: #7ba0a0;
+        height: 120px;
+        background-color: #b7c3c3;
         display: flex;
         align-items: center;
         margin-top: 5px;
         justify-content: space-around;
+        border-radius: 20px;
+        margin-left: 0px;
+        margin-bottom: 2px;
     }
 
     #games-container {
-        width: 500px;
+        width: 1000px;
         display: flex;
         justify-content: space-between;
     }
 
     .ship1 {
-        width: 20px;
-        height: 10px;
-        background-color: black;
+        width: 40px;
+        height: 20px;
+        background-color: #C04DFF;
         border-radius: 3px;
     }
 
     .ship2 {
-        width: 30px;
-        height: 10px;
-        background-color: red;
+        width: 60px;
+        height: 20px;
+        background-color: #FF00AA;
         border-radius: 3px;
     }
 
     .ship3 {
-        width: 40px;
-        height: 10px;
-        background-color: blue;
+        width: 80px;
+        height: 20px;
+        background-color: #24E0FF;
         border-radius: 3px;
     }
 
     .ship4 {
-        width: 50px;
-        height: 10px;
+        width: 100px;
+        height: 20px;
         background-color: orange;
         border-radius: 3px;
     }
 
     .ship5 {
-        width: 60px;
-        height: 10px;
-        background-color: purple;
+        width: 120px;
+        height: 20px;
+        background-color: #E2E603;
         border-radius: 3px;
     }
 
     .block {
-        width: 20px;
-        height: 20px;
-        /*        border: 1px solid black; */
-        border-radius: 3px;
+        width: 40px;
+        height: 40px;
+        border: 1px solid grey;
+        ;
+        border-radius: 2px;
     }
 
     .hover {
         background-color: grey;
     }
 
-    .boom {
-        background-color: red;
-    }
-
     .empty {
-        background-color: grey;
+        background-color: white;
     }
 
     .hero {
@@ -103,17 +105,13 @@
     }
 
     .buttons {
-        margin-top: 20px;
+        margin-top: 2px;
+        margin-bottom: 2px;
     }
 
-    .game-info {
-        text-align: left; /* Align text to the left */
-
-        margin-left: -300px; /* Add some margin to the left for spacing */
-    }
 
     button {
-        padding: 5px;
+        padding: 2px;
         color: white;
         border-radius: 5px;
         background-color: #55d6be;
@@ -137,52 +135,110 @@
     }
 
     .your-board {
-        margin-right: 230px;
-        margin-left: -100px;
+        margin-right: 100px;
+        margin-left: -150px;
+        color: white;
+        font-weight: bold;
+        font-size: large;
     }
 
     .strtBtn {
         margin-left: 20px;
-        font-size: x-large;
-        padding: 15px;
+        font-size: xx-large;
+        padding: 5px;
+        margin-top: 2px;
     }
 
     #btnFlip {
         background-color: #bf1fbf;
-        margin-top: 10px;
+        margin-top: 25px;
+        margin-bottom: 0;
     }
 
         #btnFlip:hover {
             background-color: #a550a5;
         }
+
+    #computer .ship1,
+    #computer .ship2,
+    #computer .ship3,
+    #computer .ship4,
+    #computer .ship5 {
+        /*         background-color: white;
+     */
+        background-color: #505050;
+    }
+
+
+    .boom {
+        background-color: red !important;
+    }
+
+    .info {
+        margin-top: 15px;
+        color: white;
+        font-weight: bold;
+    }
+
+    .opp-board {
+        margin-left: 380px;
+        color: white;
+        font-weight: bold;
+        font-size: large;
+    }
+
+    .game-info {
+        text-align: left;
+        display: flex;
+        margin-left: auto;
+        align-content: center;
+        font-size: large;
+        white-space: nowrap;
+        color: royalblue;
+        position: absolute;
+        top: 20px;
+    }
+
+    .turn {
+        margin-right: 80px;
+    }
+
+    .bottoms-bot {
+        display: flex;
+    }
+
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.9/signalr.min.js"></script>
 
 
 <div class="hero">
     <div id="game-info" class="game-info">
-        <p>Turn: <span id="turn-display"></span></p>
-        <p>Opponent: <span id="info"></span></p>
+        <p class="turn">Turn: <span id="turn-display"></span></p>
+        <p>Info: <span id="info"></span></p>
     </div>
+
 
     <div class="titles">
         <div class="your-board">Your Board</div>
-        <div class="opp-board">Opponent</div>
+        <div class="opp-board">@@opponentsUsername 's Board</div>
     </div>
 
     <div id="games-container">
     </div>
 
-    <div class="ships-container">
-        <div id="0" class="ship1" draggable="true"></div>
-        <div id="1" class="ship2" draggable="true"></div>
-        <div id="2" class="ship3" draggable="true"></div>
-        <div id="3" class="ship4" draggable="true"></div>
-        <div id="4" class="ship5" draggable="true"></div>
-    </div>
+    <div class="info">Drag the ships below to your board.</div>
 
-    <div class="buttons">
-        <button id="btnFlip">Flip Pieces</button>
+    <div class="bottoms-bot">
+        <div class="ships-container">
+            <div id="0" class="ship1" draggable="true"></div>
+            <div id="1" class="ship2" draggable="true"></div>
+            <div id="2" class="ship3" draggable="true"></div>
+            <div id="3" class="ship4" draggable="true"></div>
+            <div id="4" class="ship5" draggable="true"></div>
+        </div>
+
+        <div class="buttons">
+            <button id="btnFlip">Flip Pieces</button>
+        </div>
     </div>
     <button id="btnStart" class="strtBtn" onclick="startGame()">Start Game</button>
 
@@ -193,6 +249,17 @@
     const btnFlip = document.querySelector('#btnFlip')
     const btnStart = document.querySelector('#btnStart')
     const gamesContainer = document.querySelector('#games-container')
+    const infoDisplay = document.querySelector('#info');
+    const turnDisplay = document.querySelector('#turn-display');
+
+    let playerHits = [];
+    let computerHits = [];
+
+    const playerSunkShips = [];
+    const computerSunkShips = [];
+
+    let gameOver = false;
+    let playerTurn;
 
     btnFlip.addEventListener('click', flip)
 
@@ -208,12 +275,14 @@
 
     //creating boards
     const width = 10;
+
     function createBoard(color, user) {
         const gameBoardContainer = document.createElement('div')
         gameBoardContainer.classList.add('game-board')
-        gameBoardContainer.style.backgroundColor = color
+        //gameBoardContainer.style.backgroundColor = color
         gameBoardContainer.id = user
 
+        //   loop to create 100 blocks in the game board
         for (let i = 0; i < width * width; i++) {
             const block = document.createElement('div');
             block.classList.add('block');
@@ -337,7 +406,6 @@
 
     //add highlight
     function highlightArea(startIndex, ship) {
-        console.log("highlightArea: ");
         const allBoardBlocks = document.querySelectorAll('#player div');
         let isHorizontal = angle === 0
 
@@ -346,7 +414,7 @@
         if (valid && notTaken) {
             shipBlocks.forEach(ship => {
                 ship.classList.add('hover')
-                setTimeout(() => ship.classList.remove('hover', 500))
+                setTimeout(() => ship.classList.remove('hover'), 500)
             })
         }
     }
@@ -356,16 +424,169 @@
 
         // Hide the "Flip Pieces" button
         if (btnStart.innerText == "End Game") {
+
+            //End the game
+            location.reload();
+
             btnStart.innerText = "Start Game";
             btnFlip.style.display = "block";
             btnStart.style = "background-color:#55d6be; ";
         } else {
+            //only start game if pieces have been placed
+            if (shipContainer.children.length != 0) {
+                infoDisplay.textContent = "Place your pieces to begin. "
+            } else {
+                //now that pieces have been placed, start the game
+                let info = document.querySelector(".info");
+                info.textContent = "";
+                infoDisplay.textContent = "Begin! "
+                turnDisplay.textContent = "Your Turn"
+                playerTurn = true;
 
-            btnFlip.style.display = 'none';
-            console.log("start game clicked");
+                const allBoardBlocks = document.querySelectorAll('#computer div');
+                allBoardBlocks.forEach(block => block.addEventListener('click', handleClick));
 
-            btnStart.innerText = "End Game";
-            btnStart.style = "background-color: red;"
+
+                //change buttons to reflect state of game
+                btnFlip.style.display = 'none';
+                console.log("start game clicked");
+                btnStart.innerText = "End Game";
+                btnStart.style = "background-color: red;"
+            }
         }
     }
-</script>
+
+
+    function handleClick(e) {
+        if (!gameOver) {
+            if (e.target.classList.contains('taken')) {
+                e.target.classList.add('boom');
+                infoDisplay.textContent = "You hit the computers ship!";
+
+                let classes = Array.from(e.target.classList);
+                classes = classes.filter(className => className !== 'block');
+                classes = classes.filter(className => className !== 'boom');
+                classes = classes.filter(className => className !== 'taken');
+
+                playerHits.push(...classes)
+                console.log(playerHits);
+                checkScore('player', playerHits, playerSunkShips)
+            }
+
+            if (!e.target.classList.contains('taken')) {
+                infoDisplay.textContent = "You missed!";
+                e.target.classList.add('empty');
+            }
+
+            playerTurn = false;
+
+            const allBoardBlocks = document.querySelectorAll('#computer div');
+            allBoardBlocks.forEach(block => block.replaceWith(block.cloneNode(true)));
+            setTimeout(computerGo, 3000);
+        }
+    }
+
+    //Computer move logic
+    function computerGo() {
+        if (!gameOver) {
+            turnDisplay.textContent = 'Computers turn!'
+            infoDisplay.textContent = "Computer thinking...";
+
+            setTimeout(() => {
+                let randomGo = Math.floor(Math.random() * width * width);
+                const allBoardBlocks = document.querySelectorAll('#player div');
+
+                if (allBoardBlocks[randomGo].classList.contains('taken') &&
+                    allBoardBlocks[randomGo].classList.contains('boom')) {
+                    computerGo()
+                    return;
+                } else if (allBoardBlocks[randomGo].classList.contains('taken') &&
+                    !allBoardBlocks[randomGo].classList.contains('boom')) {
+                    allBoardBlocks[randomGo].classList.add('boom')
+                    infoDisplay.textContent = 'Computer hit your ship!';
+
+                    let classes = Array.from(allBoardBlocks[randomGo].classList);
+                    classes = classes.filter(className => className !== 'block');
+                    classes = classes.filter(className => className !== 'boom');
+                    classes = classes.filter(className => className !== 'taken');
+
+                    computerHits.push(...classes);
+                    checkScore('computer', computerHits, computerSunkShips)
+
+
+                } else {
+                    infoDisplay.textContent = "Computer missed!";
+                    allBoardBlocks[randomGo].classList.add('empty');
+                }
+            }, 2000);
+
+            setTimeout(() => {
+                playerTurn = true;
+                turnDisplay.textContent = "Your turn!";
+                infoDisplay.textContent = "Make your move. ";
+
+                const allBoardBlocks = document.querySelectorAll('#computer div')
+                allBoardBlocks.forEach(block => block.addEventListener('click', handleClick));
+            }, 3000)
+        }
+    }
+
+    function checkScore(user, userHits, userSunkShips) {
+        function checkShip(shipName1, shipLength) {
+            if (
+                userHits.filter(storedShipName => storedShipName === shipName1).length === shipLength
+            ) {
+                var shipName;
+                if (user === 'player') {
+                    switch (shipName1) {
+                        case 'ship1':
+                            shipName = `smallest ship!`;
+                            break;
+                        case 'ship2':
+                            shipName = "second smallest ship!";
+                            break;
+                        case 'ship3':
+                            shipName = "third largest ship!";
+                            break;
+                        case 'ship4':
+                            shipName = "second largest ship!";
+                            break;
+                        case 'ship5':
+                            shipName = "largest ship!";
+                            break;
+                        default:
+                            break;
+                    }
+                    infoDisplay.textContent = `You sunk the computers ${shipName}`;
+                    playerHits = userHits.filter(storedShipName => storedShipName !== shipName1)
+                }
+                if (user === 'computer') {
+                    infoDisplay.textContent = `The computer sunk your ${shipName}`;
+                    computerHits = userHits.filter(storedShipName => storedShipName !== shipName1)
+                }
+                userSunkShips.push(shipName1);
+            }
+        }
+
+        checkShip('ship1', 2)
+        checkShip('ship2', 3)
+        checkShip('ship3', 3)
+        checkShip('ship4', 4)
+        checkShip('ship5', 5)
+
+        console.log('player hits', playerHits)
+        console.log('player sunk ships', playerSunkShips)
+
+        if (playerSunkShips.length === 5) {
+            infoDisplay.textContent = 'You sunk all computer ships. You WIN!';
+            infoDisplay.style = "font-weight: y00;";
+            infoDisplay.style = "color:#4EB300 !important";
+            gameOver = true;
+        }
+        if (computerSunkShips.length === 5) {
+            infoDisplay.textContent = 'The computer sunk all your ships. You LOSE!';
+            gameOver = true;
+        }
+    }
+
+</script> 

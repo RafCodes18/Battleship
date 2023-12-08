@@ -1,6 +1,8 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http;
+@{
     ViewBag.Title = "Hidden Battleship";
 }
+@inject IHttpContextAccessor HttpContextAccessor
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,9 +20,28 @@
                 font-family: 'Sans Serif Collection';       
                 font-size: x-large;
             }
-               
+
+            .blue{
+                color: royalblue;
+            }
+
+           darkkkk{
+                background-color: #a4a4a4 !important;
+            }
+
+            .dark-green{
+                background-color: #A76F6F;
+                border-radius: 4px;
+                color: grey;
+            }
+
+            .dark-green:hover {
+                background-color: #623535;
+                border-radius: 4px;
+                color: white;
+            }
         </style>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="darkkk navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand battl" asp-area="" asp-controller="Home" asp-action="Index">BattleShip</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -36,6 +57,42 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Profile" asp-route-id="" asp-action="Index">Profile</a>
                         </li>
                     </ul>
+
+                  
+                    <!--WELCOME USER-->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            @{
+                                var fullname = HttpContextAccessor.HttpContext?.Session.GetString("username");  
+                                if(fullname == null)
+                                {
+
+                                }
+                                else
+                                {
+                                    <a href="../Profile/Index" class="nav-link text-dark"><span class="blue">@fullname</span></a>
+
+                                }
+                            }
+                            
+                        </li>
+                    </ul>
+
+                     <!--AUTHENTICATION CHECK-->
+                    <ul class="navbar-nav ms-auto">
+                   @if(Authenticate.IsAuthenticated(Context))
+                    {
+                         <li class="nav-item bg-secondary rounded m-2 login">
+                                <a class="nav-link bg-secondary text-white dark-green" asp-area="" asp-controller="Profile" asp-action="Logout">Logout</a>
+                         </li>
+                    }
+                    else
+                    {
+                         <li class="nav-item bg-light rounded m-2 login ">
+                              <a class="nav-link text-white dark-green" asp-area="" asp-controller="Profile" asp-action="Login">Login</a>
+                         </li>
+                    }                              
+                    </ul>        
                 </div>
             </div>
         </nav>

@@ -1,16 +1,11 @@
-﻿using DocumentFormat.OpenXml.Spreadsheet;
+﻿using HiddenBattleship.BL;
 using HiddenBattleship.BL.Models;
-using Microsoft.AspNetCore.Http;
+using HiddenBattleship.MVC.UI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using HiddenBattleship.BL;
-using Microsoft.Extensions.Hosting;
 
 namespace HiddenBattleship.MVC.UI.Controllers
 {
-  
+
     public class ProfileController : Controller
     {
 
@@ -18,7 +13,8 @@ namespace HiddenBattleship.MVC.UI.Controllers
         {
             if (player != null)
             {
-                HttpContext.Session.SetObject("player", player);              
+                HttpContext.Session.SetObject("player", player);
+                HttpContext.Session.SetString("username", player.UserName);
             }
             else
             {
@@ -30,11 +26,15 @@ namespace HiddenBattleship.MVC.UI.Controllers
         // GET: ProfileController
         public ActionResult Index()
         {
-            if(HttpContext.Session.GetObject<Player>("player") == null)
+            ProfileVM profileVM = new ProfileVM();
+            profileVM.player = HttpContext.Session.GetObject<Player>("player");
+
+            if (profileVM.player == null)
             {
                 return RedirectToAction("CreateAccount", "Profile");
             }
-            return View();
+
+            return View(profileVM);
         }
 
         //GET
@@ -56,7 +56,8 @@ namespace HiddenBattleship.MVC.UI.Controllers
                 if (TempData?["returnUrl"] != null)
                     return Redirect(TempData["returnUrl"]?.ToString());
                 else
-                    return RedirectToAction(nameof(Index), "Home");
+
+                    return RedirectToAction("Live", "Game");
             }
             catch (Exception ex)
             {
@@ -65,10 +66,41 @@ namespace HiddenBattleship.MVC.UI.Controllers
             }
         }
 
-        //GET
+        public ActionResult Logout()
+        {
+            HttpContext.Session.SetObject("player", null);
+            HttpContext.Session.SetObject("username", null);
+            return RedirectToAction(nameof(Index), "Home");
+        }
+
+        //GET: Profile/CreateAccount
         public ActionResult CreateAccount()
         {
             return View();
+        }
+
+        [HttpPost]
+        //POST: Profile/CreateAccount
+        public ActionResult CreateAccount(Player player)
+        {
+            try
+            {
+                int result = PlayerManager.Insert(player);
+                if (result > 0)
+                {
+                    Login(player);
+                    return RedirectToAction("Index", "Profile");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         // GET: ProfileController/Details/5

@@ -1,10 +1,19 @@
 ﻿using HiddenBattleship.BL.Models;
+using HiddenBattleship.MVC.UI.Hubs;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 
 namespace HiddenBattleship.MVC.UI.Controllers
 {
     public class GameController : Controller
     {
+        private readonly IHubContext<GameHub> _hubContext;
+
+        public GameController(IHubContext<GameHub> hubContext)
+        {
+            _hubContext = hubContext;
+        }
+
         //TODO: Live action - Raf still WIP
         //GET: Game/Live/gameid
         public ActionResult Live(string gameId, Player player)
@@ -13,10 +22,23 @@ namespace HiddenBattleship.MVC.UI.Controllers
 
             //get user from session
 
-            //create new game ID, store the gameID and user ID, 
+            Player _player = HttpContext.Session.GetObject<Player>("player");
+            if (_player == null)
+            {
+                return RedirectToAction("CreateAccount", "Profile");
+            }
 
-            //get data of gameId
-            //Return view with player data, and game data
+
+            string hub = "../Hub/GameHub";
+
+            var signalRConnection = new SignalRConnection(hub);
+
+            //connect to the server
+            // signalRConnection.Start();
+
+            //run game logic 
+
+            //send update to GameHub when moves and game state have been validated       
             return View(gameId);
         }
 

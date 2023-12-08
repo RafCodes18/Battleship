@@ -17,8 +17,8 @@
     }
 
     .game-board {
-        width: 200px;
-        height: 200px;
+        width: 400px;
+        height: 400px;
         display: flex;
         flex-wrap: wrap; <!--
         fills the game boards with boxes -->
@@ -28,59 +28,61 @@
 
     .ships-container {
         width: 500px;
-        height: 80px;
+        height: 120px;
         background-color: #b7c3c3;
         display: flex;
         align-items: center;
         margin-top: 5px;
         justify-content: space-around;
         border-radius: 20px;
+        margin-left: 0px;
+        margin-bottom: 2px;
     }
 
     #games-container {
-        width: 500px;
+        width: 1000px;
         display: flex;
         justify-content: space-between;
     }
 
     .ship1 {
-        width: 20px;
-        height: 10px;
-        background-color: black;
+        width: 40px;
+        height: 20px;
+        background-color: #C04DFF;
         border-radius: 3px;
     }
 
     .ship2 {
-        width: 30px;
-        height: 10px;
-        background-color: hotpink;
+        width: 60px;
+        height: 20px;
+        background-color: #FF00AA;
         border-radius: 3px;
     }
 
     .ship3 {
-        width: 40px;
-        height: 10px;
-        background-color: blue;
+        width: 80px;
+        height: 20px;
+        background-color: #24E0FF;
         border-radius: 3px;
     }
 
     .ship4 {
-        width: 50px;
-        height: 10px;
+        width: 100px;
+        height: 20px;
         background-color: orange;
         border-radius: 3px;
     }
 
     .ship5 {
-        width: 60px;
-        height: 10px;
-        background-color: purple;
+        width: 120px;
+        height: 20px;
+        background-color: #E2E603;
         border-radius: 3px;
     }
 
     .block {
-        width: 20px;
-        height: 20px;
+        width: 40px;
+        height: 40px;
                border: 1px solid grey;              ;
         border-radius: 2px;
 
@@ -103,17 +105,13 @@
     }
 
     .buttons {
-        margin-top: 20px;
+        margin-top: 2px;
+        margin-bottom: 2px;
     }
 
-    .game-info {
-        text-align: left; /* Align text to the left */
-
-        margin-left: -300px; /* Add some margin to the left for spacing */
-    }
 
     button {
-        padding: 5px;
+        padding: 2px;
         color: white;
         border-radius: 5px;
         background-color: #55d6be;
@@ -124,6 +122,7 @@
         margin-left: 20px;
         border: 1px solid grey;
         margin-bottom: 60px;
+       
     }
 
         button:hover {
@@ -138,18 +137,23 @@
 
     .your-board {
         margin-right: 230px;
-        margin-left: -100px;
+        margin-left: -250px;
+        color: white;
+        font-weight: bold;
+        font-size: large;
     }
 
     .strtBtn {
         margin-left: 20px;
-        font-size: x-large;
-        padding: 15px;
+        font-size: xx-large;
+        padding: 5px;
+        margin-top: 2px;
     }
 
     #btnFlip {
         background-color: #bf1fbf;
-        margin-top: 10px;
+        margin-top: 25px;
+        margin-bottom: 0;
     }
 
         #btnFlip:hover {
@@ -175,15 +179,46 @@
 
     .info{
         margin-top: 15px;
+        color: white;
+        font-weight: bold;
     }
+
+    .opp-board{
+        margin-left: 300px;
+        color: white;
+        font-weight: bold;
+        font-size: large;
+    }
+
+    .game-info {
+        text-align: left;
+        display: flex;
+        margin-left: auto;
+        align-content: center;
+        font-size: large;
+        white-space: nowrap;
+        color: royalblue;
+        position: absolute;
+        top: 20px;
+    }
+
+    .turn {
+        margin-right: 80px;
+    }
+
+    .bottoms-bot{
+        display: flex;
+    }
+
 </style>
 
 
 <div class="hero">
-    <div id="game-info" class="game-info">
-        <p>Turn: <span id="turn-display"></span></p>
-        <p>Info: <span id="info"></span></p>
-    </div>
+      <div id="game-info" class="game-info">
+                        <p class="turn">Turn: <span id="turn-display"></span></p>
+                        <p>Info: <span id="info"></span></p>
+                    </div>
+
 
     <div class="titles">
         <div class="your-board">Your Board</div>
@@ -194,6 +229,8 @@
     </div>
 
     <div class="info">Drag the ships below to your board.</div>
+  
+    <div class="bottoms-bot">
     <div class="ships-container">
         <div id="0" class="ship1" draggable="true"></div>
         <div id="1" class="ship2" draggable="true"></div>
@@ -204,6 +241,7 @@
 
     <div class="buttons">
         <button id="btnFlip">Flip Pieces</button>
+    </div>
     </div>
     <button id="btnStart" class="strtBtn" onclick="startGame()">Start Game</button>
 

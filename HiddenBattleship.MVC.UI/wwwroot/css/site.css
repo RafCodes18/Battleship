@@ -20,3 +20,39 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+body {
+    background-color: #2D4356 !important;
+}
+
+nav {
+    background-color: #EAB2A0;
+    color: white !important;
+}
+
+.btn-main {
+    background-color: #EAB2A0;
+    outline-color: #A78295 !important;
+    color: #2D4356 !important;
+    border: 1px solid grey !important;
+}
+
+    .btn-main:hover{
+        background-color: #b67a67;
+        color: white;   
+    }
+    .btn-main:focus {
+        background-color: #b67a67;
+    }
+
+.drk {
+    background-color: #cec6c6;
+}
+
+.cust-link {
+    color: #2D4356;
+}
+
+.cust-link:hover{
+    color: black;
+}

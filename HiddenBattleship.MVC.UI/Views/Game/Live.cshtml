@@ -192,7 +192,7 @@
         display: flex;
         margin-left: auto;
         align-content: center;
-        font-size: large;
+        font-size: xx-large;
         white-space: nowrap;
         color: royalblue;
         position: absolute;
@@ -212,8 +212,8 @@
 
 <div class="hero">
     <div id="game-info" class="game-info">
-        <p class="turn">Turn: <span id="turn-display"></span></p>
-        <p>Info: <span id="info"></span></p>
+        <p class="turn"><span id="turn-display"></span></p>
+        <p><span id="info"></span></p>
     </div>
 
 
@@ -440,7 +440,7 @@
                 let info = document.querySelector(".info");
                 info.textContent = "";
                 infoDisplay.textContent = "Begin! "
-                turnDisplay.textContent = "Your Turn"
+                turnDisplay.textContent = "Your turn"
                 playerTurn = true;
 
                 const allBoardBlocks = document.querySelectorAll('#computer div');
@@ -518,7 +518,7 @@
                     infoDisplay.textContent = "Computer missed!";
                     allBoardBlocks[randomGo].classList.add('empty');
                 }
-            }, 2000);
+            }, 3000);
 
             setTimeout(() => {
                 playerTurn = true;

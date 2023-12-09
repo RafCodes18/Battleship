@@ -45,7 +45,6 @@ namespace HiddenBattleShip.WPFUI
         {
             try
             {
-
                 games = apiClient.GetList<Game>(typeof(Game).Name);
 
                 dgGames.ItemsSource = null;

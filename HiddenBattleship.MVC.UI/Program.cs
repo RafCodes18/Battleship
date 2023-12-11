@@ -10,7 +10,8 @@ builder.Services.AddSignalR();
 
 builder.Services.AddAuthentication(
     CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(option => {
+    .AddCookie(option =>
+    {
         option.LoginPath = "/Profile/CreateAccount";
         option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
 
@@ -37,19 +38,13 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-/*
+
+//map the endpoints
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapHub<GameHub>("/gamehub");
-    endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
-});*/
-
-
-/*//gamehub mapping
-app.MapHub<GameHub>("/gamehub");*/
-
+    endpoints.MapHub<ChatHub>("/chatHub");
+    endpoints.MapHub<GameHub>("/gameHub");
+});
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

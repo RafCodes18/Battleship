@@ -24,7 +24,7 @@ namespace HiddenBattleship.BL.Test
             _configuration = builder.Build();
 
             options = new DbContextOptionsBuilder<HiddenBattleshipEntities>()
-                .UseSqlServer(_configuration.GetConnectionString("DVDCentralConnection"))
+                .UseSqlServer(_configuration.GetConnectionString("HiddenBattleshipConnection"))
                 .Options;
 
             dc = new HiddenBattleshipEntities(options);

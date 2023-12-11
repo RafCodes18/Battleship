@@ -148,6 +148,9 @@
         font-size: xx-large;
         padding: 5px;
         margin-top: 2px;
+        position: absolute;
+        left: auto;
+        margin-left: 60px;
     }
 
     #btnFlip {
@@ -210,40 +213,71 @@
         display: flex;
     }
 
+    #message-container {
+        max-height: 100px;  
+        overflow-y: auto;  
+        border: 1px solid #ccc;  
+        padding: 10px; 
+        background-color: white;
+    }
+
 </style>
 
 
 <div class="hero">
+    <!--Game Info In Navbar-->
       <div id="game-info" class="game-info">
                         <p class="turn"><span id="turn-display"></span></p>
                         <p><span id="info"></span></p>
-                    </div>
+      </div>
 
-
+    <!--Board Titles-->
     <div class="titles">
         <div class="your-board">Your Board</div>
         <div class="opp-board">Computer Board</div>
     </div>
 
+    <!--Game boards-->
     <div id="games-container">
     </div>
-
-    <div class="info">Drag the ships below to your board.</div>
-  
-    <div class="bottoms-bot">
-    <div class="ships-container">
-        <div id="0" class="ship1" draggable="true"></div>
-        <div id="1" class="ship2" draggable="true"></div>
-        <div id="2" class="ship3" draggable="true"></div>
-        <div id="3" class="ship4" draggable="true"></div>
-        <div id="4" class="ship5" draggable="true"></div>
-    </div>
-
-    <div class="buttons">
-        <button id="btnFlip">Flip Pieces</button>
-    </div>
-    </div>
     <button id="btnStart" class="strtBtn" onclick="startGame()">Start Game</button>
+
+
+    <!--Ships containers-->
+    <div class="info">Drag the ships below to your board.</div>   
+    <div class="bottoms-bot">
+        <div class="ships-container">
+            <div id="0" class="ship1" draggable="true"></div>
+            <div id="1" class="ship2" draggable="true"></div>
+            <div id="2" class="ship3" draggable="true"></div>
+            <div id="3" class="ship4" draggable="true"></div>
+            <div id="4" class="ship5" draggable="true"></div>
+        </div>
+       
+        <div class="buttons">
+            <button id="btnFlip">Flip Pieces</button>
+        </div>
+
+
+    <!--Messaging-->
+    <div class="msg">
+
+    
+        <div id="message-container">
+            <p>sifjsfsijf</p>
+                <p>sifjsfsijf</p>
+                <p>sifjsfsijf</p>
+                <p>sifjsfsijf</p>
+        </div>
+
+        <div>
+            <input type="text" id="messageInput" />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+        </div>
+    </div>
+
+
 
 </div>
 

@@ -41,11 +41,11 @@ if (!app.Environment.IsDevelopment())
 
 //map the endpoints
 //TODO
-app.UseEndpoints(endpoints =>
+/*app.UseEndpoints(endpoints =>
 {
     endpoints.MapHub<ChatHub>("/chatHub");
 endpoints.MapHub<GameHub>("/gameHub");
-});
+});*/
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

@@ -20,5 +20,7 @@
         <TextBox x:Name="txtInput" HorizontalAlignment="Left" Margin="720,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btnUpdate" Content="Update" Margin="720,75,0,0" Width="96" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnUpdate_Click"/>
         <Button x:Name="btnDelete" Content="Delete" Margin="720,110,0,0" Width="96" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnDelete_Click"/>
+        <Button x:Name="btnGameMoves" Content="Get Game Moves" Margin="123,475,0,0" Width="96" Click="btnGameMoves_Click" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button x:Name="btnGetShips" Content="Get Ships" Margin="242,438,0,0" Width="96" Click="btnGetShips_Click" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"/>
     </Grid>
 </Window>

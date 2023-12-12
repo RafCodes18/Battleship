@@ -164,11 +164,106 @@ namespace HiddenBattleShip.WPFUI
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            var selectedGame = dgGames.SelectedItem as Game;
-            if (selectedGame != null)
+            if (selectedEntity == "Game")
             {
-                // Use 'selectedGame' for further operations
+                var selectedGame = dgGames.SelectedItem as Game;
+                if (selectedGame != null)
+                {
 
+                    var result = apiClient.Put(selectedGame, "Game", selectedGame.Id);
+
+                    if (result.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Update successful");
+                        btnGetGames_Click(sender, e); 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Update failed");
+                    }
+
+                    // old way
+                    //games = apiClient.GetList<Game>(typeof(Game).Name);
+                    //dgGames.ItemsSource = null;
+                    //dgGames.ItemsSource = games;
+
+                }
+            }
+            else if (selectedEntity == "ChatHistory")
+            {
+                var selectedChatHistory = dgGames.SelectedItem as ChatHistory;
+                if (selectedChatHistory != null)
+                {
+
+                    var result = apiClient.Put(selectedChatHistory, "ChatHistory", selectedChatHistory.Id);
+
+                    if (result.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Update successful");
+                        btnGetChatHistory_Click(sender, e);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Update failed");
+                    }
+                }
+            }
+            else if (selectedEntity == "Player")
+            {
+                var selectedPlayer = dgGames.SelectedItem as Player;
+                if (selectedPlayer != null)
+                {
+
+                    var result = apiClient.Put(selectedPlayer, "Player", selectedPlayer.Id);
+
+                    if (result.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Update successful");
+                        btnGetPlayers_Click(sender, e);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Update failed");
+                    }
+                }
+            }
+            else if (selectedEntity == "GameMove")
+            {
+                var selectedGameMove = dgGames.SelectedItem as GameMoves;
+                if (selectedGameMove != null)
+                {
+
+                    var result = apiClient.Put(selectedGameMove, "GameMoves", selectedGameMove.MoveId);
+
+                    if (result.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Update successful");
+                        btnGameMoves_Click(sender, e);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Update failed");
+                    }
+                }
+            }
+            else if (selectedEntity == "Ship")
+            {
+                var selectedShip = dgGames.SelectedItem as Ship;
+                if (selectedShip != null)
+                {
+
+                    var result = apiClient.Put(selectedShip, "Ship", selectedShip.Id);
+                    if (result.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Update successful");
+                        btnGetShips_Click(sender, e);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Update failed");
+                    }
+
+                }
             }
         }
 
@@ -181,10 +276,15 @@ namespace HiddenBattleShip.WPFUI
                 {
                     
                     var result = apiClient.Delete("Game", selectedGame.Id);
-
-                    games = apiClient.GetList<Game>(typeof(Game).Name);
-                    dgGames.ItemsSource = null;
-                    dgGames.ItemsSource = games;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Delete successful");
+                        btnGetGames_Click(sender, e);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Delete failed");
+                    }
 
                 }
             } 
@@ -195,10 +295,16 @@ namespace HiddenBattleShip.WPFUI
                 {
 
                     var result = apiClient.Delete("ChatHistory", selectedChatHistory.Id);
-
-                    chatHistories = apiClient.GetList<ChatHistory>(typeof(ChatHistory).Name);
-                    dgGames.ItemsSource = null;
-                    dgGames.ItemsSource = chatHistories;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Delete successful");
+                        btnGetChatHistory_Click(sender, e);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Delete failed");
+                    }
+                    
                 }
             }
             else if (selectedEntity == "Player")
@@ -209,9 +315,15 @@ namespace HiddenBattleShip.WPFUI
 
                     var result = apiClient.Delete("Player", selectedPlayer.Id);
 
-                    players = apiClient.GetList<Player>(typeof(Player).Name);
-                    dgGames.ItemsSource = null;
-                    dgGames.ItemsSource = players;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Delete successful");
+                        btnGetPlayers_Click(sender, e);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Delete failed");
+                    }
                 }
             }
             else if (selectedEntity == "GameMove")
@@ -222,14 +334,35 @@ namespace HiddenBattleShip.WPFUI
 
                     var result = apiClient.Delete("GameMoves", selectedGameMove.MoveId);
 
-                    gameMoves = apiClient.GetList<GameMoves>(typeof(GameMoves).Name);
-                    dgGames.ItemsSource = null;
-                    dgGames.ItemsSource = gameMoves;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Delete successful");
+                        btnGameMoves_Click(sender, e);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Delete failed");
+                    }
                 }
             }
             else if (selectedEntity == "Ship")
             {
+                var selectedShip = dgGames.SelectedItem as Ship;
+                if (selectedShip != null)
+                {
 
+                    var result = apiClient.Delete("Ship", selectedShip.Id);
+
+                    if (result.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Delete successful");
+                        btnGetShips_Click(sender, e);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Delete failed");
+                    }
+                }
             }
 
         }

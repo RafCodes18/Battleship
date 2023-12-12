@@ -367,6 +367,27 @@ namespace HiddenBattleShip.WPFUI
 
         }
 
-        
+        private void btnInsert_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedEntity == "Ship")
+            {
+                var selectedShip = dgGames.SelectedItem as Ship;
+                if (selectedShip != null)
+                {
+                    selectedShip.Id = new Guid();
+                    var result = apiClient.Post(selectedShip, "Ship", selectedShip.Id);
+
+                    if (result.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Insert successful");
+                        btnGetShips_Click(sender, e);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Insert failed");
+                    }
+                }
+            }
+        }
     }
 }

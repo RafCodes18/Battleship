@@ -1,4 +1,4 @@
-﻿ 
+﻿
 using Microsoft.AspNetCore.SignalR.Client;
 
 namespace HiddenBattleship.MVC.UI
@@ -7,8 +7,8 @@ namespace HiddenBattleship.MVC.UI
     {
         private string hubAddress;
         HubConnection _connection;
- 
- 
+
+
         public SignalRConnection(string hubAddress)
         {
             this.hubAddress = hubAddress;
@@ -17,11 +17,11 @@ namespace HiddenBattleship.MVC.UI
         {
             _connection = new HubConnectionBuilder().Build();
 
-            _connection.On<string, string>("RecieveMessage", (s1, s2) => OnSend(s1, s2));
+            _connection.On<string, string>("RecieveMessage", (s1, s2) => Send(s1, s2));
             _connection.StartAsync();
         }
 
-        private static void OnSend(string user, object message)
+        private static void Send(string user, object message)
         {
             Console.WriteLine(user + " " + message);
         }

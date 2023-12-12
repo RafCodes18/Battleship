@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HiddenBattleShip.WPFUI"
         mc:Ignorable="d"
-        Title="GameList" Height="450" Width="800">
+        Title="GameList" Height="550" Width="1067">
     <Grid x:Name="gridGames">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -13,10 +13,12 @@
                 <GradientStop Color="#6495ED" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <DataGrid x:Name="dgGames" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,197,117"/>
-        <Button x:Name="btnGetGames" Content="Get Games" HorizontalAlignment="Left" Margin="10,331,0,0" Width="96" Click="btnGetGames_Click" Height="20" VerticalAlignment="Top"/>
-        <Button x:Name="btnGetChatHistory" Content="Get Chat History" HorizontalAlignment="Left" Margin="10,363,0,0" Width="96" Height="20" VerticalAlignment="Top" Click="btnGetChatHistory_Click"/>
-        <Button x:Name="btnGetPlayers" Content="Get Players" HorizontalAlignment="Left" Margin="122,331,0,0" Width="96"  Height="20" VerticalAlignment="Top" Click="btnGetPlayers_Click"/>
-        <TextBox x:Name="txtInput" HorizontalAlignment="Left" Margin="631,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <DataGrid x:Name="dgGames" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,392,136"/>
+        <Button x:Name="btnGetGames" Content="Get Games" Margin="10,438,0,0" Width="96" Click="btnGetGames_Click" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button x:Name="btnGetChatHistory" Content="Get Chat History" HorizontalAlignment="Left" Margin="10,475,0,0" Width="96" Height="20" VerticalAlignment="Top" Click="btnGetChatHistory_Click"/>
+        <Button x:Name="btnGetPlayers" Content="Get Players" HorizontalAlignment="Left" Margin="123,438,0,0" Width="96"  Height="20" VerticalAlignment="Top" Click="btnGetPlayers_Click"/>
+        <TextBox x:Name="txtInput" HorizontalAlignment="Left" Margin="720,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnUpdate" Content="Update" Margin="720,75,0,0" Width="96" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnUpdate_Click"/>
+        <Button x:Name="btnDelete" Content="Delete" Margin="720,110,0,0" Width="96" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Click="btnDelete_Click"/>
     </Grid>
 </Window>

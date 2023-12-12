@@ -26,6 +26,7 @@ namespace HiddenBattleShip.WPFUI
         List<Game> games = new List<Game>();
         List<Player> players = new List<Player>();
         List<ChatHistory> chatHistories = new List<ChatHistory>();
+        string selectedEntity;
 
         string APIAddress = "https://localhost:7270/api/";
         ApiClient apiClient;
@@ -37,6 +38,7 @@ namespace HiddenBattleShip.WPFUI
             InitializeComponent();
             apiClient = new ApiClient(APIAddress);
             userInput = 0;
+            string selectedEntity = "";
         }
 
         public GameList(ILogger<GameList> logger)
@@ -45,10 +47,13 @@ namespace HiddenBattleShip.WPFUI
             apiClient = new ApiClient(APIAddress);
             this.logger = logger;
             userInput = 0;
+            string selectedEntity = "";
         }
 
         private void btnGetGames_Click(object sender, RoutedEventArgs e)
         {
+            selectedEntity = "Game";
+
             try
             {
                 games = apiClient.GetList<Game>(typeof(Game).Name);
@@ -103,6 +108,35 @@ namespace HiddenBattleShip.WPFUI
                 logger.LogWarning("Error: {UserId}", " ");
             }
 
+        }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedGame = dgGames.SelectedItem as Game;
+            if (selectedGame != null)
+            {
+                // Use 'selectedGame' for further operations
+
+            }
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedEntity == "Game")
+            {
+                var selectedGame = dgGames.SelectedItem as Game;
+                if (selectedGame != null)
+                {
+                    
+                    var result = apiClient.Delete("Game", selectedGame.Id);
+
+                    games = apiClient.GetList<Game>(typeof(Game).Name);
+                    dgGames.ItemsSource = null;
+                    dgGames.ItemsSource = games;
+
+                }
+            } else if (selectedEntity == )
+            
         }
     }
 }

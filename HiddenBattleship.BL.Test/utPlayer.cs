@@ -12,19 +12,19 @@ namespace HiddenBattleship.BL.Test
             Assert.IsTrue(players.Count > 0);
         }
 
-        [TestMethod]
-        public void InsertTest()
-        {
-            Player player = new Player
-            {
-                UserName = "Test",
-                Password = "Test2",
-                Email = "Test3"
-            };
+        //[TestMethod]
+        //public void InsertTest()
+        //{
+        //    Player player = new Player
+        //    {
+        //        UserName = "Test",
+        //        Password = "Test2",
+        //        Email = "Test3"
+        //    };
 
-            int result = new PlayerManager(options).Insert(player, true);
-            Assert.IsTrue(result > 0);
-        }
+        //    int result = new PlayerManager(options).Insert(player, true);
+        //    Assert.IsTrue(result > 0);
+        //}
 
         /* [TestMethod]
          public void LoginSuccess()

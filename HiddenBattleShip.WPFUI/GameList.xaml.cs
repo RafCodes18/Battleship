@@ -24,14 +24,19 @@ namespace HiddenBattleShip.WPFUI
     public partial class GameList : Window
     {
         List<Game> games = new List<Game>();
+        List<Player> players = new List<Player>();
+        List<ChatHistory> chatHistories = new List<ChatHistory>();
+
         string APIAddress = "https://localhost:7270/api/";
         ApiClient apiClient;
+        int userInput;
         private readonly ILogger<GameList> logger;
 
         public GameList()
         {
             InitializeComponent();
             apiClient = new ApiClient(APIAddress);
+            userInput = 0;
         }
 
         public GameList(ILogger<GameList> logger)
@@ -39,6 +44,7 @@ namespace HiddenBattleShip.WPFUI
             InitializeComponent();
             apiClient = new ApiClient(APIAddress);
             this.logger = logger;
+            userInput = 0;
         }
 
         private void btnGetGames_Click(object sender, RoutedEventArgs e)
@@ -50,13 +56,53 @@ namespace HiddenBattleShip.WPFUI
                 dgGames.ItemsSource = null;
                 dgGames.ItemsSource = games;
 
-                throw new Exception("Dependency Injection is cool. I have " + games.Count + " movies.");
+                throw new Exception("Dependency Injection is cool. I have " + games.Count + " games.");
 
             }
             catch (Exception ex)
             {
                 logger.LogWarning("Error: {UserId}", " ");
             }
+        }
+
+        private void btnGetChatHistory_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                chatHistories = apiClient.GetList<ChatHistory>(typeof(ChatHistory).Name);
+
+                dgGames.ItemsSource = null;
+                dgGames.ItemsSource = chatHistories;
+
+                throw new Exception("Dependency Injection is cool. I have " + chatHistories.Count + " chat messages.");
+
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning("Error: {UserId}", " ");
+            }
+
+        }
+
+        private void btnGetPlayers_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                players = apiClient.GetList<Player>(typeof(Player).Name);
+
+                dgGames.ItemsSource = null;
+                dgGames.ItemsSource = players;
+
+
+                throw new Exception("Dependency Injection is cool. I have " + players.Count + " players.");
+
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning("Error: {UserId}", " ");
+            }
+
         }
     }
 }

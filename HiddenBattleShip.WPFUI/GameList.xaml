@@ -15,5 +15,8 @@
         </Grid.Background>
         <DataGrid x:Name="dgGames" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,197,117"/>
         <Button x:Name="btnGetGames" Content="Get Games" HorizontalAlignment="Left" Margin="10,331,0,0" Width="96" Click="btnGetGames_Click" Height="20" VerticalAlignment="Top"/>
+        <Button x:Name="btnGetChatHistory" Content="Get Chat History" HorizontalAlignment="Left" Margin="10,363,0,0" Width="96" Height="20" VerticalAlignment="Top" Click="btnGetChatHistory_Click"/>
+        <Button x:Name="btnGetPlayers" Content="Get Players" HorizontalAlignment="Left" Margin="122,331,0,0" Width="96"  Height="20" VerticalAlignment="Top" Click="btnGetPlayers_Click"/>
+        <TextBox x:Name="txtInput" HorizontalAlignment="Left" Margin="631,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>

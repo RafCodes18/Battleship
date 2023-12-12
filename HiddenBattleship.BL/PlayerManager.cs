@@ -34,7 +34,7 @@ namespace HiddenBattleship.BL
         }
 
 
-        public static int Insert(Player player, bool rollback = false)
+        public int Insert(Player player, bool rollback = false)
         {
             try
             {

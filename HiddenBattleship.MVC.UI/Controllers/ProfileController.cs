@@ -1,7 +1,9 @@
 ﻿using HiddenBattleship.BL;
 using HiddenBattleship.BL.Models;
 using HiddenBattleship.MVC.UI.ViewModels;
+using HiddenBattleship.PL;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HiddenBattleship.MVC.UI.Controllers
 {
@@ -85,7 +87,12 @@ namespace HiddenBattleship.MVC.UI.Controllers
         {
             try
             {
-                int result = PlayerManager.Insert(player);
+                //TODO: Turbo jank that works for inserting - Update w/ API 
+                DbContextOptions<HiddenBattleshipEntities> options = new DbContextOptions<HiddenBattleshipEntities>();
+                PlayerManager playerManager = new PlayerManager(options);
+                int result = playerManager.Insert(player, false);
+
+                //int result = PlayerManager.Insert(player, false);
                 if (result > 0)
                 {
                     Login(player);

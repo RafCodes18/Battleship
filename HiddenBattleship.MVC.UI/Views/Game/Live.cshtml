@@ -488,20 +488,34 @@
 
     //Computer move logic
     function computerGo() {
+        //runs if game is not over
         if (!gameOver) {
+            //update game info display to computers turn
             turnDisplay.textContent = 'Computers turn!'
             infoDisplay.textContent = "Computer thinking...";
 
+            //take time to make move
             setTimeout(() => {
+                
+                //generate a random move using size of board, so it is within size of boards
                 let randomGo = Math.floor(Math.random() * width * width);
-                const allBoardBlocks = document.querySelectorAll('#player div');
 
-                if (allBoardBlocks[randomGo].classList.contains('taken') &&
-                    allBoardBlocks[randomGo].classList.contains('boom')) {
+                //get all board blocks of the Player Board
+                const allBoardBlocks = document.querySelectorAll('#player div');
+                                                                                      
+                                                                             
+                if (allBoardBlocks[randomGo].classList.contains('taken') &&  //check if taken by ship AND check if hit
+                    allBoardBlocks[randomGo].classList.contains('boom')) {                   
+                    
+                    //here is true; start over . ( generates a new number until move is valid )
                     computerGo()
+                    
                     return;
-                } else if (allBoardBlocks[randomGo].classList.contains('taken') &&
+
+                }           //if taken by ship and NOT hit
+                else if (allBoardBlocks[randomGo].classList.contains('taken') &&
                     !allBoardBlocks[randomGo].classList.contains('boom')) {
+                        //mark the ship as hit, inform users
                     allBoardBlocks[randomGo].classList.add('boom')
                     infoDisplay.textContent = 'Computer hit your ship!';
 

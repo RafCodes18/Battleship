@@ -252,18 +252,24 @@
     const infoDisplay = document.querySelector('#info');
     const turnDisplay = document.querySelector('#turn-display');
 
+    //track ships that have been hit by the player
     let playerHits = [];
+    //track ships hit by computer
     let computerHits = [];
 
+    //track ships sunk by player
     const playerSunkShips = [];
+    //track ships sunk by computer
     const computerSunkShips = [];
 
     let gameOver = false;
     let playerTurn;
 
+    //when user clicks flip button, run flip code
     btnFlip.addEventListener('click', flip)
 
     let angle = 0;
+    //function to flip pieces 90 degrees
     function flip() {
         const ships = Array.from(shipContainer.children)
         //if angle == 0, change to 90, else keep 0

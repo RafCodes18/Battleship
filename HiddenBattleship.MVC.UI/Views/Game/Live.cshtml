@@ -465,29 +465,40 @@
 
     function handleClick(e) {
         if (!gameOver) {
+            //if square clicked is taken by ship, add Boom class (make the square red)
             if (e.target.classList.contains('taken')) {
                 e.target.classList.add('boom');
                 infoDisplay.textContent = "You hit the computers ship!";
 
+                //convert the classList of the clicked squarre into an array of classes
                 let classes = Array.from(e.target.classList);
+                //iterate over each class in the array remove block, boom, and taken. 
                 classes = classes.filter(className => className !== 'block');
                 classes = classes.filter(className => className !== 'boom');
                 classes = classes.filter(className => className !== 'taken');
+                //classes does not contain block, boom or taken
 
+                //add the descriptive class of which square was hit to the PlayerHits array tracking hit squares
                 playerHits.push(...classes)
                 console.log(playerHits);
+
+                //run check score method, passing in player, the player hits array, and sunk ships array
                 checkScore('player', playerHits, playerSunkShips)
             }
 
+            //if ship wasnt hit, update game state and turn square white to represent a miss
             if (!e.target.classList.contains('taken')) {
                 infoDisplay.textContent = "You missed!";
                 e.target.classList.add('empty');
             }
 
+            //switch turn to computer 
             playerTurn = false;
 
+            //reset computer board blocks
             const allBoardBlocks = document.querySelectorAll('#computer div');
             allBoardBlocks.forEach(block => block.replaceWith(block.cloneNode(true)));
+            //take time for computer move
             setTimeout(computerGo, 3000);
         }
     }

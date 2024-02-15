@@ -1,5 +1,6 @@
 ﻿using HiddenBattleship.BL.Models;
 using HiddenBattleship.MVC.UI.Hubs;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 
@@ -45,7 +46,15 @@ namespace HiddenBattleship.MVC.UI.Controllers
         //GET: Game/Computer
         public ActionResult Computer(string gameId)
         {
-            return View(gameId);
+
+
+            Game game = new Game();
+            game.player = HttpContext.Session.GetObject<Player>("player");
+            if (game.player == null)
+            {
+                return RedirectToAction("CreateAccount", "Profile", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+            }
+            return View(game);
         }
 
         // GET: GameController 

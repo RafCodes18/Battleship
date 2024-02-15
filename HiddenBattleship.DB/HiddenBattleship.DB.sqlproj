@@ -73,6 +73,7 @@
     <None Include="PostDeploy\DummyData\ChatHistories.sql" />
     <None Include="PostDeploy\DummyData\GameMoves.sql" />
     <None Include="HiddenBattleship.DB.publish.xml" />
+    <None Include="localDB.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\tblGame.sql" />

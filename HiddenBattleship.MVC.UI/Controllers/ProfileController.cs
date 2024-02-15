@@ -2,6 +2,7 @@
 using HiddenBattleship.BL.Models;
 using HiddenBattleship.MVC.UI.ViewModels;
 using HiddenBattleship.PL;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,7 +34,7 @@ namespace HiddenBattleship.MVC.UI.Controllers
 
             if (profileVM.player == null)
             {
-                return RedirectToAction("CreateAccount", "Profile");
+                return RedirectToAction("CreateAccount", "Profile", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
             }
 
             return View(profileVM);
@@ -76,8 +77,9 @@ namespace HiddenBattleship.MVC.UI.Controllers
         }
 
         //GET: Profile/CreateAccount
-        public ActionResult CreateAccount()
+        public ActionResult CreateAccount(string returnURL)
         {
+            TempData["returnUrl"] = returnURL;
             return View();
         }
 
@@ -96,7 +98,7 @@ namespace HiddenBattleship.MVC.UI.Controllers
                 if (result > 0)
                 {
                     Login(player);
-                    return RedirectToAction("Index", "Profile");
+                    return Redirect(TempData["returnUrl"].ToString());
                 }
                 else
                 {

@@ -156,6 +156,13 @@ function dropShip(e) {
     if (!notDropped) {
         draggedShip.remove()
     }
+
+
+    // Check if all 5 ships have been placed
+    if (document.querySelectorAll('#player .taken').length === 17) {
+        // Change the text of the "info" div to "Press Start"
+        infoDisplay.textContent = "Press Start";
+    }
 }
 
 ships.forEach(ship => addShipPiece(ship))
@@ -191,7 +198,7 @@ function startGame() {
     } else {
         //only start game if pieces have been placed
         if (shipContainer.children.length != 0) {
-            infoDisplay.textContent = "Place your pieces to begin. "
+            infoDisplay.textContent = "Drag ships to your board "
         } else {
             //now that pieces have been placed, start the game
             let info = document.querySelector(".info");
@@ -343,3 +350,5 @@ function checkScore(user, userHits, userSunkShips) {
         gameOver = true;
     }
 }
+
+

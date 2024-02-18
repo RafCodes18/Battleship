@@ -22,11 +22,11 @@ body {
 }
 
 body {
-    background-color: #2D4356 !important;
+    background-color: #252525 !important;
 }
 
 nav {
-    background-color: #EAB2A0;
+    background-color: #3a3a3a;
     color: white !important;
 }
 
@@ -50,7 +50,7 @@ nav {
 }
 
 .cust-link {
-    color: #2D4356;
+    color: #acceec;
 }
 
 .cust-link:hover{

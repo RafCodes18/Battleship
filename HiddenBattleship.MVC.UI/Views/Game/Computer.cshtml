@@ -11,6 +11,7 @@
     * {
         margin: 0;
         padding: 0;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
     }
 
     body {
@@ -31,7 +32,7 @@
     .ships-container {
         width: 500px;
         height: 120px;
-        background-color: #b7c3c3;
+        background-color: #a1a1a1;
         display: flex;
         align-items: center;
         margin-top: 5px;
@@ -52,6 +53,7 @@
         height: 20px;
         background-color: #C04DFF;
         border-radius: 3px;
+        border: 1px solid black;
     }
 
     .ship2 {
@@ -59,6 +61,7 @@
         height: 20px;
         background-color: #FF00AA;
         border-radius: 3px;
+        border: 1px solid black;
     }
 
     .ship3 {
@@ -66,6 +69,7 @@
         height: 20px;
         background-color: #24E0FF;
         border-radius: 3px;
+        border: 1px solid black;
     }
 
     .ship4 {
@@ -73,6 +77,7 @@
         height: 20px;
         background-color: orange;
         border-radius: 3px;
+        border: 1px solid black;
     }
 
     .ship5 {
@@ -80,6 +85,7 @@
         height: 20px;
         background-color: #E2E603;
         border-radius: 3px;
+        border: 1px solid black;
     }
 
     .block {
@@ -87,6 +93,7 @@
         height: 40px;
                border: 1px solid grey;              ;
         border-radius: 2px;
+        
 
     }
 
@@ -116,7 +123,7 @@
         padding: 2px;
         color: white;
         border-radius: 5px;
-        background-color: #55d6be;
+        background-color: #52ee83;
         font-size: large;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: box-shadow 0.3s ease;
@@ -129,7 +136,7 @@
 
         button:hover {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            background-color: #86e8d6;
+            background-color: #25a467;
         }
 
     .titles {
@@ -186,6 +193,8 @@
         margin-top: 15px;
         color: white;
         font-weight: bold;
+        margin-right: 700px;
+        margin-top: 20px;
     }
 
     .opp-board{
@@ -202,7 +211,7 @@
         align-content: center;
         font-size: xx-large;
         white-space: nowrap;
-        color: royalblue;
+        color: #d8f878;
         position: absolute;
         top: 20px;
     }
@@ -254,7 +263,7 @@
     <!--Game boards-->
     <div id="games-container">
     </div>
-    <button id="btnStart" class="strtBtn" onclick="startGame()">Start Game</button>
+    <button id="btnStart" class="strtBtn" onclick="startGame()">start game</button>
 
 
     <!--Ships containers-->
@@ -304,4 +313,6 @@
     // response from server represents opponents chat 
     /
     
+
+
 </script> 

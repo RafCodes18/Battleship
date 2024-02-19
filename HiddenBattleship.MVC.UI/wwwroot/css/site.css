@@ -2,6 +2,13 @@ html {
   font-size: 14px;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+}
+.txt-light{
+    color: white;
+}
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -26,23 +33,26 @@ body {
 }
 
 nav {
-    background-color: #3a3a3a;
+    background-color: #758184;
     color: white !important;
+    font-size: x-large;
 }
 
 .btn-main {
-    background-color: #EAB2A0;
+    background-color: #52ee83;
+;
     outline-color: #A78295 !important;
     color: #2D4356 !important;
     border: 1px solid grey !important;
 }
 
     .btn-main:hover{
-        background-color: #b67a67;
+        background-color: #dfdfdf;
         color: white;   
     }
     .btn-main:focus {
-        background-color: #b67a67;
+        background-color:  #52ee83;
+        ;
     }
 
 .drk {

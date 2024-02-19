@@ -44,6 +44,7 @@ namespace HiddenBattleship.MVC.UI.Controllers
         public IActionResult Login(string returnUrl)
         {
             TempData["returnUrl"] = returnUrl;
+
             return View();
         }
 
@@ -60,7 +61,7 @@ namespace HiddenBattleship.MVC.UI.Controllers
                     return Redirect(TempData["returnUrl"]?.ToString());
                 else
 
-                    return RedirectToAction("Live", "Game");
+                    return RedirectToAction("Computer", "Game");
             }
             catch (Exception ex)
             {

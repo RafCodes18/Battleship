@@ -8,11 +8,7 @@
 
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
-    }
+ 
 
     body {
         background-color: #e5e5e5;
@@ -32,7 +28,7 @@
     .ships-container {
         width: 500px;
         height: 120px;
-        background-color: #a1a1a1;
+        background-color: #758184;
         display: flex;
         align-items: center;
         margin-top: 5px;
@@ -229,7 +225,7 @@
         overflow-y: auto;  
         border: 1px solid #ccc;  
         padding: 10px; 
-        background-color: white;
+        background-color: #999897;
     }
 
     .chat-text{
@@ -238,11 +234,11 @@
 
     .opponent{
         margin-left: 140px;
-        color: red;
+        color: black;
     }
 
     .user{
-
+        color: #52ee83;
     }
 </style>
 
@@ -293,7 +289,7 @@
         </div>
 
         <div>
-            <input type="text" id="messageInput" />
+            <input type="text" id="messageInput" placeholder="Type here"/>
             <button onclick="sendMessage()">Send</button>
         </div>
         </div>

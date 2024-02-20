@@ -56,7 +56,9 @@
         </div>   *@
 
 <link rel="stylesheet" href="~/css/LoginStyles.css" />
- 
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap" rel="stylesheet">
     <div class="frame">
         <div class="nav">
             <ul class="links">
@@ -64,6 +66,12 @@
                 <li class="signup-inactive"><a class="btn">New User</a></li>
             </ul>
         </div>
+    <canvas id="myCanvas" width="600" height="20"></canvas>
+    <div class="tt">
+        <p class="login-title">BattleShip ONLINE</p>
+    </div>
+    <canvas id="myCanvas2" width="600" height="20"></canvas>
+
         <div ng-app ng-init="checked = false">
             <form class="form-signin" asp-action="Login" method="post" asp-controller="Profile" name="form">
             <label for="UserName">Username</label><input class="form-styling" type="text" name="UserName" placeholder="" />  
@@ -108,30 +116,121 @@
         });
     });
  
-    
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+    const boxWidth = 20; // Width of each box
+    const numBoxes = 19; // Number of boxes across
+    const animationDuration = 80; // Time for each box to display in milliseconds
+
+    let currentBox = 0; // Index of the currently displayed box
+
+    const colors = ['#21897e', '#3ba99c', '#69D1C5', '#7EBCE6', '#8980F5']
+
+    function getRandomColor() {
+        @*  const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+            } *@
+
+            for (let i = 0; i < colors.length; i++) {
+                return colors[i];
+            }
+        return color;
+    }
+
+    function drawFrame() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+
+        // Calculate position of the current box
+        const x = currentBox * boxWidth;
+
+        ctx.fillStyle = getRandomColor();
+        ctx.fillRect(x, 0, boxWidth, canvas.height);
+
+        // Move to the next box (or reset)
+        currentBox = (currentBox + 1) % numBoxes;
+
+        // Schedule the next frame
+        setTimeout(drawFrame, animationDuration);
+    }
+
+    // Start the animation
+    drawFrame();
+
+
+
+
+    const canvas2 = document.getElementById('myCanvas2');
+    const ctx2 = canvas2.getContext('2d');
+    const boxWidth2 = 20; // Width of each box - keep it consistent
+    const numBoxes2 = 19;
+    const animationDuration2 = 80;
+
+    let currentBox2 = numBoxes2 - 1; // Start from the rightmost side
+
+    function drawFrame2() {
+        ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+
+        // Calculate position of the current box (moving right to left)
+        const x = currentBox2 * boxWidth2;
+
+        ctx2.fillStyle = getRandomColor();
+        ctx2.fillRect(x, 0, boxWidth2, canvas2.height);
+
+        // Move to the previous box (or reset)
+        currentBox2 = (currentBox2 - 1 + numBoxes) % numBoxes;
+
+        setTimeout(drawFrame2, animationDuration);
+    }
+
+    // Start the second animation
+    drawFrame2();
+
+
 </script>
 
-            <style>
-                footer{
-                    display: none;
-                }
-                body{
-                    overflow: hidden;
-                }
-                .login{
-                    display: none;
-                }
-                .blu{
-                    background-color: blue;
-                    color: white;
-                    font-size: large;
-                    padding: 5px;
-                }
-                .blu:hover{
-                    text-decoration: underline !important;
-                }
+<style>
+    footer {
+        display: none;
+    }
 
-                .frame{
+    body {
+        overflow: hidden;
+    }
+
+    .login {
+        display: none;
+    }
+
+    .blu {
+        background-color: blue;
+        color: white;
+        font-size: large;
+        padding: 5px;
+    }
+
+        .blu:hover {
+@*             text-decoration: underline !important;
+ *@        }
+
+    .frame {
         box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     }
-            </style>
+
+    #myCanvas {
+        margin-left: 20px;
+        margin-top: 5px;
+    }
+
+    .login-title{
+        color: white;
+        font-size: x-large;
+        font-family: "Protest Revolution", sans-serif !important;     
+    }
+    .tt{
+        display: flex;
+        justify-content: center;
+        margin-bottom: -20px;
+    }
+</style>

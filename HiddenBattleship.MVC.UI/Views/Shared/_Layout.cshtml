@@ -17,8 +17,12 @@
     <header>
         <style>
             .battl{
-                font-family: 'Sans Serif Collection';       
+                font-family: "Kode Mono", monospace;               
                 font-size: x-large;
+                text-align: center;
+                vertical-align: baseline;  
+                margin: 0;
+                padding: 0;
             }
 
             .blue{
@@ -27,11 +31,12 @@
 
            darkkkk{
                 background-color: #a4a4a4 !important;
+                margin-top: 10px;
             }
 
             .dark-green{
                 background-color: #f2a359;
-                border-radius: 4px;
+                border-radius: 14px;
                 color: grey;
             }
 
@@ -50,10 +55,29 @@
                 justify-content: right;
             }
 
+            .prof-link:hover{
+                text-decoration:underline;
+            }
+
+            .nav-bar-full{
+                padding: 0 20px;
+                margin: 0;
+            }
+
+            .login{
+                border-radius: 14px;
+                margin-right: 10px;
+                margin-left: 10px;
+            }
+
+            .web-name{
+                padding: 0 !important;
+                margin-top: 10px !important;
+            }
         </style>
         <nav class="darkkk navbar navbar-expand-sm navbar-toggleable-sm navbar-light   box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand battl" asp-area="" asp-controller="Home" asp-action="Index"><p class="txt-light nav-title">BattleShip Online</p></a>
+            <div class="container-fluid nav-bar-full">
+                <a class="navbar-brand battl" asp-area="" asp-controller="Home" asp-action="Index"><p class="txt-light web-name">BattleShip ONLINE</p></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -62,7 +86,7 @@
                     <ul class="navbar-nav flex-grow-1">
                    
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Profile" asp-route-id="" asp-action="Index">Profile</a>
+                            <a class="nav-link text-dark prof-link" asp-area="" asp-controller="Profile" asp-route-id="" asp-action="Index">Profile <img src="~/w3images/profile-user.png" height="35px;" width="35px;"></img></a>                            
                         </li>
                     </ul>
 
@@ -96,7 +120,7 @@
                     }
                     else
                     {
-                         <li class="nav-item bg-light rounded m-2 login ">
+                         <li class="nav-item bg-light login ">
                               <a class="nav-link text-white dark-green" asp-area="" asp-controller="Profile" asp-action="Login">Login</a>
                          </li>
                     }                              

@@ -55,6 +55,7 @@
         </form>
         </div>   *@
 
+
 <link rel="stylesheet" href="~/css/LoginStyles.css" />
  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,7 +83,9 @@
             </span>Keep me signed in</label>
                 <div class="btn-animate"> <button type="submit" class="btn-signin blu">Login to your account</button> </div>
             </form>
-            <form class="form-signup" asp-action="CreateAccount" asp-controller="Profile" method="post" name="form"> <label for="fullname">Username</label> 
+            <form class="form-signup" asp-action="CreateAccount" asp-controller="Profile" method="post" name="form"> <label for="fullname">Username</label>
+            <p class="login-title-join">Join Today!</p>
+
                 <input class="form-styling" type="text" name="email" placeholder="" />
             <label for="email">Create password</label> <input class="form-styling" type="text" name="email" placeholder="" />
             <label for="password">Confirm password</label>
@@ -114,6 +117,7 @@
             $(".forgot").toggleClass("forgot-left");
             $(this).removeClass("idle").addClass("active");
         });
+        
     });
  
     const canvas = document.getElementById('myCanvas');
@@ -233,4 +237,14 @@
         justify-content: center;
         margin-bottom: -20px;
     }
+
+    .login-title-join{
+        position: absolute;
+        top: -10px;
+        right: 155px;
+        color: yellow;
+        font-family: 'Anta', sans-serif;
+        font-size: 20px;
+    }
+ 
 </style>

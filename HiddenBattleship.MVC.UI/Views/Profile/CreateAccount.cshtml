@@ -85,6 +85,8 @@
             <div class="btn-animate"> <button type="submit" class="btn-signin blu">Login to your account</button> </div>
         </form>
         <form class="form-signup form-signup-left" asp-action="CreateAccount" asp-controller="Profile" method="post" name="form">
+            <p class="login-title-join">Join Today!</p>
+
             <label for="fullname">Username</label>
             <input class="form-styling" type="text" name="email" placeholder="" />
             <label for="email">Create password</label> <input class="form-styling" type="text" name="email" placeholder="" />
@@ -234,7 +236,8 @@
 
     .login-title {
         color: white;
-        font-size: x-large;
+@*         margin-bottom: 10px;
+ *@        font-size: x-large;
         font-family: "Protest Revolution", sans-serif !important;
     }
 
@@ -242,5 +245,14 @@
         display: flex;
         justify-content: center;
         margin-bottom: -20px;
+    }
+
+    .login-title-join {
+        position: absolute;
+        top: -10px;
+        right: 155px;
+        color: yellow;
+        font-family: 'Anta', sans-serif;
+        font-size: 20px;
     }
 </style>

@@ -1,3 +1,7 @@
+:root {
+    --gradient: linear-gradient( 45deg, #006466, #0b525b, #1b3a4b, #272640, #4d194d, #5d194d );
+}
+
 html {
     font-size: 14px;
 }
@@ -24,12 +28,10 @@ html {
   min-height: 100%;
 }
 
+
 body {
     margin-bottom: 60px;
     font-family: "Montserrat", sans-serif;
-}
-
-body {
     background-color: #252525 !important;
 }
 
@@ -40,16 +42,19 @@ nav {
 }
 
 .btn-main {
-    background-color: #52ee83;
-;
+    background-color: transparent;
     outline-color: #A78295 !important;
-    color: #2D4356 !important;
-    border: 1px solid grey !important;
+    color: white !important;
+    font-weight: 500 !important;
+    border: 2px solid black !important;
+    box-shadow: 2px 2px 10px inset white;
+    transition: 1s background-color;
 }
 
-    .btn-main:hover{
-        background-color: #dfdfdf;
-        color: white;   
+    .btn-main:hover {
+        background-color: rgba(223, 223, 223, 0.5);
+        color: black !important;
+        transition-delay: 0s;
     }
     .btn-main:focus {
         background-color:  #52ee83;
@@ -127,3 +132,4 @@ a.log {
         box-shadow: -2px -2px 6px rgba(255, 227, 126, 0.5), 2px 2px 6px rgba(144, 148, 255, 0.5);
     }
 }
+

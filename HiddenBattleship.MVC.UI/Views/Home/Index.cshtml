@@ -19,6 +19,15 @@
         align-items: center;
         height: 100vh;
         color: white;
+        background-image: var(--gradient);
+        background-size: 400%;
+        animation: bg-animation 10s infinite alternate;
+    }
+
+    .nav-bar-full{
+        background-image: var(--gradient) !important;
+        background-size: 400% !important;
+        animation: bg-animation 10s infinite alternate !important;
     }
 
     .hero {
@@ -27,12 +36,12 @@
     }
 
     .button-container {
-        margin-top: 20px;
+        margin-top: 50px;
     }
 
     .button {
         display: inline-block;
-        padding: 10px 20px;
+        padding: 12px 25px;
         font-size: 18px;
         text-decoration: none;
         color: #fff;
@@ -40,5 +49,15 @@
         margin: 0 10px;
         cursor: pointer;
     }
- 
-</style>
+
+
+@@keyframes bg-animation {
+    0% {
+        background-position: left;
+    }
+
+    100% {
+        background-position: right;
+    }
+}
+ </style>

@@ -1,9 +1,8 @@
 ﻿@model HiddenBattleship.BL.Models.Player
 @{
-    ViewData["Title"] = "Create Account";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-    <style>
+
+}@*
+<style>
         /* Center the form on the page */
         body1 {
             display: flex;
@@ -23,42 +22,225 @@
             background-color: #fff;
             border-radius: 5px;
             margin-top: 15vh;
+    }
+
+    </style>
+<div class="account-form drk">
+    <h2 class="text-center mb-4">Login To Account</h2>
+<form method="Post">
+            <!-- Login with Username Input -->
+            <div class="form-group">
+                <label for="loginUsername">Username</label>
+            <input type="text" class="form-control" id="loginUsername" placeholder="Enter your username" name="UserName">
+            </div>
+
+            <!-- Login with Password Input -->
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+            <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" name="Password">
+            </div>
+        <div class="form-group">
+            <hr>
+            <p class="text-center">No account? <a href="../Profile/CreateAccount" class="cust-link">Sign Up</a></p>
+        </div>
+            <div class="col text-center">
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-block mt-2 btn-main " asp-action="Login" asp-controller="Profile">Log In</button>
+            </div>
+
+        <div class="col text-center">
+            <!-- Demo login Button -->
+            <button type="submit" class="btn btn-primary btn-block mt-2 btn-main " asp-action="DemoLogin" asp-controller="Profile">DEMO THE APP LOGIN</button>
+        </div>
+        </form>
+        </div>   *@
+
+<link rel="stylesheet" href="~/css/LoginStyles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap" rel="stylesheet">
+<div class="frame">
+    <div class="nav">
+        <ul class="links">
+            <li class="signin-inactive"><a class="btn">Existing User</a></li>
+            <li class="signup-active"><a class="btn">New User</a></li>
+        </ul>
+    </div>
+    <canvas id="myCanvas" width="600" height="20"></canvas>
+    <div class="tt">
+        <p class="login-title">BattleShip ONLINE</p>
+    </div>
+    <canvas id="myCanvas2" width="600" height="20"></canvas>
+
+    <div ng-app ng-init="checked = false">
+        <form class="form-signin form-signin-left" asp-action="Login" method="post" asp-controller="Profile" name="form">
+            <label for="UserName">Username</label><input class="form-styling" type="text" name="UserName" placeholder="" />
+            <label for="Password">Password</label> <input class="form-styling" type="text" name="Password" placeholder="" />
+            <input type="checkbox" id="checkbox" />
+            <label for="checkbox">
+                <span class="ui">
+
+                </span>Keep me signed in
+            </label>
+            <div class="btn-animate"> <button type="submit" class="btn-signin blu">Login to your account</button> </div>
+        </form>
+        <form class="form-signup form-signup-left" asp-action="CreateAccount" asp-controller="Profile" method="post" name="form">
+            <label for="fullname">Username</label>
+            <input class="form-styling" type="text" name="email" placeholder="" />
+            <label for="email">Create password</label> <input class="form-styling" type="text" name="email" placeholder="" />
+            <label for="password">Confirm password</label>
+            <input class="form-styling" type="text" name="confirmpassword" placeholder="" />
+            <button type="submit" ng-click="checked = !checked" class="btn-signup">REGISTER</button>
+        </form>
+        <div class="success">
+            <svg width="270" height="270" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" id="check" ng-class="checked ? 'checked' : ''">
+                <path fill="#ffffff" d="M40.61,23.03L26.67,36.97L13.495,23.788c-1.146-1.147-1.359-2.936-0.504-4.314 c3.894-6.28,11.169-10.243,19.283-9.348c9.258,1.021,16.694,8.542,17.622,17.81c1.232,12.295-8.683,22.607-20.849,22.042 c-9.9-0.46-18.128-8.344-18.972-18.218c-0.292-3.416,0.276-6.673,1.51-9.578" />
+                <div class="successtext">
+                    <p> New User registered, Kindly check your email for confirmation.</p>
+                </div>
+        </div>
+    </div>
+    <div class="forgot"> <a href="#">Forgot your password?</a> </div>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".btn").click(function () {        
+            $(".form-signin").toggleClass("form-signin-left");
+            $(".form-signup").toggleClass("form-signup-left");
+            $(".frame").toggleClass("frame-long");
+            $(".signup-active").toggleClass("signup-inactive");
+            $(".signup-inactive").toggleClass("signup-active");
+             $(".signin-inactive").toggleClass("signin-active");
+             $(".signin-active").toggleClass("signin-inactive");
+
+
+            $(".forgot").toggleClass("forgot-left");
+            $(this).removeClass("idle").addClass("active");
+
+        });
+    });
+
+ 
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+    const boxWidth = 20; // Width of each box
+    const numBoxes = 19; // Number of boxes across
+    const animationDuration = 80; // Time for each box to display in milliseconds
+
+    let currentBox = 0; // Index of the currently displayed box
+
+    const colors = ['#21897e', '#3ba99c', '#69D1C5', '#7EBCE6', '#8980F5']
+
+    function getRandomColor() {
+    @*  const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+            } *@
+
+                for (let i = 0; i < colors.length; i++) {
+            return colors[i];
+        }
+        return color;
+    }
+
+    function drawFrame() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+
+        // Calculate position of the current box
+        const x = currentBox * boxWidth;
+
+        ctx.fillStyle = getRandomColor();
+        ctx.fillRect(x, 0, boxWidth, canvas.height);
+
+        // Move to the next box (or reset)
+        currentBox = (currentBox + 1) % numBoxes;
+
+        // Schedule the next frame
+        setTimeout(drawFrame, animationDuration);
+    }
+
+    // Start the animation
+    drawFrame();
+
+
+
+
+    const canvas2 = document.getElementById('myCanvas2');
+    const ctx2 = canvas2.getContext('2d');
+    const boxWidth2 = 20; // Width of each box - keep it consistent
+    const numBoxes2 = 19;
+    const animationDuration2 = 80;
+
+    let currentBox2 = numBoxes2 - 1; // Start from the rightmost side
+
+    function drawFrame2() {
+        ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+
+        // Calculate position of the current box (moving right to left)
+        const x = currentBox2 * boxWidth2;
+
+        ctx2.fillStyle = getRandomColor();
+        ctx2.fillRect(x, 0, boxWidth2, canvas2.height);
+
+        // Move to the previous box (or reset)
+        currentBox2 = (currentBox2 - 1 + numBoxes) % numBoxes;
+
+        setTimeout(drawFrame2, animationDuration);
+    }
+
+    // Start the second animation
+    drawFrame2();
+
+
+</script>
+
+<style>
+    footer {
+        display: none;
+    }
+
+    body {
+        overflow: hidden;
+    }
+
+    .login {
+        display: none;
+    }
+
+    .blu {
+        background-color: blue;
+        color: white;
+        font-size: large;
+        padding: 5px;
+    }
+
+        .blu:hover {
+    @* text-decoration: underline !important; *@
         }
 
-        
-        
-    </style>
+    .frame {
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    }
 
-    <div class="account-form drk">
-        <h2 class="text-center mb-4">Create Account</h2>
-        <form asp-controller="Profile" asp-action="CreateAccount" method="Post">
-            <!-- Username Input -->
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter your username" name="UserName">
-            </div>
-            <!-- Password Input -->
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="Password" placeholder="Enter your password">
-            </div>
+    #myCanvas {
+        margin-left: 20px;
+        margin-top: 5px;
+    }
 
-            <!-- Email Input -->
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="Email" placeholder="Enter your email">
-            </div>
-        <div class="col text-center">
-            <button type="submit" class="btn btn-primary btn-block  mt-3 btn-main">Create Account </button>
-            </div>
-            <div class="form-group">
-                <hr>
-                <p class="text-center">Or, <a href="../Profile/Login" class="cust-link">Login</a></p>
-            </div>
-        </form>
-    </div>
+    .login-title {
+        color: white;
+        font-size: x-large;
+        font-family: "Protest Revolution", sans-serif !important;
+    }
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+    .tt {
+        display: flex;
+        justify-content: center;
+        margin-bottom: -20px;
+    }
+</style>

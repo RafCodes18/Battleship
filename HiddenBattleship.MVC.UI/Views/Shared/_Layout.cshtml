@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/HiddenBattleship.MVC.UI.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
@@ -79,23 +83,48 @@
             .color-picker{
                 margin-left: 30px;
              }
+             .version{
+                font-family: 'Anta', sans-serif;
+                color: mediumpurple;
+             }
 
+            .color-picker-container input[type="color"] {
+                opacity: 0; /* Make it completely transparent */
+                position: absolute; /* Position it over the image */
+                width: 30px; /* Adjust the size to match the image */
+                height: 30px;
+                z-index: 2; /* Ensure it's on top of the image */
+            }
+
+            .footerlink{
+                color: #dbdb3a !important;
+                text-decoration: none;
+
+            }
+
+            .footerlink:hover {
+                color: #dbdb3a !important;
+                 text-decoration: underline;
+            }
         </style>
         <nav class="darkkk navbar navbar-expand-sm navbar-toggleable-sm navbar-light   box-shadow mb-3">
             <div class="container-fluid nav-bar-full">
-                <a class="navbar-brand battl" asp-area="" asp-controller="Home" asp-action="Index"><p class="txt-light web-name">BattleShip ONLINE</p></a>
+                <a class="navbar-brand battl" asp-area="" asp-controller="Home" asp-action="Index"><p class="txt-light web-name mainColor">BattleShip ONLINE <span class="version">2.0</span></p></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    
-                        <img src="~/w3images/color-picker-icon__2_.png" height="30px" width="30px;" class="color-picker"/>
-                    
+
+                    <div class="color-picker-container">
+                        <img src="~/w3images/color-picker-icon__2_.png" height="30px" width="30px;" class="color-picker" />
+                        <input type="color" id="favcolor" value="#0FFB3b">
+                    </div>
+
                     <ul class="navbar-nav flex-grow-1">
                    
                         <li class="nav-item">
-                            <a class="nav-link text-dark prof-link" asp-area="" asp-controller="Profile" asp-route-id="" asp-action="Index">your stuff <img src="~/w3images/contact.png" height="30px;" width="30px;"></img></a>                            
+                            <a class="nav-link text-dark prof-link" asp-area="" asp-controller="Profile" asp-route-id="" asp-action="Index">your stuff <img src="~/w3images/contact.png" height="30px;" width="30px;"></a>                            
                         </li>
                        
                     </ul>
@@ -168,9 +197,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - A Rafael Parra Website - <a href="https://rafaelparra.dev">Return to Porfolio Here</a>
+    <footer class=" footer text-muted">
+        <div class="container footer-container">
+            &copy; 2024 - Rafael Parra -  <a href="https://rafaelparra.dev" class="footerlink"> Return to Porfolio Here</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -179,3 +208,50 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        const colorPickerImage = document.querySelector('.color-picker');
+        const colorInput = document.querySelector('#favcolor');
+
+        colorPickerImage.addEventListener('click', function () {
+            colorInput.click();  // Programmatically trigger the actual picker
+             
+        });                    
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const colorPicker = document.querySelector('#favcolor');
+        const mainColor = document.querySelectorAll('.mainColor'); // Assuming class for elements to change
+
+        colorPicker.addEventListener('input', function () {
+            const selectedColor = this.value;
+            console.log(selectedColor);
+
+            // Update target elements
+            mainColor.forEach(element => {
+                element.style.color = selectedColor;
+            });
+
+            // Calculate complementary color (simplified)
+            const complementaryColor = calculateComplementaryColor(selectedColor);
+            // Update other elements with the complementary color
+        });
+    });
+
+    function calculateComplementaryColor(hexColor) {
+        // Convert hex to RGB components
+        let r = parseInt(hexColor.substr(1, 2), 16);
+        let g = parseInt(hexColor.substr(3, 2), 16);
+        let b = parseInt(hexColor.substr(5, 2), 16);
+
+        // Simple inversion for a rough complementary color
+        r = 255 - r;
+        g = 255 - g;
+        b = 255 - b;
+
+        // Convert back to hex
+        const rgbToHex = (r, g, b) => "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+        return rgbToHex(r, g, b);
+    }
+</script>

@@ -69,12 +69,11 @@ nav {
 }
 
 
-footer {
-    position: fixed !important;
-    bottom: 0 !important;
+ 
+.footer-container{
+    display: flex;
+    justify-content: center;
 }
-
-
 
 
 

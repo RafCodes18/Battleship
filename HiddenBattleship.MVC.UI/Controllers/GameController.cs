@@ -16,7 +16,7 @@ namespace HiddenBattleship.MVC.UI.Controllers
         }
 
         //TODO: Live action - Raf still WIP
-        //GET: Game/Live/gameid
+        //GET: Game/Live/gameid    hey
         public ActionResult Live(string gameId, Player player)
         {
 

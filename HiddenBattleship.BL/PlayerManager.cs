@@ -3,6 +3,7 @@ using HiddenBattleship.PL;
 using HiddenBattleship.PL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.IdentityModel.Tokens;
 
 namespace HiddenBattleship.BL
 {
@@ -49,6 +50,10 @@ namespace HiddenBattleship.BL
                     }
                     else
                     {
+                        if (player.Email.IsNullOrEmpty())
+                        {
+                            player.Email = "noemail";
+                        }
                         IDbContextTransaction transaction = null;
                         if (rollback) transaction = hb.Database.BeginTransaction();
 
@@ -57,6 +62,7 @@ namespace HiddenBattleship.BL
                         newPlayer.Id = Guid.NewGuid();
                         newPlayer.UserName = player.UserName.Trim();
                         newPlayer.Email = player.Email.Trim();
+
                         newPlayer.Password = GetHash(player.Password.Trim());
 
                         player.Id = newPlayer.Id;

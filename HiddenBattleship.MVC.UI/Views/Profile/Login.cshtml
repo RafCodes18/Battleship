@@ -73,24 +73,28 @@
     </div>
     <canvas id="myCanvas2" width="600" height="20"></canvas>
 
-        <div ng-app ng-init="checked = false">
+        <div>
             <form class="form-signin" asp-action="Login" method="post" asp-controller="Profile" name="form">
-            <label for="UserName">Username</label><input class="form-styling" type="text" name="UserName" placeholder="" />  
-            <label for="Password">Password</label> <input class="form-styling" type="text" name="Password" placeholder="" /> 
+            <label for="UserName">Username</label>
+            <input class="form-styling" type="text" name="UserName" placeholder="" required />
+            <label for="Password">Password</label> 
+            <input class="form-styling" type="text" name="Password" placeholder="" required />
             <input type="checkbox" id="checkbox" /> 
             <label for="checkbox"><span class="ui">
 
             </span>Keep me signed in</label>
                 <div class="btn-animate"> <button type="submit" class="btn-signin blu">Login to your account</button> </div>
             </form>
-            <form class="form-signup" asp-action="CreateAccount" asp-controller="Profile" method="post" name="form"> <label for="fullname">Username</label>
+            <form class="form-signup" asp-action="CreateAccount" asp-controller="Profile" method="post" name="form"> 
+                <label for="UserName">Username</label>
             <p class="login-title-join">Join Today!</p>
 
-                <input class="form-styling" type="text" name="email" placeholder="" />
-            <label for="email">Create password</label> <input class="form-styling" type="text" name="email" placeholder="" />
+            <input class="form-styling" type="text" name="UserName" placeholder="" required />
+            <label for="Password">Create password</label> 
+            <input class="form-styling" type="text" name="email" placeholder="" required />
             <label for="password">Confirm password</label>
-                <input class="form-styling" type="text" name="confirmpassword" placeholder="" /> 
-                <button type="submit" ng-click="checked = !checked" class="btn-signup">REGISTER</button> 
+            <input class="form-styling" type="text" name="confirmpassword" placeholder="" required />
+            <button type="submit" ng-click="checked = !checked" class="btn-signup">REGISTER</button> 
             </form>
             <div class="success">
                 <svg width="270" height="270" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" id="check" ng-class="checked ? 'checked' : ''">

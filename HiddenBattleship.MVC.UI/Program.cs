@@ -1,6 +1,5 @@
 using HiddenBattleship.MVC.UI.Hubs;
 using Microsoft.AspNetCore.Authentication.Cookies;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,9 +13,7 @@ builder.Services.AddAuthentication(
     {
         option.LoginPath = "/Profile/CreateAccount";
         option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
-
     });
-
 
 //add ability to access Http Context
 builder.Services.AddHttpContextAccessor();
@@ -30,7 +27,6 @@ builder.Services.AddSession(options =>
 
 var app = builder.Build();
 
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -39,23 +35,21 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-//map the endpoints
-//TODO
-/*app.UseEndpoints(endpoints =>
-{
-    endpoints.MapHub<ChatHub>("/chatHub");
-endpoints.MapHub<GameHub>("/gameHub");
-});*/
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseRouting();
+app.UseRouting(); // <-- Ensure this comes before UseEndpoints()
+
 app.UseSession();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    // Your endpoint mappings
+    endpoints.MapHub<ChatHub>("/chatHub");
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
 
 app.Run();

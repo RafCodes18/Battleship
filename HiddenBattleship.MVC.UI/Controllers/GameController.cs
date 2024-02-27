@@ -50,10 +50,11 @@ namespace HiddenBattleship.MVC.UI.Controllers
 
             Game game = new Game();
             game.player = HttpContext.Session.GetObject<Player>("player");
-            /* if (game.player == null)
-             {
-                 return RedirectToAction("Login", "Profile", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
-             }*/
+            /*            game.player.UserName = HttpContext.Session.GetObject<string>("username");
+            */            /* if (game.player == null)
+                         {
+                             return RedirectToAction("Login", "Profile", new { returnUrl = UriHelper.GetDisplayUrl(HttpContext.Request) });
+                         }*/
             return View(game);
         }
 

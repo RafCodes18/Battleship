@@ -1,10 +1,10 @@
-﻿@page
-@using HiddenBattleship.BL.Models;
+﻿@using HiddenBattleship.BL.Models;
 @using Microsoft.AspNet.SignalR.Client
-@model Game 
+@model Game  
 @{
     ViewBag.Title = "Playing Computer";
 }
+@inject IHttpContextAccessor HttpContextAccessor
 
 
 <style>
@@ -288,12 +288,18 @@
                 <p class="chat-text opponent">@@MichaelScott: Hi where are you from?</p>
                 <p class="chat-text user mainColor">@@ User: Toronto, CA. Wbu?</p>
                 <p class="chat-text opponent">@@Michael: Nice! I'm from New York</p>
+              
+                @if(Model.player != null)
+                {
+                    <p>@Model.player.UserName</p>
+
+                }
         </div>
 
         <div>
             <input type="text" id="messageInput" placeholder="Type here"/>
             <button onclick="sendMessage()">Send</button>
-        </div>
+        
         </div>
     </div>
 
@@ -303,13 +309,42 @@
 <!--Reference SignalR hub script. -->
 <script src="~/signalr/hubs"></script>
 
+<script src="~/lib/signalr/signalr.js"></script>
+
 
 <script>
     //logic for chat 
     // p elements have classes for user and opponent. 
     // user is styled for the client browser, opponent styled to represent an opponent
-    // response from server represents opponents chat 
-  
+    // response from server represents opponents chat
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/chatHub")  // Make sure this matches your Hub setup
+        .build();
+
+    connection.start().then(() => {
+        // ... your connection success logic here ...
+    }).catch(err => console.error(err));
+
+    // Listener for incoming messages
+    connection.on("ReceiveMessage", (user, message) => {
+        const msg = user + ": " + message;
+        const msgElement = document.createElement("p");
+        msgElement.classList.add("chat-text", "opponent"); // Add classes for styling
+        msgElement.textContent = msg;
+        document.getElementById("message-container").appendChild(msgElement);
+    });
+
+    // Send message on button click
+    function sendMessage() {
+ 
+        const user = "sts" ; // How will you get the actual username?
+        const messageInput = document.getElementById("messageInput");
+        const message = messageInput.value;
+        messageInput.value = ''; // Clear the input after sending
+
+        connection.invoke("SendMessage", user, message)
+            .catch(err => console.error(err));
+    }
 
 
 </script> 

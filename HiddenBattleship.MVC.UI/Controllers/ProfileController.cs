@@ -18,6 +18,7 @@ namespace HiddenBattleship.MVC.UI.Controllers
             {
                 HttpContext.Session.SetObject("player", player);
                 HttpContext.Session.SetString("username", player.UserName);
+                Console.WriteLine(HttpContext.Session.GetString("username"));
             }
             else
             {

@@ -1,8 +1,15 @@
-﻿@using Microsoft.AspNetCore.Http;
+﻿@inject IHttpContextAccessor HttpContextAccessor
+@using Microsoft.AspNetCore.Http;
 @{
     ViewBag.Title = "Hidden Battleship";
+    string userColor = HttpContextAccessor.HttpContext.Session.GetString("userColor");
+    if (userColor == null)
+    {
+        // Use a default color if not found in session
+        userColor = "#0FFB3b";
+    }
+    ViewData.Add("userColor", userColor);
 }
-@inject IHttpContextAccessor HttpContextAccessor
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,7 +69,9 @@
             }
 
             .prof-link{
-                color: mediumpurple !important;
+                color: black !important;
+                text-transform: lowercase!important;
+                font-size: x-large;
             }
             .prof-link:hover{
                 text-decoration:underline;
@@ -114,6 +123,9 @@
             .color-picker{
                 cursor: pointer;
             }
+            .prof-log{
+                margin-right: 3px;
+            }
         </style>
         <nav class="darkkk navbar navbar-expand-sm navbar-toggleable-sm navbar-light   box-shadow mb-3">
             <div class="container-fluid nav-bar-full">
@@ -132,7 +144,7 @@
                     <ul class="navbar-nav flex-grow-1">
                    
                         <li class="nav-item">
-                            <a class="nav-link  prof-link" asp-area="" asp-controller="Profile" asp-route-id="" asp-action="Index">profile <img src="~/w3images/contact.png" height="30px;" width="30px;"></a>                            
+                            <a class="nav-link  prof-link" asp-area="" asp-controller="Profile" asp-route-id="" asp-action="Index"><img src="~/w3images/contact.png" height="30px;" width="30px;" class="prof-log">profile</a>
                         </li>
                        
                     </ul>
@@ -149,7 +161,7 @@
                                 }
                                 else
                                 {
-                                    <a href="../Profile/Index" class="nav-link text-dark"><span class="blue">@fullname</span></a>
+                                        <a href="../Profile/Index" class="nav-link text-dark"><span class="blue">@fullname</span></a>
 
                                 }
                             }
@@ -234,6 +246,9 @@
 
         colorPicker.addEventListener('input', function () {
             const selectedColor = this.value;
+            
+            localStorage.setItem("userColor", selectedColor);
+
             console.log(selectedColor);
 
             // Update target elements
@@ -244,6 +259,10 @@
             // Calculate complementary color (simplified)
             const complementaryColor = calculateComplementaryColor(selectedColor);
             // Update other elements with the complementary color
+        });
+        const userColor = localStorage.getItem("userColor");
+        mainColor.forEach(element => {
+            element.style.color = userColor;
         });
     });
 

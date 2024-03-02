@@ -219,6 +219,7 @@ function startGame() {
 
 
             //change buttons to reflect state of game
+            shipContainer.style.visibility = "hidden";
             btnFlip.style.visibility="hidden";
             console.log("start game clicked");
             btnStart.innerText = "End Game";

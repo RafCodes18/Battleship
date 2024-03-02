@@ -254,9 +254,39 @@
      padding: 3px 14px;    
      margin-left: -3px;
  }
+
+ .wht-box{
+     width: 30px;
+     height: 30px; 
+     background-color: white;
+     border: 2px solid grey;
+ }
+ .desc{
+     color: white;
+ }
+ .color-info-container{
+     display: flex;
+     position: absolute;
+     left: 80px;
+     top: 170px;
+ }
+
+ .red-box{
+        width: 30px;
+        height: 30px;
+        background-color: red;
+        border: 2px solid grey;
+ }
+
+ .space{
+     margin: 20px;
+ }
 </style>
 
-
+<div class="color-info-container">
+    <div class="wht-box"></div> s<p class="desc"> = miss</p> <span class="space"></span>
+    <div class="red-box"></div> s<p class="desc"> = hit</p>
+</div>
 <div class="hero">
     <!--Game Info In Navbar-->
       <div id="game-info" class="game-info">

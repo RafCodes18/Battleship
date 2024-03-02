@@ -59,5 +59,16 @@ namespace PB.DVDCentral.API2.Controllers
         {
             return new PlayerManager(options).Delete(id, rollback);
         }
+
+        [HttpGet("Username")]
+        public string GetUsername()
+        {
+            // Retrieve the username from the session
+            string username = HttpContext.Session.GetString("username");
+
+            // If the username is not found, you might want to return something else,
+            // like an empty string or a specific value indicating "not logged in"
+            return username ?? "you";
+        }
     }
 }

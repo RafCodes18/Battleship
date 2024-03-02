@@ -226,6 +226,7 @@
         border: 1px solid #ccc;  
         padding: 10px; 
         background-color: #999897;
+        border-radius: 10PX;
     }
 
     .chat-text{
@@ -238,7 +239,7 @@
     }
 
     .user{
-        color: #b9ffcf;
+        color: white;
     }
 
  
@@ -285,8 +286,8 @@
 
     
         <div id="message-container">
-                <p class="chat-text opponent">@@MichaelScott: Hi where are you from?</p>
-                <p class="chat-text user mainColor">@@ User: Toronto, CA. Wbu?</p>
+                <p class="chat-text opponent">@@Michael: Hi where are you from?</p>
+                <p class="chat-text user mainColor">you: Toronto, CA. Wbu?</p>
                 <p class="chat-text opponent">@@Michael: Nice! I'm from New York</p>
               
                 @if(Model.player != null)
@@ -329,15 +330,19 @@
     connection.on("ReceiveMessage", (user, message) => {
         const msg = user + ": " + message;
         const msgElement = document.createElement("p");
-        msgElement.classList.add("chat-text", "opponent"); // Add classes for styling
+        msgElement.classList.add("chat-text", "user", "mainColor"); // Add classes for styling
         msgElement.textContent = msg;
         document.getElementById("message-container").appendChild(msgElement);
-    });
+            const messageContainer = document.getElementById('message-container');
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+        });
+
+
 
     // Send message on button click
     function sendMessage() {
  
-        const user = "sts" ; // How will you get the actual username?
+        const user = "you" ; // How will you get the actual username?
         const messageInput = document.getElementById("messageInput");
         const message = messageInput.value;
         messageInput.value = ''; // Clear the input after sending
@@ -346,5 +351,6 @@
             .catch(err => console.error(err));
     }
 
-
-</script> 
+        const messageContainer = document.getElementById('message-container');
+        messageContainer.scrollTop = messageContainer.scrollHeight;
+    </script> 

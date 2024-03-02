@@ -266,9 +266,9 @@
  }
  .color-info-container{
      display: flex;
-     position: absolute;
-     left: 80px;
-     top: 170px;
+     flex-direction:column;
+     margin-left: -90px;
+     margin-bottom: 20px;
  }
 
  .red-box{
@@ -281,11 +281,17 @@
  .space{
      margin: 20px;
  }
+
+ .ci-cont{
+    display: flex;
+ }
 </style>
 
 <div class="color-info-container">
-    <div class="wht-box"></div> s<p class="desc"> = miss</p> <span class="space"></span>
-    <div class="red-box"></div> s<p class="desc"> = hit</p>
+    <div class="ci-cont">
+        <div class="wht-box"></div> s<p class="desc"> = miss</p> <span class="space"></span>
+        <div class="red-box"></div> s<p class="desc"> = hit</p>
+    </div>
 </div>
 <div class="hero">
     <!--Game Info In Navbar-->

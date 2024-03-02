@@ -198,7 +198,7 @@ function startGame() {
     } else {
         //only start game if pieces have been placed
         if (shipContainer.children.length != 0) {
-            infoDisplay.textContent = "Drag ships to your board "
+            infoDisplay.textContent = "Drag ships to your board to start"
         } else {
             //now that pieces have been placed, start the game
             let info = document.querySelector(".info");

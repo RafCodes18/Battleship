@@ -117,9 +117,9 @@
 
     button {
         padding: 2px;
-        color: white;
+        color: black;
         border-radius: 5px;
-        background-color: #52ee83;
+        background-color: #50ee83;
         font-size: large;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: box-shadow 0.3s ease;
@@ -156,7 +156,7 @@
         position: absolute;
         left: auto;
         margin-left: 60px;
-    }
+     }
 
     #btnFlip {
         background-color: #bf1fbf;
@@ -221,7 +221,7 @@
     }
 
     #message-container {
-        max-height: 100px;  
+        max-height: 140px;  
         overflow-y: auto;  
         border: 1px solid #ccc;  
         padding: 10px; 
@@ -242,7 +242,17 @@
         color: white;
     }
 
+    .txt-input{
+        border-radius: 7px;
+        padding: 10px;
+        margin-top: 13px;
+        width: 250px !important;
+    }
  
+ .snd-msg{
+     padding: 6px 14px;    
+     margin-left: -3px;
+ }
 </style>
 
 
@@ -287,7 +297,7 @@
     
         <div id="message-container">
                 <p class="chat-text opponent">@@Michael: Hi where are you from?</p>
-                <p class="chat-text user mainColor">you: Toronto, CA. Wbu?</p>
+                <p class="chat-text user">you: Toronto, CA. Wbu?</p>
                 <p class="chat-text opponent">@@Michael: Nice! I'm from New York</p>
               
                 @if(Model.player != null)
@@ -298,8 +308,9 @@
         </div>
 
         <div>
-            <input type="text" id="messageInput" placeholder="Type here"/>
-            <button onclick="sendMessage()">Send</button>
+            <input type="text" id="messageInput" placeholder="Type here, press enter to send" class="txt-input"/>
+            <button onclick="sendMessage()" class="snd-msg">Send</button>
+
         
         </div>
     </div>
@@ -350,7 +361,15 @@
         connection.invoke("SendMessage", user, message)
             .catch(err => console.error(err));
     }
-
+        
+        //force message box to show most recent msg
         const messageContainer = document.getElementById('message-container');
         messageContainer.scrollTop = messageContainer.scrollHeight;
+
+
+        document.querySelector('#messageInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
     </script> 

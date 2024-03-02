@@ -1,7 +1,15 @@
 ﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
-// Write your JavaScript code.
+ /*-------------------------------------
+ |                                     |
+ |   built by: rafael parra  2023      |     
+ |                                     |        
+ |                                     |             
+ |____________________________________*/
+
+
+// MAIN GAME LOGIC //
 const shipContainer = document.querySelector('.ships-container')
 const btnFlip = document.querySelector('#btnFlip')
 const btnStart = document.querySelector('#btnStart')
@@ -193,7 +201,7 @@ function startGame() {
         location.reload();
 
         btnStart.innerText = "Start Game";
-        btnFlip.style.display = "block";
+        btnFlip.style.visibility = "hidden"; // Make button visible
         btnStart.style = "background-color:#55d6be; ";
     } else {
         //only start game if pieces have been placed
@@ -202,7 +210,7 @@ function startGame() {
         } else {
             //now that pieces have been placed, start the game
             let info = document.querySelector(".info");
-            info.textContent = "";
+            info.textContent="Click a square on the opponents board.";
             infoDisplay.textContent = "Begin! "
             playerTurn = true;
 
@@ -211,7 +219,7 @@ function startGame() {
 
 
             //change buttons to reflect state of game
-            btnFlip.style.display = 'none';
+            btnFlip.style.visibility="hidden";
             console.log("start game clicked");
             btnStart.innerText = "End Game";
             btnStart.style = "background-color: red;"

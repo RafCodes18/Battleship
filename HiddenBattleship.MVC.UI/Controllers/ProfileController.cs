@@ -91,7 +91,7 @@ namespace HiddenBattleship.MVC.UI.Controllers
         {
             try
             {
-                //TODO: Turbo jank that works for inserting - Update w/ API 
+                player.Email = string.Empty;
                 DbContextOptions<HiddenBattleshipEntities> options = new DbContextOptions<HiddenBattleshipEntities>();
                 PlayerManager playerManager = new PlayerManager(options);
                 int result = playerManager.Insert(player, false);
